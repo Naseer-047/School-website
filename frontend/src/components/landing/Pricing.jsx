@@ -9,7 +9,7 @@ gsap.registerPlugin(ScrollTrigger);
 const plans = [
     {
         name: "Starter",
-        price: "$49",
+        price: "₹3,999",
         period: "/month",
         features: ["Up to 500 Students", "Basic Fees & Attendance", "Parent Mobile App", "Email Support"],
         highlight: false,
@@ -17,11 +17,11 @@ const plans = [
     },
     {
         name: "Professional",
-        price: "$199",
+        price: "₹14,999",
         period: "/month",
         features: ["Up to 2000 Students", "Advanced Analytics", "Exam & Result Management", "Priority Support", "Dedicated Account Manager"],
         highlight: true,
-         color: "from-primary to-accent"
+        color: "from-primary to-accent"
     },
     {
         name: "Enterprise",
@@ -29,7 +29,7 @@ const plans = [
         period: "",
         features: ["Unlimited Students", "Custom Modules", "API Access", "On-premise Deployment", "24/7 SLA Support"],
         highlight: false,
-         color: "from-gray-700 to-gray-900"
+        color: "from-gray-700 to-gray-900"
     }
 ];
 
