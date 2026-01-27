@@ -67,11 +67,11 @@ const AdminDashboard = () => {
                 />
                 <StatCard 
                     title="Revenue" 
-                    value="$45,231" 
+                    value="₹14,25,000" 
                     icon={<DollarSign size={24} />} 
                     trend="up" 
                     trendValue="+8%" 
-                    color="green"
+                    color="green" 
                 />
                  <StatCard 
                     title="Attendance" 
