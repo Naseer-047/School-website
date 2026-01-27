@@ -18,14 +18,14 @@ const attendanceData = [
 
 const StudentDashboard = () => {
     const studentData = {
-        name: "John Doe",
-        grade: "10th Grade",
-        section: "A",
-        rollNumber: "2024-STU-1234",
-        currentGPA: "3.8",
-        attendance: "92%",
-        pendingFees: "$450",
-        upcomingExams: 3,
+        name: "Aryan Sharma",
+        grade: "Class 10",
+        section: "B",
+        rollNumber: "DEL-2024-045",
+        currentGPA: "8.8",
+        attendance: "94%",
+        pendingFees: "₹12,450",
+        upcomingExams: 2,
     };
 
     const recentGrades = [
@@ -36,9 +36,9 @@ const StudentDashboard = () => {
     ];
 
     const upcomingClasses = [
-        { subject: "Mathematics", time: "09:00 AM - 10:00 AM", teacher: "Dr. Robert Chen", room: "Room 201" },
-        { subject: "Physics", time: "10:15 AM - 11:15 AM", teacher: "Sarah Williams", room: "Lab 3" },
-        { subject: "Chemistry", time: "11:30 AM - 12:30 PM", teacher: "James Anderson", room: "Lab 2" },
+        { subject: "Mathematics", time: "09:00 AM - 10:00 AM", teacher: "Mr. Rajesh Khanna", room: "Room 201" },
+        { subject: "Physics", time: "10:15 AM - 11:15 AM", teacher: "Ms. Anjali Verma", room: "Lab 3" },
+        { subject: "Chemistry", time: "11:30 AM - 12:30 PM", teacher: "Dr. Vikram Seth", room: "Lab 2" },
     ];
 
     return (
@@ -92,7 +92,7 @@ const StudentDashboard = () => {
                     </div>
                     <p className="text-gray-400 text-sm mb-1">Pending Fees</p>
                     <h3 className="text-3xl font-bold text-white">{studentData.pendingFees}</h3>
-                    <p className="text-xs text-orange-500 mt-2">Due: Jan 31, 2024</p>
+                    <p className="text-xs text-orange-500 mt-2">Due: Feb 15, 2024</p>
                 </div>
 
                 <div className="bg-surface border border-white/5 p-6 rounded-xl">
