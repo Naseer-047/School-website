@@ -1,5 +1,6 @@
 import React from 'react';
 import { DollarSign, CreditCard, Download, ExternalLink, Calendar, Check } from 'lucide-react';
+import MagneticButton from '../../components/ui/MagneticButton';
 
 const transactions = [
     { id: "TXN1024", date: "Jan 15, 2024", type: "Tuition Fee", method: "Credit Card", amount: "$1,200", status: "Paid" },
@@ -31,9 +32,9 @@ const Fees = () => {
                         <p className="text-orange-500 text-xs font-bold mt-2 flex items-center gap-1">
                              <Calendar size={12} /> Due on February 15, 2024
                         </p>
-                        <button className="mt-8 py-3 bg-primary hover:bg-primary-dark text-white rounded-xl font-bold transition-all shadow-xl shadow-primary/20 flex items-center justify-center gap-2">
+                        <MagneticButton className="mt-8 py-3 bg-primary hover:bg-primary-dark text-white rounded-xl font-bold transition-all shadow-xl shadow-primary/20 flex items-center justify-center gap-2">
                              Pay Now <ExternalLink size={16} />
-                        </button>
+                        </MagneticButton>
                     </div>
                  </div>
 

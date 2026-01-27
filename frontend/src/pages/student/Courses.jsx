@@ -1,5 +1,6 @@
 import React from 'react';
 import { Book, User, Clock, ChevronRight } from 'lucide-react';
+import MagneticButton from '../../components/ui/MagneticButton';
 
 const courses = [
   {
@@ -98,10 +99,10 @@ const Courses = () => {
                                 </div>
                             </div>
 
-                            <button className="w-full py-3 bg-white/5 border border-white/5 rounded-xl text-sm font-bold text-white group-hover:bg-primary group-hover:border-primary transition-all duration-300 flex items-center justify-center gap-2">
+                            <MagneticButton className="w-full py-3 bg-white/5 border border-white/5 rounded-xl text-sm font-bold text-white group-hover:bg-primary group-hover:border-primary transition-all duration-300 flex items-center justify-center gap-2">
                                 Enter Classroom
                                 <ChevronRight size={16} />
-                            </button>
+                            </MagneticButton>
                         </div>
                     </div>
                 ))}
