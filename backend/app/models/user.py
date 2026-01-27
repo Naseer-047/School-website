@@ -1,0 +1,38 @@
+from pydantic import BaseModel, EmailStr, Field
+from typing import Optional, List
+from enum import Enum
+from datetime import datetime
+
+class UserRole(str, Enum):
+    ADMIN = "admin"
+    TEACHER = "teacher"
+    STUDENT = "student"
+    PARENT = "parent"
+
+class Token(BaseModel):
+    access_token: str
+    token_type: str
+
+class TokenData(BaseModel):
+    username: Optional[str] = None
+    role: Optional[UserRole] = None
+
+class UserBase(BaseModel):
+    email: EmailStr
+    full_name: str
+    is_active: bool = True
+    role: UserRole
+
+class UserCreate(UserBase):
+    password: str
+
+class UserInDB(UserBase):
+    hashed_password: str
+    created_at: datetime = datetime.now()
+    
+class StudentCreate(UserCreate):
+    grade: str
+    parent_email: Optional[EmailStr] = None
+
+class TeacherCreate(UserCreate):
+    subjects: List[str] = []
