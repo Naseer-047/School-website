@@ -30,17 +30,17 @@ const Hero = () => {
 
         window.addEventListener('mousemove', handleMouseMove);
 
-        // Split text animation logic
-        const lines = textRef.current.children;
+        // Typewriter animation logic
+        const chars = textRef.current.querySelectorAll('.char');
         
-        tl.fromTo(lines, 
-            { y: 100, opacity: 0, rotateX: -20 },
-            { y: 0, opacity: 1, rotateX: 0, duration: 1.2, stagger: 0.1, delay: 0.2 }
+        tl.fromTo(chars, 
+            { opacity: 0 },
+            { opacity: 1, duration: 0.05, stagger: 0.05, delay: 0.5 }
         )
         .fromTo(subtextRef.current,
             { y: 20, opacity: 0 },
             { y: 0, opacity: 1, duration: 0.8 },
-            "-=0.6"
+            "-=0.2"
         )
         .fromTo(buttonsRef.current,
             { y: 20, opacity: 0 },
@@ -55,6 +55,12 @@ const Hero = () => {
 
         return () => window.removeEventListener('mousemove', handleMouseMove);
     }, []);
+
+    const splitText = (text) => {
+        return text.split("").map((char, i) => (
+            <span key={i} className="char inline-block">{char === " " ? "\u00A0" : char}</span>
+        ));
+    };
 
     return (
         <section ref={containerRef} className="relative min-h-screen flex flex-col justify-center items-center pt-32 pb-20 overflow-hidden">
@@ -71,15 +77,15 @@ const Hero = () => {
                 </div>
 
                 {/* Main Headline */}
-                <div ref={textRef} className="flex flex-col gap-2 mb-8 perspective-1000">
+                <div ref={textRef} className="flex flex-col gap-2 mb-8 items-center cursor-default">
                     <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-white leading-[1.1]">
-                        The Future of
+                        {splitText("The Future of")}
                     </h1>
                     <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-200 to-gray-500 leading-[1.1]">
-                        School Management
+                        {splitText("School Management")}
                     </h1>
                     <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-primary-light to-accent leading-[1.1]">
-                        Is Finally Here.
+                        {splitText("Is Finally Here.")}
                     </h1>
                 </div>
 
