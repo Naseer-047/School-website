@@ -34,6 +34,7 @@ const plans = [
 ];
 
 const Pricing = () => {
+    const [isYearly, setIsYearly] = React.useState(false);
     const sectionRef = useRef(null);
     const cardsRef = useRef([]);
 
@@ -53,13 +54,41 @@ const Pricing = () => {
          );
     }, []);
 
+    const getPrice = (plan) => {
+        if (plan.price === "Custom") return "Custom";
+        const basePrice = parseInt(plan.price.replace(/[₹,]/g, ''));
+        if (isYearly) {
+            const discountedPrice = Math.floor(basePrice * 0.8); // 20% discount
+            return `₹${discountedPrice.toLocaleString('en-IN')}`;
+        }
+        return plan.price;
+    };
+
     return (
-        <section ref={sectionRef} id="pricing" className="py-32 px-6 bg-[#0f0f13] relative">
+        <section ref={sectionRef} id="pricing" className="py-32 px-6 bg-[#0f0f13] relative overflow-hidden">
+             {/* Background Decoration */}
+             <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-[120px] pointer-events-none"></div>
+             <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-accent/5 rounded-full blur-[120px] pointer-events-none"></div>
             
-            <div className="max-w-7xl mx-auto"> 
-                <div className="text-center mb-20">
+            <div className="max-w-7xl mx-auto relative z-10"> 
+                <div className="text-center mb-16">
                     <h2 className="text-4xl md:text-5xl font-bold mb-6">Simple, Transparent Pricing</h2>
-                    <p className="text-gray-400">Choose the plan that fits your institution's size and needs.</p>
+                    <p className="text-gray-400 mb-10">Choose the plan that fits your institution's size and needs.</p>
+                    
+                    {/* Toggle */}
+                    <div className="flex items-center justify-center gap-4">
+                        <span className={`text-sm ${!isYearly ? 'text-white font-bold' : 'text-gray-500'}`}>Monthly</span>
+                        <button 
+                            onClick={() => setIsYearly(!isYearly)}
+                            className="w-14 h-7 bg-white/5 border border-white/10 rounded-full relative p-1 transition-colors hover:border-primary/50"
+                        >
+                            <div className={`w-5 h-5 bg-primary rounded-full transition-transform duration-300 ${isYearly ? 'translate-x-7' : 'translate-x-0'}`}></div>
+                        </button>
+                        <div className="flex items-center gap-2">
+                            <span className={`text-sm ${isYearly ? 'text-white font-bold' : 'text-gray-500'}`}>Yearly</span>
+                            <span className="text-[10px] font-black uppercase tracking-widest px-2 py-1 bg-green-500/10 text-green-500 rounded-md">Save 20%</span>
+                        </div>
+                    </div>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
@@ -67,25 +96,29 @@ const Pricing = () => {
                         <div 
                             key={index} 
                             ref={el => cardsRef.current[index] = el}
-                            className={`relative p-8 rounded-3xl border border-white/10 ${plan.highlight ? 'bg-white/5 shadow-2xl shadow-primary/20 scale-105 border-primary/50' : 'bg-surface'} flex flex-col h-full transition-transform hover:-translate-y-2`}
+                            className={`relative p-10 rounded-3xl border border-white/10 ${plan.highlight ? 'bg-white/5 shadow-2xl shadow-primary/20 scale-105 border-primary/50' : 'bg-surface'} flex flex-col h-full transition-all duration-500 hover:shadow-3xl hover:shadow-primary/10 hover:-translate-y-4 font-inter`}
                         >
                             {plan.highlight && (
-                                <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-gradient-to-r from-primary to-accent text-white text-xs font-bold rounded-full uppercase tracking-wider">
+                                <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-6 py-1.5 bg-gradient-to-r from-primary to-accent text-white text-[10px] font-black rounded-full uppercase tracking-[0.2em] shadow-lg shadow-primary/20">
                                     Most Popular
                                 </div>
                             )}
 
-                            <h3 className="text-xl font-medium text-gray-300 mb-2">{plan.name}</h3>
-                            <div className="flex items-baseline mb-6">
-                                <span className="text-5xl font-bold text-white tracking-tight">{plan.price}</span>
-                                <span className="text-gray-500 ml-2">{plan.period}</span>
+                            <h3 className="text-sm font-bold text-gray-400 uppercase tracking-widest mb-2">{plan.name}</h3>
+                            <div className="flex items-baseline mb-8">
+                                <span className="text-5xl font-black text-white tracking-tight">
+                                    {getPrice(plan)}
+                                </span>
+                                <span className="text-gray-500 ml-2 font-medium">
+                                    {plan.period}
+                                </span>
                             </div>
 
-                            <ul className="mb-10 space-y-4 flex-1">
+                            <ul className="mb-12 space-y-4 flex-1">
                                 {plan.features.map((feature, i) => (
-                                    <li key={i} className="flex items-center gap-3 text-gray-400 text-sm">
-                                        <div className={`p-1 rounded-full ${plan.highlight ? 'bg-primary/20 text-primary' : 'bg-gray-800 text-gray-400'}`}>
-                                            <Check className="w-3 h-3" />
+                                    <li key={i} className="flex items-center gap-4 text-gray-300 text-sm font-medium group/item text-left">
+                                        <div className={`p-1.5 rounded-full transition-colors font-bold ${plan.highlight ? 'bg-primary/20 text-primary group-hover/item:bg-primary group-hover/item:text-white' : 'bg-gray-800 text-gray-500 group-hover/item:bg-gray-700 group-hover/item:text-white'}`}>
+                                            <Check className="w-3.5 h-3.5" />
                                         </div>
                                         {feature}
                                     </li>
@@ -95,7 +128,7 @@ const Pricing = () => {
                             <MagneticButton 
                                 className={`w-full py-5 rounded-2xl text-[10px] font-black uppercase tracking-[0.25em] transition-all duration-300 ${plan.highlight ? 'bg-white text-black hover:bg-gray-200 shadow-2xl shadow-white/10' : 'bg-white/5 text-white hover:bg-white/10 border border-white/10'}`}
                             >
-                                Choose Plan
+                                Get Started Now
                             </MagneticButton>
                         </div>
                     ))}
