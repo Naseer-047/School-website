@@ -90,7 +90,7 @@ const Register = () => {
                                     type="text" 
                                     value={formData.schoolName}
                                     onChange={(e) => setFormData({...formData, schoolName: e.target.value})}
-                                    placeholder="e.g. Oakridge Global" 
+                                    placeholder="e.g. Delhi Public School, Mumbai" 
                                 />
                                 <FormGroup 
                                     label="Director/Principal Name" 
@@ -98,7 +98,7 @@ const Register = () => {
                                     type="text" 
                                     value={formData.directorName}
                                     onChange={(e) => setFormData({...formData, directorName: e.target.value})}
-                                    placeholder="Full Name" 
+                                    placeholder="e.g. Dr. Rajesh Sharma" 
                                 />
                             </div>
 
@@ -145,10 +145,10 @@ const Register = () => {
                             <MagneticButton 
                                 type="submit"
                                 disabled={loading}
-                                className="w-full mt-4 py-4 bg-gradient-to-r from-primary to-accent text-white font-black rounded-xl shadow-xl shadow-primary/30 flex items-center justify-center gap-2 uppercase tracking-widest text-sm"
+                                className="w-full mt-6 py-5 bg-gradient-to-r from-primary to-accent text-white font-black rounded-2xl shadow-2xl shadow-primary/40 uppercase tracking-[0.2em] text-sm"
                             >
                                 {loading ? 'Registering Campus...' : 'Launch Your Campus'}
-                                <ChevronRight size={18} />
+                                <ChevronRight size={20} />
                             </MagneticButton>
                         </form>
                     </div>

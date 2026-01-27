@@ -77,7 +77,7 @@ const Settings = () => {
                     )}
 
                     <div className="mt-12 flex justify-end">
-                        <MagneticButton className="flex items-center gap-2 px-8 py-3 bg-primary text-white rounded-xl font-bold shadow-xl shadow-primary/20 hover:opacity-90 transition-opacity">
+                        <MagneticButton className="flex items-center gap-2 px-10 py-4 bg-primary text-white rounded-2xl text-sm font-black uppercase tracking-widest shadow-2xl shadow-primary/30 hover:opacity-90 transition-all">
                              <Save size={18} /> Update Settings
                         </MagneticButton>
                     </div>

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { GraduationCap, Mail, Lock, Eye, EyeOff } from 'lucide-react';
+import MagneticButton from '../components/ui/MagneticButton';
 import api from '../api/axios';
 
 const Login = () => {
@@ -115,13 +116,13 @@ const Login = () => {
                         </div>
 
                         {/* Submit Button */}
-                        <button
+                        <MagneticButton
                             type="submit"
                             disabled={loading}
-                            className="w-full bg-gradient-to-r from-primary to-accent text-white font-semibold py-3 rounded-lg hover:opacity-90 transition-opacity disabled:opacity-50 shadow-lg shadow-primary/20"
+                            className="w-full bg-gradient-to-r from-primary to-accent text-white font-black py-4 rounded-2xl shadow-2xl shadow-primary/30 uppercase tracking-[0.2em] text-sm"
                         >
                             {loading ? 'Signing in...' : 'Sign In'}
-                        </button>
+                        </MagneticButton>
                     </form>
 
                     {/* Footer Links */}

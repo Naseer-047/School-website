@@ -32,7 +32,7 @@ const Fees = () => {
                         <p className="text-orange-500 text-xs font-bold mt-2 flex items-center gap-1">
                              <Calendar size={12} /> Due on February 15, 2024
                         </p>
-                        <MagneticButton className="mt-8 py-3 bg-primary hover:bg-primary-dark text-white rounded-xl font-bold transition-all shadow-xl shadow-primary/20 flex items-center justify-center gap-2">
+                        <MagneticButton className="mt-8 py-4 bg-gradient-to-r from-primary to-accent text-white rounded-2xl font-black uppercase tracking-widest text-xs shadow-2xl shadow-primary/30">
                              Pay Now <ExternalLink size={16} />
                         </MagneticButton>
                     </div>

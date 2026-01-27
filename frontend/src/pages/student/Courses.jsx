@@ -99,9 +99,9 @@ const Courses = () => {
                                 </div>
                             </div>
 
-                            <MagneticButton className="w-full py-3 bg-white/5 border border-white/5 rounded-xl text-sm font-bold text-white group-hover:bg-primary group-hover:border-primary transition-all duration-300 flex items-center justify-center gap-2">
+                            <MagneticButton className="w-full py-4 bg-white/5 border border-white/10 rounded-2xl text-sm font-bold text-white hover:bg-primary/20 hover:border-primary/50 transition-all duration-300">
                                 Enter Classroom
-                                <ChevronRight size={16} />
+                                <ChevronRight size={18} />
                             </MagneticButton>
                         </div>
                     </div>

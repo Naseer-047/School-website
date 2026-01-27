@@ -42,7 +42,7 @@ const Navbar = () => {
                         Log in
                     </Link>
                     <Link to="/register">
-                        <MagneticButton className="bg-white text-black hover:bg-gray-100 italic font-black">
+                        <MagneticButton className="bg-white text-black hover:bg-gray-100 italic font-black px-6 py-2 rounded-2xl text-xs uppercase tracking-widest transition-all">
                             Get started
                         </MagneticButton>
                     </Link>

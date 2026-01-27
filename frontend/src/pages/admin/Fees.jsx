@@ -21,10 +21,10 @@ const AdminFees = () => {
                     <p className="text-gray-400">Track collections, manage fee structures, and handle financial operations.</p>
                 </div>
                 <div className="flex gap-3">
-                    <MagneticButton className="flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 rounded-lg text-sm font-medium text-white hover:bg-white/10 transition-colors">
+                    <MagneticButton className="flex items-center gap-2 px-6 py-2.5 bg-white/5 border border-white/10 rounded-2xl text-xs font-bold text-white uppercase tracking-widest hover:bg-white/10 transition-all">
                         <Download size={18} /> Export Report
                     </MagneticButton>
-                    <MagneticButton className="flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-lg text-sm font-medium shadow-lg shadow-primary/20">
+                    <MagneticButton className="flex items-center gap-2 px-6 py-2.5 bg-primary text-white rounded-2xl text-xs font-bold uppercase tracking-widest shadow-xl shadow-primary/20 hover:opacity-90 transition-all">
                         Collect payment
                     </MagneticButton>
                 </div>
@@ -111,9 +111,9 @@ const AdminFees = () => {
                                 </div>
                             </div>
                         </div>
-                        <button className="w-full mt-8 py-4 bg-primary text-white font-bold rounded-xl shadow-lg shadow-primary/20 hover:opacity-90 transition-all">
+                        <MagneticButton className="w-full mt-8 py-4 bg-primary text-white font-bold rounded-2xl shadow-xl shadow-primary/20 hover:opacity-90 transition-all uppercase tracking-widest text-xs">
                             Apply Analysis
-                        </button>
+                        </MagneticButton>
                     </div>
                 </div>
             </div>

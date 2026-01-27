@@ -25,10 +25,10 @@ const Academics = () => {
                     <p className="text-gray-400">Manage school classes, subjects, departments, and course structures.</p>
                 </div>
                 <div className="flex gap-3">
-                    <MagneticButton className="flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 rounded-lg text-sm font-medium text-white hover:bg-white/10 transition-colors">
+                    <MagneticButton className="flex items-center gap-2 px-6 py-2.5 bg-white/5 border border-white/10 rounded-2xl text-xs font-bold text-white uppercase tracking-widest hover:bg-white/10 transition-all">
                         Add Subject
                     </MagneticButton>
-                    <MagneticButton className="flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-lg text-sm font-medium shadow-lg shadow-primary/20">
+                    <MagneticButton className="flex items-center gap-2 px-6 py-2.5 bg-primary text-white rounded-2xl text-xs font-bold uppercase tracking-widest shadow-xl shadow-primary/20 hover:opacity-90 transition-all">
                         <Plus size={18} /> Create Class
                     </MagneticButton>
                 </div>

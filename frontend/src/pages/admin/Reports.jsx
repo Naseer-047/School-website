@@ -19,10 +19,10 @@ const Reports = () => {
                     <p className="text-gray-400">Generate comprehensive academic, attendance, and administrative reports.</p>
                 </div>
                 <div className="flex gap-3">
-                    <MagneticButton className="flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 rounded-lg text-sm font-medium text-white hover:bg-white/10 transition-colors">
+                    <MagneticButton className="flex items-center gap-2 px-6 py-2.5 bg-white/5 border border-white/10 rounded-2xl text-xs font-bold text-white uppercase tracking-widest hover:bg-white/10 transition-all">
                         <Share2 size={16} /> Share
                     </MagneticButton>
-                    <MagneticButton className="flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 rounded-lg text-sm font-medium text-white hover:bg-white/10 transition-colors">
+                    <MagneticButton className="flex items-center gap-2 px-6 py-2.5 bg-white/5 border border-white/10 rounded-2xl text-xs font-bold text-white uppercase tracking-widest hover:bg-white/10 transition-all">
                         <Printer size={16} /> Print
                     </MagneticButton>
                 </div>

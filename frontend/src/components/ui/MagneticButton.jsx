@@ -50,12 +50,12 @@ const MagneticButton = ({ children, className = "", onClick }) => {
     return (
         <button 
             ref={buttonRef} 
-            className={`relative px-8 py-3 rounded-full font-medium overflow-hidden transition-colors ${className}`}
+            className={`relative group overflow-hidden transition-all duration-300 ${className}`}
             onClick={onClick}
         >
-            <span ref={textRef} className="relative z-10 inline-block">
+            <div ref={textRef} className="relative z-10 w-full h-full flex items-center justify-center gap-2">
                 {children}
-            </span>
+            </div>
         </button>
     );
 };
