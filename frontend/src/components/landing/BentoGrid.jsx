@@ -40,39 +40,64 @@ const BentoGrid = () => {
                     </p>
                 </div>
 
-                <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-4 grid-rows-none md:grid-rows-2 gap-6 h-auto md:h-[600px]">
+                <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-4 grid-rows-none md:grid-rows-2 gap-6 h-auto md:h-[700px]">
                     {/* Big Card: Analytics */}
                     <div className="bento-item md:col-span-2 md:row-span-2 relative group overflow-hidden rounded-[32px] bg-white/[0.03] border border-white/10 p-10 hover:border-primary/50 transition-all duration-500">
+                        {/* Background Grid Pattern */}
+                        <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle, #fff 1px, transparent 1px)', backgroundSize: '24px 24px' }}></div>
+                        
                         <div className="relative z-10 flex flex-col h-full">
-                            <div className="p-4 rounded-2xl bg-primary/20 text-primary w-fit mb-8 animate-pulse">
+                            <div className="p-4 rounded-2xl bg-primary/20 text-primary w-fit mb-8 group-hover:scale-110 transition-transform duration-500">
                                 <PieChart className="w-8 h-8" />
                             </div>
-                            <h3 className="text-3xl font-black text-white mb-4">Powerful Real-time Analytics</h3>
+                            <h3 className="text-3xl font-black text-white mb-4 leading-tight">Powerful Real-time <br/>Analytics</h3>
                             <p className="text-gray-400 leading-relaxed mb-auto max-w-sm">
-                                Track every KPI across your institution. From individual student grades to school-wide financial health, get the data you need in seconds.
+                                Track every KPI across your institution. From individual student grades to school-wide financial health.
                             </p>
-                            <div className="mt-8 pt-8 border-t border-white/5 flex gap-4">
-                                <div className="h-2 w-full bg-white/5 rounded-full overflow-hidden">
-                                    <div className="h-full w-3/4 bg-primary rounded-full animate-pulse"></div>
+                            
+                            {/* Mini Chart Visualization */}
+                            <div className="mt-10 flex items-end gap-2 h-24">
+                                {[40, 70, 45, 90, 65, 80, 50].map((h, i) => (
+                                    <div key={i} className="flex-1 bg-primary/20 rounded-t-lg relative group/bar hover:bg-primary transition-colors" style={{ height: `${h}%` }}>
+                                        <div className="absolute -top-8 left-1/2 -translate-x-1/2 bg-white text-black text-[8px] font-black px-1.5 py-0.5 rounded opacity-0 group-hover/bar:opacity-100 transition-opacity whitespace-nowrap">
+                                            {h}% Growth
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+
+                            <div className="mt-6 pt-6 border-t border-white/5 flex items-center justify-between">
+                                <div className="flex items-center gap-3">
+                                    <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+                                    <span className="text-[10px] font-black text-gray-400 uppercase tracking-widest leading-none">System Live</span>
                                 </div>
-                                <span className="text-[10px] font-black text-primary uppercase tracking-widest leading-none">75% Load</span>
+                                <span className="text-[10px] font-black text-primary uppercase tracking-widest leading-none">Last sync: 2m ago</span>
                             </div>
                         </div>
-                        {/* Background Deco */}
-                        <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-[100px] group-hover:bg-primary/20 transition-all duration-700"></div>
+
+                        {/* Floating Badge */}
+                        <div className="absolute top-8 right-8 px-4 py-2 bg-primary/10 border border-primary/20 rounded-xl backdrop-blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                             <span className="text-[8px] font-black text-primary uppercase tracking-widest">Active nodes</span>
+                        </div>
                     </div>
 
                     {/* Medium Card: Fees */}
                     <div className="bento-item md:col-span-2 relative group overflow-hidden rounded-[32px] bg-white/[0.03] border border-white/10 p-10 hover:border-secondary/50 transition-all duration-500">
-                        <div className="relative z-10 flex items-center justify-between">
-                            <div className="max-w-[200px]">
-                                <h3 className="text-2xl font-black text-white mb-3">Automated Fee Engine</h3>
-                                <p className="text-gray-500 text-sm font-medium leading-relaxed">
+                        <div className="absolute inset-0 opacity-[0.02] pointer-events-none" style={{ backgroundImage: 'linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
+                        
+                        <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+                            <div className="max-w-[280px]">
+                                <h3 className="text-2xl font-black text-white mb-3">Fee Automation</h3>
+                                <p className="text-gray-500 text-sm font-medium leading-relaxed mb-6">
                                     Recurring billing, integrated payment gateways, and instant receipts.
                                 </p>
+                                <div className="flex gap-2">
+                                    <div className="px-3 py-1.5 rounded-lg bg-green-500/10 border border-green-500/20 text-green-500 text-[9px] font-black uppercase">₹1.2M Paid</div>
+                                    <div className="px-3 py-1.5 rounded-lg bg-red-500/10 border border-red-500/20 text-red-500 text-[9px] font-black uppercase">₹40K Pending</div>
+                                </div>
                             </div>
-                            <div className="p-4 rounded-2xl bg-secondary/20 text-secondary">
-                                <CreditCard className="w-8 h-8" />
+                            <div className="p-5 rounded-3xl bg-secondary/20 text-secondary group-hover:rotate-12 transition-transform duration-500">
+                                <CreditCard className="w-10 h-10" />
                             </div>
                         </div>
                     </div>
@@ -80,20 +105,28 @@ const BentoGrid = () => {
                     {/* Small Card: Attendance */}
                     <div className="bento-item md:col-span-1 relative group overflow-hidden rounded-[32px] bg-white/[0.03] border border-white/10 p-8 hover:border-accent/50 transition-all duration-500">
                         <div className="relative z-10 text-center flex flex-col items-center">
-                            <Calendar className="w-8 h-8 text-accent mb-4" />
-                            <h3 className="text-lg font-bold text-white mb-2 tracking-tight">Attendance</h3>
-                            <p className="text-gray-500 text-xs font-medium uppercase tracking-widest italic animate-pulse">Live Tracking</p>
+                            <div className="w-12 h-12 rounded-2xl bg-accent/20 flex items-center justify-center text-accent mb-6 group-hover:bg-accent group-hover:text-white transition-all duration-500">
+                                <Calendar className="w-6 h-6" />
+                            </div>
+                            <h3 className="text-lg font-bold text-white mb-2 tracking-tight">Rapid Attendance</h3>
+                            <div className="mt-2 text-[8px] font-black uppercase tracking-[0.2em] px-3 py-1 bg-accent/10 text-accent rounded-full border border-accent/20">
+                                QR Integrated
+                            </div>
                         </div>
                     </div>
 
                     {/* Small Card: Communication */}
                     <div className="bento-item md:col-span-1 relative group overflow-hidden rounded-[32px] bg-white/[0.03] border border-white/10 p-8 hover:border-blue-500/50 transition-all duration-500">
                         <div className="relative z-10 text-center flex flex-col items-center">
-                            <MessageSquare className="w-8 h-8 text-blue-500 mb-4" />
-                            <h3 className="text-lg font-bold text-white mb-2 tracking-tight">Messaging</h3>
-                            <div className="flex -space-x-2 mt-2">
-                                {[1,2,3].map(i => (
-                                    <div key={i} className="w-6 h-6 rounded-full border border-background bg-gray-700"></div>
+                            <div className="w-12 h-12 rounded-2xl bg-blue-500/20 flex items-center justify-center text-blue-500 mb-6 group-hover:bg-blue-500 group-hover:text-white transition-all duration-500">
+                                <MessageSquare className="w-6 h-6" />
+                            </div>
+                            <h3 className="text-lg font-bold text-white mb-2 tracking-tight">Intelligent Comms</h3>
+                            <div className="flex -space-x-3 mt-2">
+                                {[1,2,3,4].map(i => (
+                                    <div key={i} className={`w-8 h-8 rounded-full border-2 border-[#0f0f13] bg-gradient-to-br from-gray-700 to-gray-900 flex items-center justify-center text-[10px] font-bold text-gray-400 group-hover:border-blue-500/50 transition-colors duration-500`}>
+                                        {String.fromCharCode(64 + i)}
+                                    </div>
                                 ))}
                             </div>
                         </div>
