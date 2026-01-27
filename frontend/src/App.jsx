@@ -30,7 +30,10 @@ function App() {
             <Route index element={<AdminDashboard />} />
             <Route path="students" element={<Students />} />
             <Route path="teachers" element={<Teachers />} />
-            {/* Add more nested routes here later */}
+            <Route path="academics" element={<Academics />} />
+            <Route path="fees" element={<AdminFees />} />
+            <Route path="reports" element={<Reports />} />
+            <Route path="settings" element={<Settings />} />
         </Route>
 
         {/* Student Routes */}
