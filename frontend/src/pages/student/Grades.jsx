@@ -8,7 +8,7 @@ const subjects = [
     { name: "Chemistry", midterm: 75, final: 80, lab: 88, grade: "B+", status: "Passed" },
     { name: "English Literature", midterm: 90, final: 88, lab: "N/A", grade: "A", status: "Passed" },
     { name: "Computer Science", midterm: 95, final: 98, lab: 100, grade: "A+", status: "Passed" },
-    { name: "History", midterm: 85, final: 82, lab: "N/A", grade: "A-", status: "Passed" },
+    { name: "Sanskrit/Hindi", midterm: 85, final: 82, lab: "N/A", grade: "A-", status: "Passed" },
 ];
 
 const Grades = () => {
