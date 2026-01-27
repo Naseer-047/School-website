@@ -7,42 +7,42 @@ const StudentProfile = () => {
     const studentProfile = {
         // Personal Information
         photo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=400",
-        fullName: "John Michael Doe",
-        dateOfBirth: "March 15, 2008",
+        fullName: "Aryan Sharma",
+        dateOfBirth: "April 15, 2008",
         age: "16 years",
         gender: "Male",
-        bloodGroup: "O+",
-        nationality: "American",
-        religion: "Christian",
+        bloodGroup: "B+",
+        nationality: "Indian",
+        religion: "Hinduism",
         
         // Contact Information
-        email: "john.doe@student.school.com",
-        phone: "+1 (555) 123-4567",
-        address: "1234 Oak Street, Apartment 5B",
-        city: "San Francisco",
-        state: "California",
-        zipCode: "94102",
+        email: "aryan.sharma@eduprime.in",
+        phone: "+91 98765 43210",
+        address: "E-102, Shanti Kunj, Near Metro Station",
+        city: "New Delhi",
+        state: "Delhi",
+        zipCode: "110011",
         
         // Academic Information
-        studentId: "2024-STU-1234",
-        grade: "10th Grade",
-        section: "A",
-        rollNumber: "25",
-        admissionDate: "August 1, 2020",
-        currentGPA: "3.8",
+        studentId: "DEL-2024-045",
+        grade: "Class 10",
+        section: "B",
+        rollNumber: "45",
+        admissionDate: "July 5, 2021",
+        currentGPA: "8.8",
         
         // Parent/Guardian Information
-        fatherName: "Michael Doe",
-        fatherOccupation: "Software Engineer",
-        fatherPhone: "+1 (555) 987-6543",
-        motherName: "Sarah Doe",
-        motherOccupation: "Teacher",
-        motherPhone: "+1 (555) 987-6544",
-        guardianEmail: "parents.doe@email.com",
+        fatherName: "Mr. Rajesh Sharma",
+        fatherOccupation: "Executive Director",
+        fatherPhone: "+91 99887 76655",
+        motherName: "Mrs. Meena Sharma",
+        motherOccupation: "Interior Designer",
+        motherPhone: "+91 99887 76644",
+        guardianEmail: "rajesh.sharma@email.com",
         
         // Emergency Contact
-        emergencyContact: "Robert Smith (Uncle)",
-        emergencyPhone: "+1 (555) 111-2222",
+        emergencyContact: "Mr. Vikram Sharma (Elder Brother)",
+        emergencyPhone: "+91 98888 77777",
     };
 
     return (
