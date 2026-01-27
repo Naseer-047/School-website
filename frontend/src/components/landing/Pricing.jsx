@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import MagneticButton from '../ui/MagneticButton';
 import { Check } from 'lucide-react';
 import { gsap } from 'gsap';
@@ -34,7 +34,7 @@ const plans = [
 ];
 
 const Pricing = () => {
-    const [isYearly, setIsYearly] = React.useState(false);
+    const [isYearly, setIsYearly] = useState(false);
     const sectionRef = useRef(null);
     const cardsRef = useRef([]);
 
