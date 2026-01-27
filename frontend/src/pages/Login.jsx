@@ -69,7 +69,7 @@ const Login = () => {
                                     type="email"
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
-                                    placeholder="you@school.com"
+                                    placeholder="admin@eduprime.in"
                                     className="w-full bg-white/5 border border-white/10 rounded-lg pl-11 pr-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-primary/50 transition-colors"
                                     required
                                 />
@@ -107,12 +107,12 @@ const Login = () => {
                         )}
 
                         {/* Demo Credentials */}
-                        <div className="bg-blue-500/10 border border-blue-500/20 rounded-lg p-3 text-blue-400 text-xs">
-                            <p className="font-semibold mb-1">Demo Credentials:</p>
-                            <p>Admin: admin@school.com</p>
-                            <p>Student: student@school.com</p>
-                            <p>Teacher: teacher@school.com</p>
-                            <p className="mt-1 text-gray-500">Password: any</p>
+                        <div className="bg-blue-500/10 border border-blue-500/20 rounded-lg p-3 text-blue-400 text-xs text-left">
+                            <p className="font-semibold mb-1 uppercase tracking-widest text-[10px]">Demo Credentials:</p>
+                            <p>Admin: admin@school.in</p>
+                            <p>Student: student@school.in</p>
+                            <p>Teacher: teacher@school.in</p>
+                            <p className="mt-1 text-gray-500 italic">Password: any</p>
                         </div>
 
                         {/* Submit Button */}
