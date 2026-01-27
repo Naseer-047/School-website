@@ -3,17 +3,17 @@ import { BookOpen, Users, Clock, Plus, MoreVertical, Book } from 'lucide-react';
 import MagneticButton from '../../components/ui/MagneticButton';
 
 const classes = [
-    { name: "Grade 10 - A", teacher: "Dr. Robert Chen", students: 42, subjects: 8, room: "201" },
-    { name: "Grade 10 - B", teacher: "Sarah Williams", students: 38, subjects: 8, room: "202" },
-    { name: "Grade 11 - A", teacher: "James Anderson", students: 45, subjects: 10, room: "301" },
-    { name: "Grade 12 - A", teacher: "Emily Martinez", students: 40, subjects: 12, room: "401" },
+    { name: "Class 10 - A", teacher: "Mr. Rajesh Khanna", students: 42, subjects: 8, room: "201" },
+    { name: "Class 10 - B", teacher: "Ms. Anjali Verma", students: 38, subjects: 8, room: "202" },
+    { name: "Class 11 - A", teacher: "Dr. Vikram Seth", students: 45, subjects: 10, room: "301" },
+    { name: "Class 12 - A", teacher: "Mrs. Kavita Iyer", students: 40, subjects: 12, room: "401" },
 ];
 
 const subjects = [
-    { name: "Mathematics", code: "MATH401", department: "Science", credits: 4 },
-    { name: "Physics", code: "PHYS302", department: "Science", credits: 4 },
-    { name: "English Literature", code: "LIT101", department: "Humanities", credits: 3 },
-    { name: "Computer Science", code: "CS202", department: "IT", credits: 5 },
+    { name: "Mathematics", code: "MATH-XII", department: "Science", credits: 4 },
+    { name: "Physics", code: "PHYS-XII", department: "Science", credits: 4 },
+    { name: "English Literature", code: "ENG-XII", department: "Humanities", credits: 3 },
+    { name: "Computer Science", code: "CS-XII", department: "IT", credits: 5 },
 ];
 
 const Academics = () => {

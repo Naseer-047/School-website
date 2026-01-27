@@ -10,11 +10,11 @@ const Teachers = () => {
         // Mock data for demonstration
         setTimeout(() => {
             setTeachers([
-                { id: 1, name: "Dr. Robert Chen", subjects: ["Mathematics", "Physics"], email: "robert.chen@school.com", phone: "+1 234 567 890", experience: "15 years" },
-                { id: 2, name: "Sarah Williams", subjects: ["English", "Literature"], email: "sarah.w@school.com", phone: "+1 987 654 321", experience: "8 years" },
-                { id: 3, name: "James Anderson", subjects: ["Chemistry", "Biology"], email: "james.a@school.com", phone: "+1 555 123 456", experience: "12 years" },
-                { id: 4, name: "Emily Martinez", subjects: ["History", "Geography"], email: "emily.m@school.com", phone: "+1 444 777 888", experience: "6 years" },
-                { id: 5, name: "Michael Brown", subjects: ["Computer Science"], email: "michael.b@school.com", phone: "+1 222 333 444", experience: "10 years" },
+                { id: 1, name: "Mr. Rajesh Khanna", subjects: ["Mathematics", "Physics"], email: "rajesh.khanna@school.in", phone: "+91 98765 43210", experience: "18 years" },
+                { id: 2, name: "Ms. Anjali Verma", subjects: ["Physics", "Chemistry"], email: "anjali.v@school.in", phone: "+91 91234 56789", experience: "10 years" },
+                { id: 3, name: "Dr. Vikram Seth", subjects: ["Chemistry", "Biology"], email: "vikram.s@school.in", phone: "+91 99887 76655", experience: "15 years" },
+                { id: 4, name: "Mrs. Kavita Iyer", subjects: ["English", "History"], email: "kavita.i@school.in", phone: "+91 98888 77777", experience: "12 years" },
+                { id: 5, name: "Mr. Amit Shah", subjects: ["Computer Science"], email: "amit.s@school.in", phone: "+91 97777 66666", experience: "8 years" },
             ]);
             setLoading(false);
         }, 1000);
