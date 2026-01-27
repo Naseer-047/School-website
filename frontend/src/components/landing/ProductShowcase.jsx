@@ -101,7 +101,7 @@ const ProductShowcase = () => {
                          <div className="flex items-center gap-4 text-gray-400">
                              <Bell className="w-5 h-5 cursor-pointer hover:text-white" />
                              <div className="w-8 h-8 rounded-full bg-gradient-to-r from-primary to-accent flex items-center justify-center text-white text-xs font-bold">
-                                 AD
+                                 RS
                              </div>
                          </div>
                     </div>
@@ -142,7 +142,7 @@ const ProductShowcase = () => {
                                 <div className="flex justify-between items-start mb-4">
                                     <div>
                                         <p className="text-gray-400 text-sm">Monthly Revenue</p>
-                                        <h3 className="text-3xl font-bold mt-1">$124,500</h3>
+                                        <h3 className="text-3xl font-bold mt-1">₹1,24,500</h3>
                                     </div>
                                     <div className="p-2 bg-primary/10 rounded-lg text-primary">
                                         <TrendingUp className="w-5 h-5" />

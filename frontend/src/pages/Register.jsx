@@ -109,7 +109,7 @@ const Register = () => {
                                     type="email" 
                                     value={formData.email}
                                     onChange={(e) => setFormData({...formData, email: e.target.value})}
-                                    placeholder="contact@school.com" 
+                                    placeholder="contact@school.in" 
                                 />
                                 <FormGroup 
                                     label="Contact Number" 
@@ -117,7 +117,7 @@ const Register = () => {
                                     type="tel" 
                                     value={formData.phone}
                                     onChange={(e) => setFormData({...formData, phone: e.target.value})}
-                                    placeholder="+1 (555) 000-0000" 
+                                    placeholder="+91 98765 43210" 
                                 />
                             </div>
 

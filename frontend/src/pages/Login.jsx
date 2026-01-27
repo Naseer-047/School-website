@@ -27,13 +27,13 @@ const Login = () => {
                 navigate('/admin');
             } else if (email.includes('student')) {
                 localStorage.setItem('userRole', 'student');
-                localStorage.setItem('userName', 'John Doe'); // Mock student name
+                localStorage.setItem('userName', 'Aryan Sharma'); // Localized student name
                 navigate('/student');
             } else if (email.includes('teacher')) {
                 localStorage.setItem('userRole', 'teacher');
                 navigate('/teacher');
             } else {
-                setError('Invalid credentials. Try: admin@school.com, student@school.com, or teacher@school.com');
+                setError('Invalid credentials. Try: admin@school.in, student@school.in, or teacher@school.in');
             }
         } catch (err) {
             setError('Login failed. Please check your credentials.');

@@ -27,11 +27,11 @@ const DashboardLayout = () => {
                         </div>
                         <div className="flex items-center gap-3">
                             <div className="text-right hidden md:block">
-                                <p className="text-sm font-medium text-white">Admin User</p>
+                                <p className="text-sm font-medium text-white">Rajesh Sharma</p>
                                 <p className="text-xs text-gray-500">Super Administrator</p>
                             </div>
                             <div className="w-10 h-10 rounded-full bg-gradient-to-r from-primary to-accent flex items-center justify-center text-white font-bold border border-white/10">
-                                AD
+                                RS
                             </div>
                         </div>
                     </div>
