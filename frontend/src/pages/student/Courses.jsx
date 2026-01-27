@@ -6,8 +6,8 @@ const courses = [
   {
     id: 1,
     title: "Advanced Mathematics",
-    code: "MATH401",
-    teacher: "Dr. Robert Chen",
+    code: "MATH-XII",
+    teacher: "Mr. Rajesh Khanna",
     progress: 75,
     image: "https://images.unsplash.com/photo-1509228468518-180dd4864904?auto=format&fit=crop&q=80&w=400",
     color: "from-blue-500 to-indigo-600"
@@ -15,8 +15,8 @@ const courses = [
   {
     id: 2,
     title: "Quantum Physics",
-    code: "PHYS302",
-    teacher: "Sarah Williams",
+    code: "PHYS-XII",
+    teacher: "Ms. Anjali Verma",
     progress: 45,
     image: "https://images.unsplash.com/photo-1636466484292-713cf86be6cf?auto=format&fit=crop&q=80&w=400",
     color: "from-purple-500 to-pink-600"
@@ -24,8 +24,8 @@ const courses = [
   {
     id: 3,
     title: "Organic Chemistry",
-    code: "CHEM205",
-    teacher: "James Anderson",
+    code: "CHEM-XII",
+    teacher: "Dr. Vikram Seth",
     progress: 60,
     image: "https://images.unsplash.com/photo-1532187863486-abf9d39d9992?auto=format&fit=crop&q=80&w=400",
     color: "from-emerald-500 to-teal-600"
@@ -33,8 +33,8 @@ const courses = [
   {
     id: 4,
     title: "Modern English Literature",
-    code: "LIT101",
-    teacher: "Emily Martinez",
+    code: "ENG-XII",
+    teacher: "Mrs. Kavita Iyer",
     progress: 90,
     image: "https://images.unsplash.com/photo-1491843351663-7c316232eb21?auto=format&fit=crop&q=80&w=400",
     color: "from-orange-500 to-red-600"
@@ -42,8 +42,8 @@ const courses = [
   {
     id: 5,
     title: "Computer Science II",
-    code: "CS202",
-    teacher: "Michael Brown",
+    code: "CS-XII",
+    teacher: "Mr. Amit Shah",
     progress: 30,
     image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&q=80&w=400",
     color: "from-cyan-500 to-blue-600"
