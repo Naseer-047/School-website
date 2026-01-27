@@ -14,11 +14,11 @@ const Students = () => {
         // Simulating data fetch
         setTimeout(() => {
             setStudents([
-                { id: 1, name: "Alice Johnson", grade: "10th", section: "A", email: "alice@example.com", parent: "Robert Johnson", phone: "+1 234 567 890" },
-                { id: 2, name: "Michael Smith", grade: "12th", section: "B", email: "michael.s@example.com", parent: "Sarah Smith", phone: "+1 987 654 321" },
-                { id: 3, name: "Emma Davis", grade: "9th", section: "C", email: "emma.d@example.com", parent: "John Davis", phone: "+1 555 123 456" },
-                { id: 4, name: "Daniel Wilson", grade: "11th", section: "A", email: "daniel.w@example.com", parent: "Emily Wilson", phone: "+1 444 777 888" },
-                { id: 5, name: "Sophia Brown", grade: "10th", section: "B", email: "sophia.b@example.com", parent: "David Brown", phone: "+1 222 333 444" },
+                { id: 1, name: "Aryan Sharma", grade: "10th", section: "B", email: "aryan.s@school.in", parent: "Rajesh Sharma", phone: "+91 98765 43210" },
+                { id: 2, name: "Priya Patel", grade: "12th", section: "A", email: "priya.p@school.in", parent: "Vikram Patel", phone: "+91 99887 76655" },
+                { id: 3, name: "Arjun Verma", grade: "9th", section: "C", email: "arjun.v@school.in", parent: "Sanjay Verma", phone: "+91 91234 56789" },
+                { id: 4, name: "Ananya Iyer", grade: "11th", section: "A", email: "ananya.i@school.in", parent: "Venkatesh Iyer", phone: "+91 98888 77777" },
+                { id: 5, name: "Ishaan Singh", grade: "10th", section: "B", email: "ishaan.s@school.in", parent: "Harpreet Singh", phone: "+91 97777 66666" },
             ]);
             setLoading(false);
         }, 1000);
