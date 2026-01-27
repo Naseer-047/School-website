@@ -14,8 +14,23 @@ const Hero = () => {
     useEffect(() => {
         const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
-        // Split text animation logic (simulated/manual for now since SplitText is a paid plugin, 
-        // using simple stagger for lines instead)
+        // Parallax Background Effect
+        const handleMouseMove = (e) => {
+            const { clientX, clientY } = e;
+            const xPos = (clientX / window.innerWidth - 0.5) * 40;
+            const yPos = (clientY / window.innerHeight - 0.5) * 40;
+
+            gsap.to(".bg-blob", {
+                x: xPos,
+                y: yPos,
+                duration: 1,
+                ease: "power2.out"
+            });
+        };
+
+        window.addEventListener('mousemove', handleMouseMove);
+
+        // Split text animation logic
         const lines = textRef.current.children;
         
         tl.fromTo(lines, 
@@ -38,14 +53,15 @@ const Hero = () => {
             "-=1"
         );
 
+        return () => window.removeEventListener('mousemove', handleMouseMove);
     }, []);
 
     return (
         <section ref={containerRef} className="relative min-h-screen flex flex-col justify-center items-center pt-32 pb-20 overflow-hidden">
             
             {/* Background Gradients */}
-            <div className="absolute top-[-20%] left-[-10%] w-[50%] h-[50%] bg-primary/20 rounded-full blur-[120px] animate-pulse"></div>
-            <div className="absolute bottom-[-20%] right-[-10%] w-[50%] h-[50%] bg-secondary/10 rounded-full blur-[120px] animate-pulse"></div>
+            <div className="bg-blob absolute top-[-20%] left-[-10%] w-[50%] h-[50%] bg-primary/20 rounded-full blur-[120px] animate-pulse"></div>
+            <div className="bg-blob absolute bottom-[-20%] right-[-10%] w-[50%] h-[50%] bg-secondary/10 rounded-full blur-[120px] animate-pulse"></div>
             
             <div className="max-w-7xl mx-auto px-6 text-center z-10">
                 {/* Badge */}
