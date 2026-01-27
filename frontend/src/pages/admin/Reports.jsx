@@ -4,10 +4,10 @@ import { FileText, Printer, Share2, ClipboardList, CheckCircle } from 'lucide-re
 import MagneticButton from '../../components/ui/MagneticButton';
 
 const enrollmentData = [
-  { name: 'Grade 9', value: 120, fill: '#8b5cf6' },
-  { name: 'Grade 10', value: 150, fill: '#ec4899' },
-  { name: 'Grade 11', value: 110, fill: '#3b82f6' },
-  { name: 'Grade 12', value: 100, fill: '#10b981' },
+  { name: 'Class 9', value: 120, fill: '#8b5cf6' },
+  { name: 'Class 10', value: 150, fill: '#ec4899' },
+  { name: 'Class 11', value: 110, fill: '#3b82f6' },
+  { name: 'Class 12', value: 100, fill: '#10b981' },
 ];
 
 const Reports = () => {

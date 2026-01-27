@@ -4,12 +4,12 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContaine
 import MagneticButton from '../../components/ui/MagneticButton';
 
 const feeStats = [
-    { name: 'Jan', value: 45000 },
-    { name: 'Feb', value: 52000 },
-    { name: 'Mar', value: 48000 },
-    { name: 'Apr', value: 61000 },
-    { name: 'May', value: 55000 },
-    { name: 'Jun', value: 67000 },
+    { name: 'July', value: 450000 },
+    { name: 'Aug', value: 520000 },
+    { name: 'Sept', value: 480000 },
+    { name: 'Oct', value: 610000 },
+    { name: 'Nov', value: 550000 },
+    { name: 'Dec', value: 670000 },
 ];
 
 const AdminFees = () => {
@@ -33,8 +33,8 @@ const AdminFees = () => {
             {/* Financial Overview Stats */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 {[
-                    { label: "Total Collection", value: "$425,000", delta: "+12.5%", color: "text-green-500", icon: <DollarSign size={24} /> },
-                    { label: "Outstanding Amount", value: "$18,250", delta: "-2.4%", color: "text-orange-500", icon: <Activity size={24} /> },
+                    { label: "Total Collection", value: "₹42,50,000", delta: "+12.5%", color: "text-green-500", icon: <DollarSign size={24} /> },
+                    { label: "Outstanding Amount", value: "₹1,82,250", delta: "-2.4%", color: "text-orange-500", icon: <Activity size={24} /> },
                     { label: "Collection Rate", value: "94.2%", delta: "+1.2%", color: "text-blue-500", icon: <TrendingUp size={24} /> },
                     { label: "Online Payments", value: "82.5%", delta: "+5.8%", color: "text-purple-500", icon: <CreditCard size={24} /> },
                 ].map((stat, i) => (
