@@ -3,10 +3,10 @@ import { DollarSign, CreditCard, Download, ExternalLink, Calendar, Check } from 
 import MagneticButton from '../../components/ui/MagneticButton';
 
 const transactions = [
-    { id: "TXN1024", date: "Jan 15, 2024", type: "Tuition Fee", method: "Credit Card", amount: "$1,200", status: "Paid" },
-    { id: "TXN1023", date: "Dec 10, 2023", type: "Library Fee", method: "Bank Transfer", amount: "$50", status: "Paid" },
-    { id: "TXN1022", date: "Nov 15, 2023", type: "Tuition Fee", method: "Credit Card", amount: "$1,200", status: "Paid" },
-    { id: "TXN1021", date: "Oct 05, 2023", type: "Examination Fee", method: "Debit Card", amount: "$150", status: "Paid" },
+    { id: "TXN1024", date: "Jan 15, 2024", type: "Tuition Fee", method: "Razorpay / UPI", amount: "₹45,000", status: "Paid" },
+    { id: "TXN1023", date: "Dec 10, 2023", type: "Bus Fee", method: "Net Banking", amount: "₹8,500", status: "Paid" },
+    { id: "TXN1022", date: "Nov 15, 2023", type: "Exam Fee", method: "UPI / PhonePe", amount: "₹3,200", status: "Paid" },
+    { id: "TXN1021", date: "Oct 05, 2023", type: "Library Deposit", method: "Cash", amount: "₹2,500", status: "Paid" },
 ];
 
 const Fees = () => {
@@ -28,7 +28,7 @@ const Fees = () => {
                     </div>
                     <div className="p-8 relative z-10 flex flex-col h-full">
                         <p className="text-gray-400 text-sm font-bold uppercase tracking-widest mb-2">Outstanding Fees</p>
-                        <h2 className="text-5xl font-black text-white">$450.00</h2>
+                        <h2 className="text-5xl font-black text-white">₹12,450</h2>
                         <p className="text-orange-500 text-xs font-bold mt-2 flex items-center gap-1">
                              <Calendar size={12} /> Due on February 15, 2024
                         </p>
@@ -44,15 +44,15 @@ const Fees = () => {
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         <div>
                              <p className="text-gray-500 text-xs font-bold uppercase tracking-widest mb-1">Total Fee</p>
-                             <p className="text-2xl font-black text-white">$15,000</p>
+                             <p className="text-2xl font-black text-white">₹1,25,000</p>
                         </div>
                         <div>
                              <p className="text-gray-500 text-xs font-bold uppercase tracking-widest mb-1">Paid Amount</p>
-                             <p className="text-2xl font-black text-green-500 font-bold">$12,500</p>
+                             <p className="text-2xl font-black text-green-500 font-bold">₹1,12,550</p>
                         </div>
                         <div>
                              <p className="text-gray-500 text-xs font-bold uppercase tracking-widest mb-1">Balance</p>
-                             <p className="text-2xl font-black text-orange-500 font-bold">$2,500</p>
+                             <p className="text-2xl font-black text-orange-500 font-bold">₹12,450</p>
                         </div>
                     </div>
                     
