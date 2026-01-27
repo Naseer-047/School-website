@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { gsap } from 'gsap';
 import { BadgeCheck, Play, ArrowRight } from 'lucide-react';
 import MagneticButton from '../ui/MagneticButton';
@@ -73,11 +74,13 @@ const Hero = () => {
 
                 {/* CTA Buttons */}
                 <div ref={buttonsRef} className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                    <MagneticButton className="bg-white text-black hover:bg-gray-200 w-full sm:w-auto group">
-                        <span className="flex items-center gap-2">
-                           Start Free Trial <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                        </span>
-                    </MagneticButton>
+                    <Link to="/register" className="w-full sm:w-auto">
+                        <MagneticButton className="bg-white text-black hover:bg-gray-200 w-full sm:w-auto group">
+                            <span className="flex items-center gap-2">
+                            Start Free Trial <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                            </span>
+                        </MagneticButton>
+                    </Link>
                     <MagneticButton className="glass text-white hover:bg-white/10 w-full sm:w-auto">
                         <span className="flex items-center gap-2">
                             <Play className="w-4 h-4 fill-current" /> Watch Demo

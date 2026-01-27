@@ -41,9 +41,11 @@ const Navbar = () => {
                     <Link to="/login" className="text-sm font-medium hover:text-primary-light transition-colors">
                         Log in
                     </Link>
-                    <MagneticButton className="bg-white text-black hover:bg-gray-100">
-                        Get Started
-                    </MagneticButton>
+                    <Link to="/register">
+                        <MagneticButton className="bg-white text-black hover:bg-gray-100 italic font-black">
+                            Get started
+                        </MagneticButton>
+                    </Link>
                 </div>
 
                 {/* Mobile Menu */}

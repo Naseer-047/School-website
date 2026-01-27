@@ -17,6 +17,7 @@ import Courses from './pages/student/Courses';
 import Grades from './pages/student/Grades';
 import Attendance from './pages/student/Attendance';
 import Fees from './pages/student/Fees';
+import Register from './pages/Register';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
         
         {/* Admin Routes */}
         <Route path="/admin" element={<DashboardLayout />}>
