@@ -88,12 +88,12 @@ const Hero = () => {
             {/* Dashboard Visual Placeholder (will be replaced by Dashboard Preview component later) */}
             <div ref={visualsRef} className="mt-20 relative w-full max-w-6xl mx-auto px-4 perspective-1000">
                 <div className="relative rounded-xl overflow-hidden border border-white/10 shadow-2xl shadow-primary/20 bg-[#0f0f13] rotate-x-12 transform-gpu transition-all hover:rotate-x-0 duration-700">
-                   <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background z-10"></div>
                    <img 
-                        src="https://images.unsplash.com/photo-1614036635286-130d338e178f?q=80&w=2574&auto=format&fit=crop" 
+                        src="/dashboard-preview.png" 
                         alt="Dashboard Preview" 
-                        className="w-full h-auto opacity-80"
+                        className="w-full h-auto opacity-100 relative z-0"
                    />
+                   <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-background to-transparent z-10"></div>
                    {/* Floating UI Elements Overlay */}
                    <div className="absolute top-10 left-10 p-4 glass rounded-lg border border-white/5 animate-float" style={{animationDelay: "1s"}}>
                         <div className="h-2 w-20 bg-gray-600 rounded mb-2"></div>
