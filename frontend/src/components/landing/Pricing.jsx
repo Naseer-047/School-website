@@ -93,7 +93,7 @@ const Pricing = () => {
                             </ul>
 
                             <MagneticButton 
-                                className={`w-full ${plan.highlight ? 'bg-white text-black hover:bg-gray-200' : 'glass text-white hover:bg-white/10'}`}
+                                className={`w-full py-5 rounded-2xl text-[10px] font-black uppercase tracking-[0.25em] transition-all duration-300 ${plan.highlight ? 'bg-white text-black hover:bg-gray-200 shadow-2xl shadow-white/10' : 'bg-white/5 text-white hover:bg-white/10 border border-white/10'}`}
                             >
                                 Choose Plan
                             </MagneticButton>
