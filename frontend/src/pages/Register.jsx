@@ -8,7 +8,7 @@ const Register = () => {
         schoolName: '',
         directorName: '',
         email: '',
-        phone: '',
+        phone: '',   
         password: '',
         confirmPassword: ''
     });
