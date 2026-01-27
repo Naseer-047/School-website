@@ -1,8 +1,15 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { LayoutDashboard, Users, GraduationCap, FileText, Settings, LogOut, BookOpen, CreditCard } from 'lucide-react';
 
 const Sidebar = () => {
+    const navigate = useNavigate();
+
+    const handleLogout = () => {
+        localStorage.clear();
+        navigate('/login');
+    };
+
     const menuItems = [
         { icon: <LayoutDashboard size={20} />, label: "Dashboard", path: "/admin" },
         { icon: <Users size={20} />, label: "Students", path: "/admin/students" },
@@ -44,7 +51,10 @@ const Sidebar = () => {
 
             {/* User Profile / Logout */}
             <div className="p-4 border-t border-white/5">
-                <button className="flex items-center gap-3 w-full px-4 py-3 rounded-lg text-red-400 hover:bg-red-400/10 transition-colors">
+                <button 
+                    onClick={handleLogout}
+                    className="flex items-center gap-3 w-full px-4 py-3 rounded-lg text-red-400 hover:bg-red-400/10 transition-colors"
+                >
                     <LogOut size={20} />
                     <span className="font-medium text-sm">Logout</span>
                 </button>
