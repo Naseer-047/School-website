@@ -47,13 +47,13 @@ const Settings = () => {
                         <div className="space-y-8">
                             <h3 className="text-xl font-bold text-white border-b border-white/5 pb-4">School Profile</h3>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <FormGroup label="School Name" placeholder="EduPrime Global School" />
-                                <FormGroup label="School Code" placeholder="EDUP001" />
-                                <FormGroup label="Primary Email" placeholder="admin@eduprime.com" />
-                                <FormGroup label="Contact Number" placeholder="+1 234 567 890" />
+                                <FormGroup label="School Name" placeholder="Delhi Public School, Mumbai" />
+                                <FormGroup label="School Code" placeholder="DPS-MUM-047" />
+                                <FormGroup label="Primary Email" placeholder="admin@dpsmumbai.edu.in" />
+                                <FormGroup label="Contact Number" placeholder="+91 22 2345 6789" />
                                 <div className="md:col-span-2">
                                      <label className="text-xs text-gray-500 font-bold uppercase tracking-widest block mb-2">School Address</label>
-                                     <textarea className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-primary h-24" placeholder="123 Education Square, San Francisco, CA"></textarea>
+                                     <textarea className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-primary h-24" placeholder="Sector 45, Nerul, Navi Mumbai, Maharashtra 400706"></textarea>
                                 </div>
                             </div>
 
