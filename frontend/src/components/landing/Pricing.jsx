@@ -76,17 +76,18 @@ const Pricing = () => {
                     <p className="text-gray-400 mb-10">Choose the plan that fits your institution's size and needs.</p>
                     
                     {/* Toggle */}
-                    <div className="flex items-center justify-center gap-4">
-                        <span className={`text-sm ${!isYearly ? 'text-white font-bold' : 'text-gray-500'}`}>Monthly</span>
+                    <div className="flex items-center justify-center gap-6">
+                        <span className={`text-sm tracking-wide transition-colors ${!isYearly ? 'text-white font-bold' : 'text-gray-500'}`}>Monthly</span>
                         <button 
                             onClick={() => setIsYearly(!isYearly)}
-                            className="w-14 h-7 bg-white/5 border border-white/10 rounded-full relative p-1 transition-colors hover:border-primary/50"
+                            className="w-16 h-8 bg-white/10 border border-white/20 rounded-full relative p-1 transition-all hover:border-primary/50 hover:bg-white/15"
+                            aria-label="Toggle Billing Cycle"
                         >
-                            <div className={`w-5 h-5 bg-primary rounded-full transition-transform duration-300 ${isYearly ? 'translate-x-7' : 'translate-x-0'}`}></div>
+                            <div className={`w-6 h-6 bg-primary rounded-full shadow-lg shadow-primary/50 transition-transform duration-500 ${isYearly ? 'translate-x-8' : 'translate-x-0'}`}></div>
                         </button>
-                        <div className="flex items-center gap-2">
-                            <span className={`text-sm ${isYearly ? 'text-white font-bold' : 'text-gray-500'}`}>Yearly</span>
-                            <span className="text-[10px] font-black uppercase tracking-widest px-2 py-1 bg-green-500/10 text-green-500 rounded-md">Save 20%</span>
+                        <div className="flex items-center gap-3">
+                            <span className={`text-sm tracking-wide transition-colors ${isYearly ? 'text-white font-bold' : 'text-gray-500'}`}>Yearly</span>
+                            <span className="text-[9px] font-black uppercase tracking-[0.15em] px-2.5 py-1 bg-green-500/20 text-green-400 rounded-md border border-green-500/20">Save 20%</span>
                         </div>
                     </div>
                 </div>
