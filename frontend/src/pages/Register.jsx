@@ -20,7 +20,7 @@ const Register = () => {
     const handleRegister = async (e) => {
         e.preventDefault();
         if (formData.password !== formData.confirmPassword) {
-            setError('Passwords do not match');
+            setError('Passwords do not match');    
             return;
         }
         
