@@ -12,7 +12,7 @@ const Register = () => {
         password: '',
         confirmPassword: ''
     });
-    const [loading, setLoading] = useState(false);   
+    const [loading, setLoading] = useState(false);     
     const [error, setError] = useState('');
     const [success, setSuccess] = useState(false);
     const navigate = useNavigate();
