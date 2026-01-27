@@ -3,7 +3,7 @@ import Navbar from '../components/landing/Navbar';
 import Hero from '../components/landing/Hero';
 import Features from '../components/landing/Features';
 import ProductShowcase from '../components/landing/ProductShowcase';
-import Impact from '../components/landing/Impact';
+import BentoGrid from '../components/landing/BentoGrid';
 import Pricing from '../components/landing/Pricing';
 import Testimonials from '../components/landing/Testimonials';
 import Footer from '../components/landing/Footer';
@@ -15,7 +15,7 @@ const LandingPage = () => {
             <Hero />
             <Features />
             <ProductShowcase />
-            <Impact />
+            <BentoGrid />
             <Pricing />
             <Testimonials />
             <Footer />
