@@ -18,9 +18,11 @@ const SecurityPage = () => {
     useEffect(() => {
         if (loading) return;
 
-        gsap.fromTo(heroRef.current.children,
+        // Animate hero elements together without stagger to prevent text issues
+        const heroElements = heroRef.current.querySelectorAll('.hero-icon, .hero-title, .hero-description');
+        gsap.fromTo(heroElements,
             { y: 50, opacity: 0 },
-            { y: 0, opacity: 1, duration: 1, stagger: 0.2, ease: 'power3.out' }
+            { y: 0, opacity: 1, duration: 1, stagger: 0.15, ease: 'power3.out' }
         );
 
         gsap.fromTo(featuresRef.current.children,
@@ -75,16 +77,16 @@ const SecurityPage = () => {
             {/* Hero */}
             <section className="pt-32 pb-20 px-6">
                 <div ref={heroRef} className="max-w-7xl mx-auto text-center">
-                    <div className="w-16 h-16 rounded-xl bg-primary/10 flex items-center justify-center text-primary mx-auto mb-6 hover:scale-110 hover:bg-primary/20 transition-all duration-300">
+                    <div className="w-16 h-16 rounded-xl bg-primary/10 flex items-center justify-center text-primary mx-auto mb-6 hover:scale-110 hover:bg-primary/20 transition-all duration-300 hero-icon">
                         <Shield className="w-8 h-8" />
                     </div>
-                    <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 leading-tight">
+                    <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 leading-tight hero-title">
                         Security &{' '}
                         <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
                             Compliance
                         </span>
                     </h1>
-                    <p className="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
+                    <p className="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed hero-description">
                         Your data security is our top priority. We implement industry-leading security measures to protect your school's information.
                     </p>
                 </div>
