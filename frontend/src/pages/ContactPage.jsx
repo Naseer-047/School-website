@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Navbar from '../components/landing/Navbar';
 import Footer from '../components/landing/Footer';
+import CreativeLoader from '../components/ui/CreativeLoader';
 import { gsap } from 'gsap';
 import { Loader2, Mail, Phone, MapPin, Send } from 'lucide-react';
 
@@ -69,14 +70,7 @@ const ContactPage = () => {
     ];
 
     if (loading) {
-        return (
-            <div className="min-h-screen bg-background flex items-center justify-center">
-                <div className="text-center">
-                    <Loader2 className="w-12 h-12 text-primary animate-spin mx-auto mb-4" />
-                    <p className="text-gray-400">Loading...</p>
-                </div>
-            </div>
-        );
+        return <CreativeLoader text="Loading Contact" />;
     }
 
     return (
@@ -86,10 +80,10 @@ const ContactPage = () => {
             {/* Hero */}
             <section className="pt-32 pb-20 px-6">
                 <div ref={heroRef} className="max-w-7xl mx-auto text-center">
-                    <h1 className="text-5xl md:text-6xl font-black text-white mb-6 leading-tight">
+                    <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 leading-tight">
                         Get in <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Touch</span>
                     </h1>
-                    <p className="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
+                    <p className="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
                         Have questions? We'd love to hear from you. Send us a message and we'll respond as soon as possible.
                     </p>
                 </div>

@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Navbar from '../components/landing/Navbar';
 import Footer from '../components/landing/Footer';
+import CreativeLoader from '../components/ui/CreativeLoader';
 import { gsap } from 'gsap';
 import { Loader2, Calendar, User, ArrowRight } from 'lucide-react';
 
