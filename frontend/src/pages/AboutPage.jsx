@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Navbar from '../components/landing/Navbar';
 import Footer from '../components/landing/Footer';
+import CreativeLoader from '../components/ui/CreativeLoader';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { 
@@ -92,14 +93,7 @@ const AboutPage = () => {
     ];
 
     if (loading) {
-        return (
-            <div className="min-h-screen bg-background flex items-center justify-center">
-                <div className="text-center">
-                    <Loader2 className="w-12 h-12 text-primary animate-spin mx-auto mb-4" />
-                    <p className="text-gray-400">Loading...</p>
-                </div>
-            </div>
-        );
+        return <CreativeLoader text="Loading About" />;
     }
 
     return (
@@ -109,10 +103,10 @@ const AboutPage = () => {
             {/* Hero */}
             <section className="pt-32 pb-20 px-6">
                 <div ref={heroRef} className="max-w-7xl mx-auto text-center">
-                    <h1 className="text-5xl md:text-6xl font-black text-white mb-6 leading-tight">
+                    <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 leading-tight">
                         About <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">EduPrime</span>
                     </h1>
-                    <p className="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
+                    <p className="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
                         We're on a mission to revolutionize education management and empower schools to focus on what matters most - teaching and learning.
                     </p>
                 </div>
@@ -160,12 +154,12 @@ const AboutPage = () => {
                         {values.map((value, index) => (
                             <div 
                                 key={index}
-                                className="bg-surface border border-white/10 rounded-xl p-8 hover:border-primary/30 transition-all text-center"
+                                className="bg-surface border border-white/10 rounded-xl p-8 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/20 hover:-translate-y-2 transition-all duration-300 text-center group cursor-pointer"
                             >
-                                <div className="w-16 h-16 rounded-xl bg-primary/10 flex items-center justify-center text-primary mx-auto mb-6">
+                                <div className="w-16 h-16 rounded-xl bg-primary/10 flex items-center justify-center text-primary mx-auto mb-6 group-hover:scale-110 group-hover:bg-primary/20 group-hover:rotate-6 transition-all duration-300">
                                     {value.icon}
                                 </div>
-                                <h3 className="text-xl font-bold text-white mb-3">{value.title}</h3>
+                                <h3 className="text-xl font-bold text-white mb-3 group-hover:text-primary transition-colors">{value.title}</h3>
                                 <p className="text-sm text-gray-400 leading-relaxed">{value.description}</p>
                             </div>
                         ))}
