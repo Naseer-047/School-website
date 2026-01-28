@@ -31,7 +31,13 @@ const Navbar = () => {
                     >
                         Features
                     </Link>
-                    {['How it Works', 'Pricing', 'Testimonials'].map((item) => (
+                    <Link 
+                        to="/how-it-works"
+                        className="text-sm text-gray-400 hover:text-white transition-colors"
+                    >
+                        How it Works
+                    </Link>
+                    {['Pricing', 'Testimonials'].map((item) => (
                         <a 
                             key={item} 
                             href={`#${item.toLowerCase().replace(/\s+/g, '-')}`}
