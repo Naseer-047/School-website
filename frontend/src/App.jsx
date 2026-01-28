@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import SmoothScroll from './components/ui/SmoothScroll';
 import LandingPage from './pages/LandingPage';
+import FeaturesPage from './pages/FeaturesPage';
 import DashboardLayout from './components/dashboard/DashboardLayout';
 import AdminDashboard from './pages/admin/AdminDashboard';
 import Students from './pages/admin/Students';
@@ -27,6 +28,7 @@ function App() {
       <SmoothScroll>
         <Routes>
           <Route path="/" element={<LandingPage />} />
+          <Route path="/features" element={<FeaturesPage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           

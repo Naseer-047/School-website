@@ -25,7 +25,13 @@ const Navbar = () => {
 
                 {/* Desktop Links */}
                 <div className="hidden md:flex items-center gap-8">
-                    {['Features', 'How it Works', 'Pricing', 'Testimonials'].map((item) => (
+                    <Link 
+                        to="/features"
+                        className="text-sm text-gray-400 hover:text-white transition-colors"
+                    >
+                        Features
+                    </Link>
+                    {['How it Works', 'Pricing', 'Testimonials'].map((item) => (
                         <a 
                             key={item} 
                             href={`#${item.toLowerCase().replace(/\s+/g, '-')}`}
