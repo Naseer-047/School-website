@@ -23,6 +23,7 @@ class UserBase(BaseModel):
     is_active: bool = True
     role: UserRole
     school_code: Optional[str] = None
+    admin_id: Optional[str] = None
 
 class UserCreate(UserBase):
     password: str
@@ -30,6 +31,8 @@ class UserCreate(UserBase):
 class UserInDB(UserBase):
     hashed_password: str
     reg_no: Optional[str] = None
+    verification_status: str = "active" # active, pending, rejected
+    document_url: Optional[str] = None
     created_at: datetime = datetime.now()
     
 class StudentCreate(UserCreate):
