@@ -71,18 +71,18 @@ const StackedCards = () => {
     }, []);
 
     return (
-        <section ref={containerRef} className="bg-background relative pt-24 md:pt-0"> {/* Added mobile transition padding */}
+        <section ref={containerRef} className="bg-background relative pt-12 md:pt-0"> {/* Added mobile transition padding */}
             <div ref={cardsWrapperRef} className="h-screen w-full flex items-center justify-center overflow-hidden sticky top-0">
                 
                 {/* Introduction Text */}
-                <div className="absolute top-24 md:top-20 left-1/2 -translate-x-1/2 text-center z-10 hidden md:block">
-                    <span className="text-primary font-bold tracking-widest uppercase text-xs">Workflow</span>
-                    <h2 className="text-xl md:text-2xl font-bold text-white mt-2">
+                <div className="absolute top-16 md:top-20 left-1/2 -translate-x-1/2 text-center z-10 hidden md:block">
+                    <span className="text-primary font-bold tracking-widest uppercase text-[10px] md:text-xs">Workflow</span>
+                    <h2 className="text-lg md:text-xl font-bold text-white mt-2">
                         <AnimatedText text="A Seamless Experience" type="chars" animation="typewriter" />
                     </h2>
                 </div>
 
-                <div className="relative w-full max-w-6xl h-[550px] px-6 mt-16 md:mt-24"> {/* Reduced Width/Height/Margin */}
+                <div className="relative w-full max-w-5xl h-[500px] px-6 mt-16 md:mt-24"> {/* Reduced Width/Height/Margin */}
                     {cards.map((card, index) => (
                         <div 
                             key={index} 
@@ -97,22 +97,22 @@ const StackedCards = () => {
                             
                             {/* Card Number Watermark */}
                             <div className="absolute top-6 right-8 opacity-5">
-                                <span className="text-[80px] md:text-[100px] font-black leading-none text-white">0{index + 1}</span>
+                                <span className="text-[60px] md:text-[80px] font-black leading-none text-white">0{index + 1}</span>
                             </div>
 
                             {/* Card Header */}
                             <div className="relative z-10">
                                 <div className="bg-white/5 w-fit p-3 rounded-xl mb-6 border border-white/5">
-                                    {React.cloneElement(card.icon, { className: `w-8 h-8 md:w-10 md:h-10 ${card.icon.props.className.split(' ').find(c => c.startsWith('text-'))}` })}
+                                    {React.cloneElement(card.icon, { className: `w-6 h-6 md:w-8 md:h-8 ${card.icon.props.className.split(' ').find(c => c.startsWith('text-'))}` })}
                                 </div>
                                 <AnimatedText 
                                     text={card.title} 
-                                    className="text-3xl md:text-5xl font-black text-white mb-4 leading-tight max-w-2xl block tracking-tight"
+                                    className="text-2xl md:text-4xl font-black text-white mb-4 leading-tight max-w-xl block tracking-tight"
                                     type="words" 
                                     animation="reveal"
                                     delay={0.2} 
                                 />
-                                <p className="text-base md:text-lg text-gray-400 max-w-xl leading-relaxed font-medium">
+                                <p className="text-sm md:text-base text-gray-400 max-w-md leading-relaxed font-medium">
                                     {card.description}
                                 </p>
                             </div>
@@ -121,9 +121,9 @@ const StackedCards = () => {
                             <div className="relative z-10 flex items-center justify-between mt-auto pt-8 border-t border-white/5">
                                 <div className="flex items-center gap-2">
                                     <div className={`w-2 h-2 rounded-full ${index === 0 ? 'bg-primary' : index === 1 ? 'bg-secondary' : 'bg-accent'} animate-pulse`}></div>
-                                    <span className="text-[10px] md:text-xs font-bold text-gray-500 uppercase tracking-widest">Step 0{index + 1}</span>
+                                    <span className="text-[10px] md:text-[10px] font-bold text-gray-500 uppercase tracking-widest">Step 0{index + 1}</span>
                                 </div>
-                                <button className="px-6 py-3 md:px-8 md:py-4 bg-white text-black hover:bg-gray-200 rounded-xl font-bold uppercase tracking-widest text-[10px] md:text-xs transition-all flex items-center gap-2">
+                                <button className="px-6 py-3 bg-white text-black hover:bg-gray-200 rounded-xl font-bold uppercase tracking-widest text-[10px] transition-all flex items-center gap-2">
                                     {card.buttonText}
                                 </button>
                             </div>
@@ -135,13 +135,13 @@ const StackedCards = () => {
              {/* Mobile Spacer */}
              <div className="md:hidden flex flex-col gap-6 px-6 py-20 bg-background relative z-20">
                  {cards.map((card, index) => (
-                    <div key={index} className="rounded-[24px] p-8 bg-[#0f0f13] border border-white/10 shadow-lg">
-                        <div className="bg-white/5 w-fit p-3 rounded-xl mb-4">
-                            {React.cloneElement(card.icon, { className: `w-8 h-8 ${card.icon.props.className.split(' ').find(c => c.startsWith('text-'))}` })}
+                    <div key={index} className="rounded-[24px] p-6 bg-[#0f0f13] border border-white/10 shadow-lg">
+                        <div className="bg-white/5 w-fit p-2 rounded-lg mb-4">
+                            {React.cloneElement(card.icon, { className: `w-6 h-6 ${card.icon.props.className.split(' ').find(c => c.startsWith('text-'))}` })}
                         </div>
-                        <h3 className="text-2xl font-bold text-white mb-2">{card.title}</h3>
-                         <p className="text-sm text-gray-400 mb-6 leading-relaxed">{card.description}</p>
-                         <button className="px-6 py-3 bg-white text-black rounded-lg text-xs font-bold uppercase tracking-wider w-full hover:bg-gray-200">
+                        <h3 className="text-xl font-bold text-white mb-2">{card.title}</h3>
+                         <p className="text-xs text-gray-400 mb-4 leading-relaxed">{card.description}</p>
+                         <button className="px-4 py-3 bg-white text-black rounded-lg text-[10px] font-bold uppercase tracking-wider w-full hover:bg-gray-200">
                             {card.buttonText}
                         </button>
                     </div>
