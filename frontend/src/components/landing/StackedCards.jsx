@@ -67,16 +67,13 @@ const StackedCards = () => {
             });
 
              // Navbar Toggle Logic
-             // Navbar Toggle Logic - Simplified & Robust
+             // Navbar Toggle Logic - CSS Class Toggle (Bulletproof)
              ScrollTrigger.create({
                 trigger: containerRef.current,
                 start: "top top",
                 end: `+=${cards.length * 100}%`,
-                toggleActions: "play reverse play reverse",
-                onEnter: () => gsap.to("#landing-navbar", { y: -100, opacity: 0, duration: 0.3, overwrite: true }),
-                onLeave: () => gsap.to("#landing-navbar", { y: 0, opacity: 1, duration: 0.3, overwrite: true }),
-                onEnterBack: () => gsap.to("#landing-navbar", { y: -100, opacity: 0, duration: 0.3, overwrite: true }),
-                onLeaveBack: () => gsap.to("#landing-navbar", { y: 0, opacity: 1, duration: 0.3, overwrite: true })
+                toggleClass: { targets: "#landing-navbar", className: "nav-hidden" },
+                markers: false
             });
         });
 
