@@ -42,19 +42,7 @@ const FeaturesPage = () => {
     useEffect(() => {
         if (loading) return;
 
-        // Hero animation
-        gsap.fromTo(heroRef.current.children,
-            { y: 50, opacity: 0 },
-            { 
-                y: 0, 
-                opacity: 1, 
-                duration: 1,
-                stagger: 0.2,
-                ease: 'power3.out'
-            }
-        );
-
-        // Feature cards animation
+        // Animate grid, benefits and CTA with GSAP (those are working well)
         gsap.fromTo(gridRef.current.children,
             { y: 80, opacity: 0, scale: 0.9 },
             {
@@ -198,7 +186,7 @@ const FeaturesPage = () => {
             
             {/* Hero Section */}
             <section className="pt-32 pb-20 px-6">
-                <div ref={heroRef} className="max-w-7xl mx-auto text-center">
+                <div ref={heroRef} className="max-w-7xl mx-auto text-center animate-fade-in">
                     <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 leading-tight">
                         Powerful Features for <br />
                         <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">

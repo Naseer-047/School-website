@@ -31,11 +31,7 @@ const AboutPage = () => {
     useEffect(() => {
         if (loading) return;
 
-        gsap.fromTo(heroRef.current.children,
-            { y: 50, opacity: 0 },
-            { y: 0, opacity: 1, duration: 1, stagger: 0.2, ease: 'power3.out' }
-        );
-
+        // Animate story and values with GSAP
         gsap.fromTo(storyRef.current,
             { y: 60, opacity: 0 },
             {
@@ -93,7 +89,7 @@ const AboutPage = () => {
             
             {/* Hero */}
             <section className="pt-32 pb-20 px-6">
-                <div ref={heroRef} className="max-w-7xl mx-auto text-center">
+                <div ref={heroRef} className="max-w-7xl mx-auto text-center animate-fade-in">
                     <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 leading-tight">
                         About <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">EduPrime</span>
                     </h1>

@@ -18,11 +18,7 @@ const TermsPage = () => {
     useEffect(() => {
         if (loading) return;
 
-        gsap.fromTo(heroRef.current.children,
-            { y: 50, opacity: 0 },
-            { y: 0, opacity: 1, duration: 1, stagger: 0.2, ease: 'power3.out' }
-        );
-
+        // Animate content with GSAP
         gsap.fromTo(contentRef.current,
             { y: 60, opacity: 0 },
             {
@@ -42,7 +38,7 @@ const TermsPage = () => {
             
             {/* Hero */}
             <section className="pt-32 pb-20 px-6">
-                <div ref={heroRef} className="max-w-4xl mx-auto text-center">
+                <div ref={heroRef} className="max-w-4xl mx-auto text-center animate-fade-in">
                     <div className="w-16 h-16 rounded-xl bg-primary/10 flex items-center justify-center text-primary mx-auto mb-6 hover:scale-110 hover:bg-primary/20 transition-all duration-300">
                         <FileText className="w-8 h-8" />
                     </div>

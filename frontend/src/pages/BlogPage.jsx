@@ -18,11 +18,7 @@ const BlogPage = () => {
     useEffect(() => {
         if (loading) return;
 
-        gsap.fromTo(heroRef.current.children,
-            { y: 50, opacity: 0 },
-            { y: 0, opacity: 1, duration: 1, stagger: 0.2, ease: 'power3.out' }
-        );
-
+        // Animate blog posts with GSAP
         gsap.fromTo(postsRef.current.children,
             { y: 60, opacity: 0, scale: 0.95 },
             {
@@ -100,7 +96,7 @@ const BlogPage = () => {
             
             {/* Hero */}
             <section className="pt-32 pb-20 px-6">
-                <div ref={heroRef} className="max-w-7xl mx-auto text-center">
+                <div ref={heroRef} className="max-w-7xl mx-auto text-center animate-fade-in">
                     <h1 className="text-5xl md:text-6xl font-black text-white mb-6 leading-tight">
                         EduPrime <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Blog</span>
                     </h1>
