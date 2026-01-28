@@ -40,7 +40,7 @@ const Pricing = () => {
 
     useEffect(() => {
          gsap.fromTo(cardsRef.current, 
-            { y: 100, opacity: 0 },
+            { y: 100, opacity: 0.5 },
             {
                 y: 0,
                 opacity: 1,

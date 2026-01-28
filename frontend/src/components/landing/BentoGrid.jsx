@@ -12,10 +12,8 @@ const BentoGrid = () => {
 
     useEffect(() => {
         const ctx = gsap.context(() => {
-            gsap.set(".bento-item", { opacity: 0 }); // Ensure hidden initially
-            
             gsap.fromTo(".bento-item", 
-                { y: 50, opacity: 0 },
+                { y: 50, opacity: 0.5 },
                 {
                     y: 0,
                     opacity: 1,

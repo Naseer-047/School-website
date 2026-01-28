@@ -29,7 +29,7 @@ const ProductShowcase = () => {
         
         // Tilt Effect on Scroll
         gsap.fromTo(dashboard, 
-            { rotateX: 20, y: 100, opacity: 0.5 },
+            { rotateX: 20, y: 100 },
             {
                 rotateX: 0,
                 y: 0,
