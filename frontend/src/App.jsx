@@ -4,6 +4,13 @@ import SmoothScroll from './components/ui/SmoothScroll';
 import LandingPage from './pages/LandingPage';
 import FeaturesPage from './pages/FeaturesPage';
 import HowItWorksPage from './pages/HowItWorksPage';
+import AboutPage from './pages/AboutPage';
+import BlogPage from './pages/BlogPage';
+import CareersPage from './pages/CareersPage';
+import ContactPage from './pages/ContactPage';
+import PrivacyPage from './pages/PrivacyPage';
+import TermsPage from './pages/TermsPage';
+import SecurityPage from './pages/SecurityPage';
 import DashboardLayout from './components/dashboard/DashboardLayout';
 import AdminDashboard from './pages/admin/AdminDashboard';
 import Students from './pages/admin/Students';
@@ -31,6 +38,13 @@ function App() {
           <Route path="/" element={<LandingPage />} />
           <Route path="/features" element={<FeaturesPage />} />
           <Route path="/how-it-works" element={<HowItWorksPage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/blog" element={<BlogPage />} />
+          <Route path="/careers" element={<CareersPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/privacy" element={<PrivacyPage />} />
+          <Route path="/terms" element={<TermsPage />} />
+          <Route path="/security" element={<SecurityPage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           

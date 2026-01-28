@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Twitter, Linkedin, Facebook, Instagram } from 'lucide-react';
 
 const Footer = () => {
@@ -19,29 +20,29 @@ const Footer = () => {
                     <div>
                         <h4 className="font-bold text-white mb-6">Product</h4>
                         <ul className="space-y-4 text-sm text-gray-400">
-                            <li><a href="#" className="hover:text-primary transition-colors">Features</a></li>
-                            <li><a href="#" className="hover:text-primary transition-colors">Pricing</a></li>
-                            <li><a href="#" className="hover:text-primary transition-colors">Testimonials</a></li>
-                            <li><a href="#" className="hover:text-primary transition-colors">API</a></li>
+                            <li><Link to="/features" className="hover:text-primary transition-colors">Features</Link></li>
+                            <li><a href="/#pricing" className="hover:text-primary transition-colors">Pricing</a></li>
+                            <li><a href="/#testimonials" className="hover:text-primary transition-colors">Testimonials</a></li>
+                            <li><Link to="/how-it-works" className="hover:text-primary transition-colors">How It Works</Link></li>
                         </ul>
                     </div>
 
                     <div>
                         <h4 className="font-bold text-white mb-6">Company</h4>
                         <ul className="space-y-4 text-sm text-gray-400">
-                            <li><a href="#" className="hover:text-primary transition-colors">About</a></li>
-                            <li><a href="#" className="hover:text-primary transition-colors">Blog</a></li>
-                            <li><a href="#" className="hover:text-primary transition-colors">Careers</a></li>
-                            <li><a href="#" className="hover:text-primary transition-colors">Contact</a></li>
+                            <li><Link to="/about" className="hover:text-primary transition-colors">About</Link></li>
+                            <li><Link to="/blog" className="hover:text-primary transition-colors">Blog</Link></li>
+                            <li><Link to="/careers" className="hover:text-primary transition-colors">Careers</Link></li>
+                            <li><Link to="/contact" className="hover:text-primary transition-colors">Contact</Link></li>
                         </ul>
                     </div>
 
                     <div>
                         <h4 className="font-bold text-white mb-6">Legal</h4>
                         <ul className="space-y-4 text-sm text-gray-400">
-                            <li><a href="#" className="hover:text-primary transition-colors">Privacy Policy</a></li>
-                            <li><a href="#" className="hover:text-primary transition-colors">Terms of Service</a></li>
-                            <li><a href="#" className="hover:text-primary transition-colors">Security</a></li>
+                            <li><Link to="/privacy" className="hover:text-primary transition-colors">Privacy Policy</Link></li>
+                            <li><Link to="/terms" className="hover:text-primary transition-colors">Terms of Service</Link></li>
+                            <li><Link to="/security" className="hover:text-primary transition-colors">Security</Link></li>
                         </ul>
                     </div>
                 </div>
