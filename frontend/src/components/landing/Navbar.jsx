@@ -18,10 +18,10 @@ const Navbar = () => {
         <nav ref={navRef} id="landing-navbar" className="fixed top-0 left-0 w-full z-50 px-6 py-4 transition-transform duration-500">
             <div className="max-w-7xl mx-auto flex justify-between items-center glass rounded-2xl px-6 py-3">
                 {/* Logo */}
-                <div className="flex items-center gap-2">
+                <Link to="/" className="flex items-center gap-2 cursor-pointer hover:opacity-80 transition-opacity">
                     <div className="w-8 h-8 bg-gradient-to-tr from-primary to-accent rounded-lg"></div>
                     <span className="text-xl font-bold tracking-tight text-white">EduPrime</span>
-                </div>
+                </Link>
 
                 {/* Desktop Links */}
                 <div className="hidden md:flex items-center gap-8">
