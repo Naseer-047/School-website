@@ -29,6 +29,7 @@ import Grades from './pages/student/Grades';
 import Attendance from './pages/student/Attendance';
 import Fees from './pages/student/Fees';
 import Register from './pages/Register';
+import SuperAdminDashboard from './pages/super-admin/SuperAdminDashboard';
 
 function App() {
   return (
@@ -59,6 +60,8 @@ function App() {
               <Route path="features" element={<Features />} />
               <Route path="settings" element={<Settings />} />
           </Route>
+
+          <Route path="/super-admin" element={<SuperAdminDashboard />} />
 
           {/* Student Routes */}
           <Route path="/student" element={<StudentLayout />}>

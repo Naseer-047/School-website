@@ -1,8 +1,10 @@
 from fastapi import FastAPI
 from app.core.config import settings
 from app.db.mongodb import db
-from app.routers import auth, students, teachers
+from app.routers import auth, students, teachers, super_admin
+from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
+import os
 
 app = FastAPI(title=settings.PROJECT_NAME, debug=True)
 
@@ -14,12 +16,16 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Startup/Shutdown are now handled lazily or via lifespans if needed
-# Keeping it simple for debugging
+# Uploads Mount
+upload_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "uploads")
+if not os.path.exists(upload_path):
+    os.makedirs(upload_path)
+app.mount("/uploads", StaticFiles(directory=upload_path), name="uploads")
 
 app.include_router(auth.router, prefix="/api/auth", tags=["auth"])
 app.include_router(students.router, prefix="/api/students", tags=["students"])
 app.include_router(teachers.router, prefix="/api/teachers", tags=["teachers"])
+app.include_router(super_admin.router, prefix="/api/super-admin", tags=["super_admin"])
 
 @app.get("/")
 def read_root():

@@ -4,6 +4,7 @@ from enum import Enum
 from datetime import datetime
 
 class UserRole(str, Enum):
+    SUPER_ADMIN = "super_admin"
     ADMIN = "admin"
     TEACHER = "teacher"
     STUDENT = "student"

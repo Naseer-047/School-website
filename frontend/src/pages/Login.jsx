@@ -48,6 +48,7 @@ const Login = () => {
             localStorage.setItem('verificationStatus', payload.verification_status);
             
             if (payload.role === 'admin') navigate('/admin');
+            else if (payload.role === 'super_admin') navigate('/super-admin');
             else if (payload.role === 'student') navigate('/student');
             else if (payload.role === 'teacher') navigate('/teacher');
             
