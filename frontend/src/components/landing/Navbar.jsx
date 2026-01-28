@@ -37,15 +37,18 @@ const Navbar = () => {
                     >
                         How it Works
                     </Link>
-                    {['Pricing', 'Testimonials'].map((item) => (
-                        <a 
-                            key={item} 
-                            href={`#${item.toLowerCase().replace(/\s+/g, '-')}`}
-                            className="text-sm text-gray-400 hover:text-white transition-colors"
-                        >
-                            {item}
-                        </a>
-                    ))}
+                    <Link 
+                        to="/pricing"
+                        className="text-sm text-gray-400 hover:text-white transition-colors"
+                    >
+                        Pricing
+                    </Link>
+                    <Link 
+                        to="/testimonials"
+                        className="text-sm text-gray-400 hover:text-white transition-colors"
+                    >
+                        Testimonials
+                    </Link>
                 </div>
 
                 {/* CTA Buttons */}
