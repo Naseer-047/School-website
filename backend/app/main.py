@@ -4,7 +4,7 @@ from app.db.mongodb import db
 from app.routers import auth, students, teachers
 from fastapi.middleware.cors import CORSMiddleware
 
-app = FastAPI(title=settings.PROJECT_NAME)
+app = FastAPI(title=settings.PROJECT_NAME, debug=True)
 
 app.add_middleware(
     CORSMiddleware,
