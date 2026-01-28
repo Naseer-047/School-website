@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { gsap } from 'gsap';
 import { BadgeCheck, Play, ArrowRight } from 'lucide-react';
 import MagneticButton from '../ui/MagneticButton';
+import HeroOrbit from './HeroOrbit';
 
 const Hero = () => {
     const containerRef = useRef(null);
@@ -107,22 +108,9 @@ const Hero = () => {
                 </div>
             </div>
 
-            {/* Dashboard Visual Placeholder (will be replaced by Dashboard Preview component later) */}
-            <div ref={visualsRef} className="mt-20 relative w-full max-w-6xl mx-auto px-4 perspective-1000">
-                <div className="relative rounded-xl overflow-hidden border border-white/10 shadow-2xl shadow-primary/20 bg-[#0f0f13] rotate-x-12 transform-gpu transition-all hover:rotate-x-0 duration-700">
-                   <img 
-                        src="/dashboard-preview.png" 
-                        alt="Dashboard Preview" 
-                        className="w-full h-auto opacity-100 relative z-0"
-                   />
-                   <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-background to-transparent z-10"></div>
-                   {/* Floating UI Elements Overlay */}
-                   <div className="absolute top-10 left-10 p-4 glass rounded-lg border border-white/5 animate-float" style={{animationDelay: "1s"}}>
-                        <div className="h-2 w-20 bg-gray-600 rounded mb-2"></div>
-                        <div className="h-8 w-12 bg-primary/80 rounded mb-1"></div>
-                        <div className="h-2 w-16 bg-gray-700 rounded"></div>
-                   </div>
-                </div>
+            {/* Dashboard Visual / Ecosystem Animation */}
+            <div ref={visualsRef} className="mt-16 relative w-full max-w-5xl mx-auto px-4 perspective-1000">
+                <HeroOrbit />
             </div>
 
         </section>
