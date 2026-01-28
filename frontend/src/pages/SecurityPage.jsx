@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Navbar from '../components/landing/Navbar';
 import Footer from '../components/landing/Footer';
+import CreativeLoader from '../components/ui/CreativeLoader';
 import { gsap } from 'gsap';
 import { Loader2, Shield, Lock, Server, Eye, CheckCircle2 } from 'lucide-react';
 
@@ -64,14 +65,7 @@ const SecurityPage = () => {
     ];
 
     if (loading) {
-        return (
-            <div className="min-h-screen bg-background flex items-center justify-center">
-                <div className="text-center">
-                    <Loader2 className="w-12 h-12 text-primary animate-spin mx-auto mb-4" />
-                    <p className="text-gray-400">Loading...</p>
-                </div>
-            </div>
-        );
+        return <CreativeLoader text="Loading Security" />;
     }
 
     return (
@@ -81,13 +75,16 @@ const SecurityPage = () => {
             {/* Hero */}
             <section className="pt-32 pb-20 px-6">
                 <div ref={heroRef} className="max-w-7xl mx-auto text-center">
-                    <div className="w-16 h-16 rounded-xl bg-primary/10 flex items-center justify-center text-primary mx-auto mb-6">
+                    <div className="w-16 h-16 rounded-xl bg-primary/10 flex items-center justify-center text-primary mx-auto mb-6 hover:scale-110 hover:bg-primary/20 transition-all duration-300">
                         <Shield className="w-8 h-8" />
                     </div>
-                    <h1 className="text-5xl md:text-6xl font-black text-white mb-6 leading-tight">
-                        Security & <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Compliance</span>
+                    <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 leading-tight">
+                        Security &{' '}
+                        <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                            Compliance
+                        </span>
                     </h1>
-                    <p className="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
+                    <p className="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
                         Your data security is our top priority. We implement industry-leading security measures to protect your school's information.
                     </p>
                 </div>
@@ -96,18 +93,24 @@ const SecurityPage = () => {
             {/* Security Features */}
             <section className="py-20 px-6">
                 <div className="max-w-7xl mx-auto">
-                    <h2 className="text-4xl font-black text-white mb-12 text-center">Security Features</h2>
+                    <h2 className="text-3xl md:text-4xl font-black text-white mb-12 text-center hover:scale-105 transition-transform duration-300 inline-block w-full">
+                        Security Features
+                    </h2>
                     <div ref={featuresRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                         {securityFeatures.map((feature, index) => (
                             <div 
                                 key={index}
-                                className="bg-surface border border-white/10 rounded-xl p-8 hover:border-primary/30 transition-all text-center"
+                                className="bg-surface border border-white/10 rounded-xl p-8 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/20 hover:-translate-y-2 transition-all duration-300 text-center group cursor-pointer"
                             >
-                                <div className="w-16 h-16 rounded-xl bg-primary/10 flex items-center justify-center text-primary mx-auto mb-6">
+                                <div className="w-16 h-16 rounded-xl bg-primary/10 flex items-center justify-center text-primary mx-auto mb-6 group-hover:scale-110 group-hover:bg-primary/20 group-hover:rotate-6 transition-all duration-300">
                                     {feature.icon}
                                 </div>
-                                <h3 className="text-xl font-bold text-white mb-3">{feature.title}</h3>
-                                <p className="text-sm text-gray-400 leading-relaxed">{feature.description}</p>
+                                <h3 className="text-xl font-bold text-white mb-3 group-hover:text-primary transition-colors">
+                                    {feature.title}
+                                </h3>
+                                <p className="text-sm text-gray-400 leading-relaxed group-hover:text-gray-300 transition-colors">
+                                    {feature.description}
+                                </p>
                             </div>
                         ))}
                     </div>
