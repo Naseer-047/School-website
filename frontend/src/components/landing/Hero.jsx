@@ -72,37 +72,37 @@ const Hero = () => {
             
             <div className="max-w-7xl mx-auto px-6 text-center z-10">
                 {/* Badge */}
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm mb-8 animate-float">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 dark:border-white/10 border-gray-200 bg-white/50 dark:bg-white/5 backdrop-blur-sm mb-8 animate-float">
                     <BadgeCheck className="text-secondary w-4 h-4" />
-                    <span className="text-xs uppercase tracking-wider text-gray-300">Trusted by 500+ Top Schools</span>
+                    <span className="text-xs uppercase tracking-wider text-gray-600 dark:text-gray-300">Trusted by 500+ Top Schools</span>
                 </div>
 
                 {/* Main Headline */}
                 <div ref={textRef} className="flex flex-col gap-2 mb-8 items-center cursor-default">
-                    <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-white leading-[1.1]">
+                    <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-foreground leading-[1.1]">
                         {splitText("The Future of")}
                     </h1>
-                    <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-200 to-gray-500 leading-[1.1]">
+                    <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-foreground via-gray-500 to-gray-400 dark:from-white dark:via-gray-200 dark:to-gray-500 leading-[1.1]">
                         {splitText("School Management")}
                     </h1>
-                    <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-primary-light to-accent leading-[1.1]">
+                    <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent leading-[1.1]">
                         {splitText("Is Finally Here.")}
                     </h1>
                 </div>
 
                 {/* Subtext */}
-                <p ref={subtextRef} className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed">
+                <p ref={subtextRef} className="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed">
                     Streamline administration, empower teachers, and engage students with the most beautiful, fast, and intelligent platform ever built for education.
                 </p>
 
                 {/* CTA Buttons */}
                 <div ref={buttonsRef} className="flex flex-col sm:flex-row items-center justify-center gap-4">
                     <Link to="/register" className="w-full sm:w-auto">
-                        <MagneticButton className="bg-white text-black hover:bg-gray-200 w-full sm:w-auto px-8 py-4 rounded-2xl font-black uppercase tracking-widest text-xs shadow-2xl transition-all">
+                        <MagneticButton className="bg-foreground text-background hover:bg-gray-800 dark:bg-white dark:text-black dark:hover:bg-gray-200 w-full sm:w-auto px-8 py-4 rounded-2xl font-black uppercase tracking-widest text-xs shadow-xl transition-all">
                             Start Free Trial <ArrowRight className="w-4 h-4" />
                         </MagneticButton>
                     </Link>
-                    <MagneticButton className="glass text-white hover:bg-white/10 w-full sm:w-auto px-8 py-4 rounded-2xl font-black uppercase tracking-widest text-xs transition-all">
+                    <MagneticButton className="glass border border-gray-200 dark:border-white/10 text-foreground dark:text-white hover:bg-black/5 dark:hover:bg-white/10 w-full sm:w-auto px-8 py-4 rounded-2xl font-black uppercase tracking-widest text-xs transition-all">
                         <Play className="w-4 h-4 fill-current" /> Watch Demo
                     </MagneticButton>
                 </div>

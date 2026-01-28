@@ -96,44 +96,44 @@ const StackedCards = () => {
                     {cards.map((card, index) => (
                         <div 
                             key={index} 
-                            className="stacked-card absolute top-0 left-0 w-full h-full rounded-[24px] md:rounded-[32px] p-8 md:p-12 flex flex-col justify-between overflow-hidden border border-white/10 bg-[#0f0f13] shadow-2xl"
+                            className="stacked-card absolute top-0 left-0 w-full h-full rounded-[24px] md:rounded-[32px] p-8 md:p-12 flex flex-col justify-between overflow-hidden border border-gray-200 dark:border-white/10 bg-white dark:bg-[#0f0f13] shadow-2xl transition-colors duration-500"
                             style={{ 
                                 zIndex: index + 1,
-                                boxShadow: '0 -10px 40px -10px rgba(0,0,0,0.5)' // Reduced shadow intensity
+                                boxShadow: '0 -10px 40px -10px rgba(0,0,0,0.1)' // Shadow
                             }}
                         >
                             {/* Texture Background */}
-                            <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle, #fff 1px, transparent 1px)', backgroundSize: '32px 32px' }}></div>
+                            <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle, currentColor 1px, transparent 1px)', backgroundSize: '32px 32px' }}></div>
                             
                             {/* Card Number Watermark */}
                             <div className="absolute top-6 right-8 opacity-5">
-                                <span className="text-[60px] md:text-[80px] font-black leading-none text-white">0{index + 1}</span>
+                                <span className="text-[60px] md:text-[80px] font-black leading-none text-foreground">0{index + 1}</span>
                             </div>
 
                             {/* Card Header */}
                             <div className="relative z-10">
-                                <div className="bg-white/5 w-fit p-3 rounded-xl mb-6 border border-white/5">
+                                <div className="bg-gray-100 dark:bg-white/5 w-fit p-3 rounded-xl mb-6 border border-gray-200 dark:border-white/5">
                                     {React.cloneElement(card.icon, { className: `w-6 h-6 md:w-8 md:h-8 ${card.icon.props.className.split(' ').find(c => c.startsWith('text-'))}` })}
                                 </div>
                                 <AnimatedText 
                                     text={card.title} 
-                                    className="text-2xl md:text-4xl font-black text-white mb-4 leading-tight max-w-xl block tracking-tight"
+                                    className="text-2xl md:text-4xl font-black text-foreground dark:text-white mb-4 leading-tight max-w-xl block tracking-tight"
                                     type="words" 
                                     animation="reveal"
                                     delay={0.2} 
                                 />
-                                <p className="text-sm md:text-base text-gray-400 max-w-md leading-relaxed font-medium">
+                                <p className="text-sm md:text-base text-gray-600 dark:text-gray-400 max-w-md leading-relaxed font-medium">
                                     {card.description}
                                 </p>
                             </div>
 
                             {/* Card Footer */}
-                            <div className="relative z-10 flex items-center justify-between mt-auto pt-8 border-t border-white/5">
+                            <div className="relative z-10 flex items-center justify-between mt-auto pt-8 border-t border-gray-200 dark:border-white/5">
                                 <div className="flex items-center gap-2">
                                     <div className={`w-2 h-2 rounded-full ${index === 0 ? 'bg-primary' : index === 1 ? 'bg-secondary' : 'bg-accent'} animate-pulse`}></div>
                                     <span className="text-[10px] md:text-[10px] font-bold text-gray-500 uppercase tracking-widest">Step 0{index + 1}</span>
                                 </div>
-                                <button className="px-6 py-3 bg-white text-black hover:bg-gray-200 rounded-xl font-bold uppercase tracking-widest text-[10px] transition-all flex items-center gap-2">
+                                <button className="px-6 py-3 bg-foreground text-background dark:bg-white dark:text-black hover:bg-gray-800 dark:hover:bg-gray-200 rounded-xl font-bold uppercase tracking-widest text-[10px] transition-all flex items-center gap-2">
                                     {card.buttonText}
                                 </button>
                             </div>
@@ -145,13 +145,13 @@ const StackedCards = () => {
              {/* Mobile Spacer */}
              <div className="md:hidden flex flex-col gap-6 px-6 py-20 bg-background relative z-20">
                  {cards.map((card, index) => (
-                    <div key={index} className="rounded-[24px] p-6 bg-[#0f0f13] border border-white/10 shadow-lg">
-                        <div className="bg-white/5 w-fit p-2 rounded-lg mb-4">
+                    <div key={index} className="rounded-[24px] p-6 bg-white dark:bg-[#0f0f13] border border-gray-200 dark:border-white/10 shadow-lg transition-colors duration-500">
+                        <div className="bg-gray-100 dark:bg-white/5 w-fit p-2 rounded-lg mb-4">
                             {React.cloneElement(card.icon, { className: `w-6 h-6 ${card.icon.props.className.split(' ').find(c => c.startsWith('text-'))}` })}
                         </div>
-                        <h3 className="text-xl font-bold text-white mb-2">{card.title}</h3>
-                         <p className="text-xs text-gray-400 mb-4 leading-relaxed">{card.description}</p>
-                         <button className="px-4 py-3 bg-white text-black rounded-lg text-[10px] font-bold uppercase tracking-wider w-full hover:bg-gray-200">
+                        <h3 className="text-xl font-bold text-foreground dark:text-white mb-2">{card.title}</h3>
+                         <p className="text-xs text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">{card.description}</p>
+                         <button className="px-4 py-3 bg-foreground text-background dark:bg-white dark:text-black rounded-lg text-[10px] font-bold uppercase tracking-wider w-full hover:bg-gray-800 dark:hover:bg-gray-200">
                             {card.buttonText}
                         </button>
                     </div>
