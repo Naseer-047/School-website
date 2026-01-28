@@ -1,7 +1,7 @@
 import React from 'react';
 import Navbar from '../components/landing/Navbar';
 import Hero from '../components/landing/Hero';
-import Features from '../components/landing/Features';
+import StackedCards from '../components/landing/StackedCards';
 import ProductShowcase from '../components/landing/ProductShowcase';
 import BentoGrid from '../components/landing/BentoGrid';
 import Pricing from '../components/landing/Pricing';
@@ -13,7 +13,7 @@ const LandingPage = () => {
         <div className="bg-background min-h-screen text-foreground selection:bg-primary selection:text-white overflow-x-hidden">
             <Navbar />
             <Hero />
-            <Features />
+            <StackedCards />
             <ProductShowcase />
             <BentoGrid />
             <Pricing />
