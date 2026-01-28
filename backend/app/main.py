@@ -14,13 +14,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-@app.on_event("startup")
-def startup_db_client():
-    db.connect()
-
-@app.on_event("shutdown")
-def shutdown_db_client():
-    db.close()
+# Startup/Shutdown are now handled lazily or via lifespans if needed
+# Keeping it simple for debugging
 
 app.include_router(auth.router, prefix="/api/auth", tags=["auth"])
 app.include_router(students.router, prefix="/api/students", tags=["students"])

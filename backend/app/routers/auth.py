@@ -16,10 +16,6 @@ import logging
 router = APIRouter()
 logger = logging.getLogger(__name__)
 
-UPLOAD_DIR = "uploads"
-if not os.path.exists(UPLOAD_DIR):
-    os.makedirs(UPLOAD_DIR)
-
 def generate_school_code(length=6):
     return ''.join(random.choices(string.ascii_uppercase + string.digits, k=length))
 
@@ -57,24 +53,33 @@ async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends(
 
 @router.post("/register-institute")
 async def register_institute(
-    email: str = Form(...), 
+    email: str = Form(...),
     full_name: str = Form(...),
     school_name: str = Form(...),
     phone: str = Form(...),
     document: UploadFile = File(...)
 ):
-    logger.info(f"Register attempt for: {email}")
     try:
+        # Check document as requested by user
+        if not document:
+             raise HTTPException(status_code=400, detail="No verification document uploaded")
+        
         users_collection = db.db.users
         
         # Check if email exists
         if users_collection.find_one({"email": email}):
             raise HTTPException(status_code=400, detail="Email already registered")
             
-        # Save document
+        # Ensure upload dir exists safely (Absolute path)
+        upload_path = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), "uploads")
+        if not os.path.exists(upload_path):
+            os.makedirs(upload_path)
+            
+        # Save document with a simpler filename
         file_extension = os.path.splitext(document.filename)[1]
-        file_name = f"{email.replace('@', '_').replace('.', '_')}{file_extension}"
-        file_path = os.path.join(UPLOAD_DIR, file_name)
+        safe_email = email.split('@')[0]
+        file_name = f"{safe_email}_{int(datetime.now().timestamp())}{file_extension}"
+        file_path = os.path.join(upload_path, file_name)
         
         with open(file_path, "wb") as buffer:
             shutil.copyfileobj(document.file, buffer)
@@ -83,10 +88,10 @@ async def register_institute(
         generated_password = generate_random_password()
         admin_id = generate_admin_id()
         
-        while True:
+        # Unique School Code
+        school_code = generate_school_code()
+        while users_collection.find_one({"school_code": school_code}):
             school_code = generate_school_code()
-            if not users_collection.find_one({"school_code": school_code}):
-                break
                 
         hashed_password = get_password_hash(generated_password)
         
@@ -100,7 +105,7 @@ async def register_institute(
             "admin_id": admin_id,
             "hashed_password": hashed_password,
             "verification_status": "pending",
-            "document_url": file_path,
+            "document_url": file_name, 
             "is_active": True,
             "created_at": datetime.now()
         }
@@ -115,6 +120,9 @@ async def register_institute(
                 "password": generated_password
             }
         }
+    except HTTPException as e:
+        raise e
     except Exception as e:
-        logger.error(f"Error in register_institute: {str(e)}", exc_info=True)
-        raise HTTPException(status_code=500, detail=f"Internal Server Error: {str(e)}")
+        logger.error(f"FATAL ERROR: {str(e)}", exc_info=True)
+        # Return JSON instead of crashing to avoid "Unexpected token I"
+        raise HTTPException(status_code=500, detail=f"Registration crashed: {str(e)}")
