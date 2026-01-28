@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Calendar, CreditCard, MessageSquare, PieChart, Users, Zap } from 'lucide-react';
+import AnimatedText from '../ui/AnimatedText';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -39,7 +40,10 @@ const BentoGrid = () => {
                 <div className="text-center mb-16">
                     <span className="text-primary font-black uppercase tracking-[0.3em] text-[10px] mb-4 block">Unified Ecosystem</span>
                     <h2 className="text-4xl md:text-6xl font-black text-white mb-6 leading-[1.1] tracking-tight">
-                        One Platform. <span className="text-gradient">Infinite Control.</span>
+                        <AnimatedText text="One Platform." type="words" animation="fade-up" delay={0} /> 
+                        <span className="text-gradient block mt-2">
+                             <AnimatedText text="Infinite Control." type="words" animation="reveal" delay={0.5} />
+                        </span>
                     </h2>
                     <p className="text-gray-400 max-w-2xl mx-auto text-lg leading-relaxed">
                         Experience the most integrated school management system ever. Every module is built to work in perfect harmony.
@@ -56,7 +60,13 @@ const BentoGrid = () => {
                             <div className="p-4 rounded-2xl bg-primary/20 text-primary w-fit mb-8 group-hover:scale-110 transition-transform duration-500">
                                 <PieChart className="w-8 h-8" />
                             </div>
-                            <h3 className="text-3xl font-black text-white mb-4 leading-tight">Powerful Real-time <br/>Analytics</h3>
+                            <AnimatedText 
+                                text="Powerful Real-time Analytics" 
+                                className="text-3xl font-black text-white mb-4 leading-tight block max-w-sm" 
+                                type="words" 
+                                animation="fade-up" 
+                                delay={0.2}
+                            />
                             <p className="text-gray-400 leading-relaxed mb-auto max-w-sm">
                                 Track every KPI across your institution. From individual student grades to school-wide financial health.
                             </p>

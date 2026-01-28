@@ -4,6 +4,7 @@ import Hero from '../components/landing/Hero';
 import StackedCards from '../components/landing/StackedCards';
 import ProductShowcase from '../components/landing/ProductShowcase';
 import BentoGrid from '../components/landing/BentoGrid';
+import HorizontalScroll from '../components/landing/HorizontalScroll';
 import Pricing from '../components/landing/Pricing';
 import Testimonials from '../components/landing/Testimonials';
 import Footer from '../components/landing/Footer';
@@ -16,6 +17,7 @@ const LandingPage = () => {
             <StackedCards />
             <ProductShowcase />
             <BentoGrid />
+            <HorizontalScroll />
             <Pricing />
             <Testimonials />
             <Footer />
