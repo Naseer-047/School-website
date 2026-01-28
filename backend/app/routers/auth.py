@@ -50,6 +50,7 @@ async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends(
         data={
             "sub": user["email"], 
             "role": user["role"],
+            "full_name": user.get("full_name", "Administrator"),
             "verification_status": user.get("verification_status", "active")
         }, 
         expires_delta=access_token_expires
