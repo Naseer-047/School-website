@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Navbar from '../components/landing/Navbar';
 import Footer from '../components/landing/Footer';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { 
     Users, 
     GraduationCap, 
@@ -14,10 +16,93 @@ import {
     Smartphone,
     Clock,
     Award,
-    CheckCircle2
+    CheckCircle2,
+    Loader2
 } from 'lucide-react';
 
+gsap.registerPlugin(ScrollTrigger);
+
 const FeaturesPage = () => {
+    const [loading, setLoading] = useState(true);
+    const heroRef = useRef(null);
+    const gridRef = useRef(null);
+    const benefitsRef = useRef(null);
+    const ctaRef = useRef(null);
+
+    useEffect(() => {
+        // Simulate loading
+        const timer = setTimeout(() => {
+            setLoading(false);
+        }, 800);
+
+        return () => clearTimeout(timer);
+    }, []);
+
+    useEffect(() => {
+        if (loading) return;
+
+        // Hero animation
+        gsap.fromTo(heroRef.current.children,
+            { y: 50, opacity: 0 },
+            { 
+                y: 0, 
+                opacity: 1, 
+                duration: 1,
+                stagger: 0.2,
+                ease: 'power3.out'
+            }
+        );
+
+        // Feature cards animation
+        gsap.fromTo(gridRef.current.children,
+            { y: 80, opacity: 0, scale: 0.9 },
+            {
+                y: 0,
+                opacity: 1,
+                scale: 1,
+                duration: 0.8,
+                stagger: 0.1,
+                ease: 'power3.out',
+                scrollTrigger: {
+                    trigger: gridRef.current,
+                    start: 'top 80%',
+                }
+            }
+        );
+
+        // Benefits section animation
+        gsap.fromTo(benefitsRef.current.children,
+            { x: -50, opacity: 0 },
+            {
+                x: 0,
+                opacity: 1,
+                duration: 0.8,
+                stagger: 0.15,
+                ease: 'power2.out',
+                scrollTrigger: {
+                    trigger: benefitsRef.current,
+                    start: 'top 80%',
+                }
+            }
+        );
+
+        // CTA animation
+        gsap.fromTo(ctaRef.current,
+            { scale: 0.95, opacity: 0 },
+            {
+                scale: 1,
+                opacity: 1,
+                duration: 1,
+                ease: 'back.out(1.2)',
+                scrollTrigger: {
+                    trigger: ctaRef.current,
+                    start: 'top 85%',
+                }
+            }
+        );
+
+    }, [loading]);
+
     const features = [
         {
             icon: <Users className="w-8 h-8" />,
@@ -102,13 +187,24 @@ const FeaturesPage = () => {
         "Regular Updates: Continuous improvements and new features at no extra cost"
     ];
 
+    if (loading) {
+        return (
+            <div className="min-h-screen bg-background flex items-center justify-center">
+                <div className="text-center">
+                    <Loader2 className="w-12 h-12 text-primary animate-spin mx-auto mb-4" />
+                    <p className="text-gray-400">Loading features...</p>
+                </div>
+            </div>
+        );
+    }
+
     return (
         <div className="min-h-screen bg-background">
             <Navbar />
             
             {/* Hero Section */}
             <section className="pt-32 pb-20 px-6">
-                <div className="max-w-7xl mx-auto text-center">
+                <div ref={heroRef} className="max-w-7xl mx-auto text-center">
                     <h1 className="text-5xl md:text-6xl font-black text-white mb-6 leading-tight">
                         Powerful Features for <br />
                         <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
@@ -125,11 +221,11 @@ const FeaturesPage = () => {
             {/* Features Grid */}
             <section className="py-20 px-6">
                 <div className="max-w-7xl mx-auto">
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {features.map((feature, index) => (
                             <div 
                                 key={index}
-                                className="bg-surface border border-white/10 rounded-2xl p-8 hover:border-primary/30 transition-all duration-300 group hover:scale-105"
+                                className="bg-surface border border-white/10 rounded-2xl p-8 hover:border-primary/30 transition-all duration-300 group hover:scale-105 cursor-pointer"
                             >
                                 {/* Icon */}
                                 <div className={`w-16 h-16 rounded-xl bg-${feature.color}-500/10 flex items-center justify-center text-${feature.color}-500 mb-6 group-hover:scale-110 transition-transform`}>
@@ -161,7 +257,7 @@ const FeaturesPage = () => {
                         </p>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div ref={benefitsRef} className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         {benefits.map((benefit, index) => (
                             <div 
                                 key={index}
@@ -183,7 +279,7 @@ const FeaturesPage = () => {
             {/* CTA Section */}
             <section className="py-20 px-6">
                 <div className="max-w-4xl mx-auto text-center">
-                    <div className="bg-gradient-to-r from-primary/20 to-accent/20 border border-primary/30 rounded-3xl p-12">
+                    <div ref={ctaRef} className="bg-gradient-to-r from-primary/20 to-accent/20 border border-primary/30 rounded-3xl p-12">
                         <h2 className="text-3xl md:text-4xl font-black text-white mb-4">
                             Ready to Transform Your School?
                         </h2>

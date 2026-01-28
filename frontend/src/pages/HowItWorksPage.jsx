@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Navbar from '../components/landing/Navbar';
 import Footer from '../components/landing/Footer';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { 
     UserPlus, 
     Settings, 
@@ -11,16 +13,122 @@ import {
     Smartphone,
     Globe,
     Shield,
-    Zap
+    Zap,
+    Loader2
 } from 'lucide-react';
 
+gsap.registerPlugin(ScrollTrigger);
+
 const HowItWorksPage = () => {
+    const [loading, setLoading] = useState(true);
+    const heroRef = useRef(null);
+    const stepsRef = useRef(null);
+    const journeysRef = useRef(null);
+    const featuresRef = useRef(null);
+    const ctaRef = useRef(null);
+
+    useEffect(() => {
+        // Simulate loading
+        const timer = setTimeout(() => {
+            setLoading(false);
+        }, 800);
+
+        return () => clearTimeout(timer);
+    }, []);
+
+    useEffect(() => {
+        if (loading) return;
+
+        // Hero animation
+        gsap.fromTo(heroRef.current.children,
+            { y: 50, opacity: 0 },
+            { 
+                y: 0, 
+                opacity: 1, 
+                duration: 1,
+                stagger: 0.2,
+                ease: 'power3.out'
+            }
+        );
+
+        // Steps animation
+        const steps = stepsRef.current.querySelectorAll('.step-item');
+        steps.forEach((step, index) => {
+            gsap.fromTo(step,
+                { 
+                    x: index % 2 === 0 ? -100 : 100, 
+                    opacity: 0 
+                },
+                {
+                    x: 0,
+                    opacity: 1,
+                    duration: 1,
+                    ease: 'power3.out',
+                    scrollTrigger: {
+                        trigger: step,
+                        start: 'top 80%',
+                    }
+                }
+            );
+        });
+
+        // User journeys animation
+        gsap.fromTo(journeysRef.current.children,
+            { y: 60, opacity: 0, scale: 0.95 },
+            {
+                y: 0,
+                opacity: 1,
+                scale: 1,
+                duration: 0.8,
+                stagger: 0.15,
+                ease: 'back.out(1.2)',
+                scrollTrigger: {
+                    trigger: journeysRef.current,
+                    start: 'top 75%',
+                }
+            }
+        );
+
+        // Features animation
+        gsap.fromTo(featuresRef.current.children,
+            { y: 40, opacity: 0 },
+            {
+                y: 0,
+                opacity: 1,
+                duration: 0.7,
+                stagger: 0.1,
+                ease: 'power2.out',
+                scrollTrigger: {
+                    trigger: featuresRef.current,
+                    start: 'top 80%',
+                }
+            }
+        );
+
+        // CTA animation
+        gsap.fromTo(ctaRef.current,
+            { scale: 0.9, opacity: 0 },
+            {
+                scale: 1,
+                opacity: 1,
+                duration: 1,
+                ease: 'elastic.out(1, 0.5)',
+                scrollTrigger: {
+                    trigger: ctaRef.current,
+                    start: 'top 85%',
+                }
+            }
+        );
+
+    }, [loading]);
+
     const steps = [
         {
             number: "01",
             title: "Sign Up & Setup",
             description: "Create your school account in minutes. Add your school details, logo, and basic information. Our setup wizard guides you through every step.",
             icon: <UserPlus className="w-8 h-8" />,
+            iconLarge: <UserPlus className="w-48 h-48" />,
             color: "blue",
             details: [
                 "Fill in basic school information",
@@ -34,6 +142,7 @@ const HowItWorksPage = () => {
             title: "Configure Your System",
             description: "Customize the platform to match your school's needs. Set up classes, sections, subjects, and fee structures with our intuitive interface.",
             icon: <Settings className="w-8 h-8" />,
+            iconLarge: <Settings className="w-48 h-48" />,
             color: "purple",
             details: [
                 "Create classes and sections",
@@ -47,6 +156,7 @@ const HowItWorksPage = () => {
             title: "Add Users",
             description: "Import or manually add students, teachers, and staff. Bulk upload via Excel or add individually. Everyone gets instant access to their portal.",
             icon: <Users className="w-8 h-8" />,
+            iconLarge: <Users className="w-48 h-48" />,
             color: "green",
             details: [
                 "Bulk import via Excel/CSV",
@@ -60,6 +170,7 @@ const HowItWorksPage = () => {
             title: "Start Managing",
             description: "Begin using all features immediately. Track attendance, manage fees, schedule exams, and communicate with parents - all from one dashboard.",
             icon: <BarChart3 className="w-8 h-8" />,
+            iconLarge: <BarChart3 className="w-48 h-48" />,
             color: "orange",
             details: [
                 "Mark daily attendance",
@@ -140,13 +251,24 @@ const HowItWorksPage = () => {
         }
     ];
 
+    if (loading) {
+        return (
+            <div className="min-h-screen bg-background flex items-center justify-center">
+                <div className="text-center">
+                    <Loader2 className="w-12 h-12 text-primary animate-spin mx-auto mb-4" />
+                    <p className="text-gray-400">Loading guide...</p>
+                </div>
+            </div>
+        );
+    }
+
     return (
         <div className="min-h-screen bg-background">
             <Navbar />
             
             {/* Hero Section */}
             <section className="pt-32 pb-20 px-6">
-                <div className="max-w-7xl mx-auto text-center">
+                <div ref={heroRef} className="max-w-7xl mx-auto text-center">
                     <h1 className="text-5xl md:text-6xl font-black text-white mb-6 leading-tight">
                         How <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">EduPrime</span> Works
                     </h1>
@@ -158,12 +280,12 @@ const HowItWorksPage = () => {
             </section>
 
             {/* Steps Section */}
-            <section className="py-20 px-6">
+            <section ref={stepsRef} className="py-20 px-6">
                 <div className="max-w-6xl mx-auto space-y-16">
                     {steps.map((step, index) => (
                         <div 
                             key={index}
-                            className={`flex flex-col ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} gap-12 items-center`}
+                            className={`step-item flex flex-col ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} gap-12 items-center`}
                         >
                             {/* Content */}
                             <div className="flex-1 space-y-6">
@@ -191,7 +313,7 @@ const HowItWorksPage = () => {
                             <div className="flex-1">
                                 <div className="bg-gradient-to-br from-surface to-surface/50 border border-white/10 rounded-2xl p-12 aspect-square flex items-center justify-center">
                                     <div className={`text-${step.color}-500 opacity-20`}>
-                                        {React.cloneElement(step.icon, { className: "w-48 h-48" })}
+                                        {step.iconLarge}
                                     </div>
                                 </div>
                             </div>
@@ -210,7 +332,7 @@ const HowItWorksPage = () => {
                         </p>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div ref={journeysRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                         {userJourneys.map((journey, index) => (
                             <div 
                                 key={index}
@@ -241,7 +363,7 @@ const HowItWorksPage = () => {
                         <h2 className="text-3xl font-black text-white mb-4">Why Schools Love EduPrime</h2>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div ref={featuresRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                         {features.map((feature, index) => (
                             <div 
                                 key={index}
@@ -261,7 +383,7 @@ const HowItWorksPage = () => {
             {/* CTA Section */}
             <section className="py-20 px-6">
                 <div className="max-w-4xl mx-auto text-center">
-                    <div className="bg-gradient-to-r from-primary/20 to-accent/20 border border-primary/30 rounded-3xl p-12">
+                    <div ref={ctaRef} className="bg-gradient-to-r from-primary/20 to-accent/20 border border-primary/30 rounded-3xl p-12">
                         <h2 className="text-3xl md:text-4xl font-black text-white mb-4">
                             Ready to Get Started?
                         </h2>
