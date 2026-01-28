@@ -1,6 +1,7 @@
-import { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { GraduationCap, Mail, Lock, Eye, EyeOff } from 'lucide-react';
+import MagneticButton from '../components/ui/MagneticButton';
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -16,8 +17,7 @@ const Login = () => {
         setError('');
 
         try {
-            await new Promise(resolve => setTimeout(resolve, 800));
-
+            // Mock authentication
             if (email.includes('admin')) {
                 localStorage.setItem('userRole', 'admin');
                 navigate('/admin');
@@ -39,11 +39,11 @@ const Login = () => {
     };
 
     return (
-        <div className="min-h-screen bg-[#0d0d12] flex items-center justify-center px-6 py-12">
+        <div className="min-h-screen bg-background flex items-center justify-center px-6 py-12">
             <div className="w-full max-w-md">
-                {/* Logo & Header */}
+                {/* Logo */}
                 <div className="text-center mb-8">
-                    <div className="inline-flex items-center gap-3 mb-6">
+                    <div className="inline-flex items-center gap-3 mb-4">
                         <div className="w-12 h-12 bg-gradient-to-tr from-primary to-accent rounded-xl flex items-center justify-center">
                             <GraduationCap className="w-7 h-7 text-white" />
                         </div>
@@ -54,8 +54,8 @@ const Login = () => {
                 </div>
 
                 {/* Login Form */}
-                <div className="bg-white/5 border border-white/10 rounded-2xl p-8 backdrop-blur-sm">
-                    <form onSubmit={handleLogin} className="space-y-5">
+                <div className="bg-surface border border-white/10 rounded-2xl p-8 shadow-2xl">
+                    <form onSubmit={handleLogin} className="space-y-6">
                         {/* Email */}
                         <div>
                             <label className="block text-sm font-medium text-gray-300 mb-2">Email Address</label>
@@ -65,7 +65,7 @@ const Login = () => {
                                     type="email"
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
-                                    placeholder="admin@school.in"
+                                    placeholder="admin@eduprime.in"
                                     className="w-full bg-white/5 border border-white/10 rounded-lg pl-11 pr-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-primary/50 transition-colors"
                                     required
                                 />
@@ -102,38 +102,30 @@ const Login = () => {
                             </div>
                         )}
 
+                        {/* Demo Credentials */}
+                        <div className="bg-blue-500/10 border border-blue-500/20 rounded-lg p-3 text-blue-400 text-xs text-left">
+                            <p className="font-semibold mb-1 uppercase tracking-widest text-[10px]">Demo Credentials:</p>
+                            <p>Admin: admin@school.in</p>
+                            <p>Student: student@school.in</p>
+                            <p>Teacher: teacher@school.in</p>
+                            <p className="mt-1 text-gray-500 italic">Password: any</p>
+                        </div>
+
                         {/* Submit Button */}
-                        <button
+                        <MagneticButton
                             type="submit"
                             disabled={loading}
-                            className="w-full bg-gradient-to-r from-primary to-accent text-white font-bold py-3 rounded-lg hover:opacity-90 transition-opacity disabled:opacity-50"
+                            className="w-full bg-gradient-to-r from-primary to-accent text-white font-black py-4 rounded-2xl shadow-2xl shadow-primary/30 uppercase tracking-[0.2em] text-sm"
                         >
                             {loading ? 'Signing in...' : 'Sign In'}
-                        </button>
+                        </MagneticButton>
                     </form>
 
                     {/* Footer Links */}
-                    <div className="mt-6 text-center space-y-3">
-                        <a href="#" className="block text-sm text-gray-400 hover:text-white transition-colors">
-                            Forgot password?
-                        </a>
-                        <div className="text-sm text-gray-500">
-                            Don't have an account?{' '}
-                            <Link to="/register" className="text-primary hover:underline">
-                                Register Institute
-                            </Link>
-                        </div>
-                    </div>
-                </div>
-
-                {/* Demo Credentials */}
-                <div className="mt-6 bg-blue-500/10 border border-blue-500/20 rounded-lg p-4 text-center">
-                    <p className="text-xs text-blue-400 font-semibold mb-2">Demo Credentials:</p>
-                    <div className="text-xs text-gray-400 space-y-1">
-                        <p>Admin: admin@school.in</p>
-                        <p>Student: student@school.in</p>
-                        <p>Teacher: teacher@school.in</p>
-                        <p className="text-gray-500 italic mt-2">Password: any</p>
+                    <div className="mt-6 text-center text-sm text-gray-500">
+                        <a href="#" className="hover:text-primary transition-colors">Forgot password?</a>
+                        <span className="mx-2">•</span>
+                        <a href="/" className="hover:text-primary transition-colors">Back to Home</a>
                     </div>
                 </div>
             </div>
