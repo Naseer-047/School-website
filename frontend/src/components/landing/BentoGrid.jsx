@@ -62,9 +62,9 @@ const BentoGrid = () => {
                             </p>
                             
                             {/* Mini Chart Visualization */}
-                            <div className="mt-10 flex items-end gap-2 h-24">
+                            <div className="mt-10 flex items-end gap-2 h-24 w-full">
                                 {[40, 70, 45, 90, 65, 80, 50].map((h, i) => (
-                                    <div key={i} className="flex-1 bg-primary/20 rounded-t-lg relative group/bar hover:bg-primary transition-colors" style={{ height: `${h}%` }}>
+                                    <div key={i} className="flex-1 rounded-t-lg relative group/bar hover:bg-primary transition-colors" style={{ height: `${h}%`, backgroundColor: 'rgba(109, 40, 217, 0.2)' }}>
                                         <div className="absolute -top-8 left-1/2 -translate-x-1/2 bg-white text-black text-[8px] font-black px-1.5 py-0.5 rounded opacity-0 group-hover/bar:opacity-100 transition-opacity whitespace-nowrap">
                                             {h}% Growth
                                         </div>
