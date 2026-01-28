@@ -1,12 +1,19 @@
 import React from 'react';
 import Sidebar from './Sidebar';
-import { Outlet } from 'react-router-dom';
+import { Outlet, Navigate, useLocation } from 'react-router-dom';
 import { Bell, Search } from 'lucide-react';
 
 const DashboardLayout = () => {
     const status = localStorage.getItem('verificationStatus');
     const fullName = localStorage.getItem('userFullName') || 'Administrator';
+    const location = useLocation();
     const initials = fullName.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2);
+
+    // Route Protection: Prevent pending apps from visiting locked sections
+    const restrictedPaths = ['/admin/students', '/admin/teachers', '/admin/academics', '/admin/fees', '/admin/reports', '/admin/features'];
+    if (status === 'pending' && restrictedPaths.some(p => location.pathname.startsWith(p))) {
+        return <Navigate to="/admin" replace />;
+    }
 
     return (
         <div className="min-h-screen bg-background text-foreground flex">
