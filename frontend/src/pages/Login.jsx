@@ -56,16 +56,16 @@ const Login = () => {
                 {/* Login Form */}
                 <div className="bg-surface border border-white/10 rounded-2xl p-8 shadow-2xl">
                     <form onSubmit={handleLogin} className="space-y-6">
-                        {/* Email */}
+                        {/* Email or USN */}
                         <div>
-                            <label className="block text-sm font-medium text-gray-300 mb-2">Email Address</label>
+                            <label className="block text-sm font-medium text-gray-300 mb-2">Email or USN</label>
                             <div className="relative">
                                 <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500" />
                                 <input
-                                    type="email"
+                                    type="text"
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
-                                    placeholder="admin@eduprime.in"
+                                    placeholder="Email or USN (e.g. EP-2026-0001)"
                                     className="w-full bg-white/5 border border-white/10 rounded-lg pl-11 pr-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-primary/50 transition-colors"
                                     required
                                 />
@@ -106,7 +106,7 @@ const Login = () => {
                         <div className="bg-blue-500/10 border border-blue-500/20 rounded-lg p-3 text-blue-400 text-xs text-left">
                             <p className="font-semibold mb-1 uppercase tracking-widest text-[10px]">Demo Credentials:</p>
                             <p>Admin: admin@school.in</p>
-                            <p>Student: student@school.in</p>
+                            <p>Student: EP-2026-0001 (or student@school.in)</p>
                             <p>Teacher: teacher@school.in</p>
                             <p className="mt-1 text-gray-500 italic">Password: any</p>
                         </div>

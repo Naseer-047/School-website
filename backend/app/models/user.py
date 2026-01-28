@@ -22,15 +22,18 @@ class UserBase(BaseModel):
     full_name: str
     is_active: bool = True
     role: UserRole
+    school_code: Optional[str] = None
 
 class UserCreate(UserBase):
     password: str
 
 class UserInDB(UserBase):
     hashed_password: str
+    reg_no: Optional[str] = None
     created_at: datetime = datetime.now()
     
 class StudentCreate(UserCreate):
+    school_code: str
     grade: str
     parent_email: Optional[EmailStr] = None
 

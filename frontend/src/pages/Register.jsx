@@ -12,6 +12,7 @@ const Register = () => {
         password: '',
         confirmPassword: ''
     });
+    const [assignedCode, setAssignedCode] = useState('');
     const [loading, setLoading] = useState(false);     
     const [error, setError] = useState('');
     const [success, setSuccess] = useState(false);
@@ -28,15 +29,17 @@ const Register = () => {
         setError('');
 
         try {
-            // Mock institution registration
+            // Mock institution registration with system-generated code
+            const mockCode = `EP${Math.random().toString(36).substring(2, 6).toUpperCase()}`;
+            setAssignedCode(mockCode);
+            
             localStorage.setItem('userRole', 'admin');
             localStorage.setItem('userName', formData.directorName);
             localStorage.setItem('schoolName', formData.schoolName);
+            localStorage.setItem('schoolCode', mockCode);
             
             setSuccess(true);
-            setTimeout(() => {
-                navigate('/admin');
-            }, 2000);
+            // We don't voy navigate immediately so user can see their code
         } catch (err) {
             setError('Registration failed. Please try again.');
         } finally {
@@ -55,7 +58,22 @@ const Register = () => {
                         </div>
                     </div>
                     <h1 className="text-3xl font-black text-white">Institute Registered!</h1>
-                    <p className="text-gray-400">Welcome to the future of education management. Redirecting you to your Admin Dashboard...</p>
+                    <div className="bg-white/5 border border-white/10 rounded-2xl p-6 space-y-4">
+                        <p className="text-gray-400 text-sm">Your unique School Code is:</p>
+                        <div className="text-4xl font-black text-primary tracking-[0.2em] bg-primary/10 py-4 rounded-xl border border-primary/20">
+                            {assignedCode}
+                        </div>
+                        <p className="text-[10px] text-gray-500 uppercase tracking-widest font-bold">
+                            Share this code with your students for registration
+                        </p>
+                    </div>
+                    <p className="text-gray-400 text-sm">Welcome to the future of education management. You can now proceed to your dashboard.</p>
+                    <MagneticButton 
+                        onClick={() => navigate('/admin')}
+                        className="w-full py-4 bg-white/5 border border-white/10 text-white font-bold rounded-xl hover:bg-white/10 transition-colors"
+                    >
+                        Go to Dashboard
+                    </MagneticButton>
                 </div>
             </div>
         );
@@ -90,7 +108,7 @@ const Register = () => {
                                     type="text" 
                                     value={formData.schoolName}
                                     onChange={(e) => setFormData({...formData, schoolName: e.target.value})}
-                                    placeholder="e.g. Delhi Public School, Mumbai" 
+                                    placeholder="e.g. Delhi Public School" 
                                 />
                                 <FormGroup 
                                     label="Director/Principal Name" 
