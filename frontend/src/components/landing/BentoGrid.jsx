@@ -11,17 +11,23 @@ const BentoGrid = () => {
 
     useEffect(() => {
         const ctx = gsap.context(() => {
-            gsap.from(".bento-item", {
-                y: 50,
-                opacity: 0,
-                duration: 1,
-                stagger: 0.15,
-                ease: "power3.out",
-                scrollTrigger: {
-                    trigger: gridRef.current,
-                    start: "top 80%",
+            gsap.set(".bento-item", { opacity: 0 }); // Ensure hidden initially
+            
+            gsap.fromTo(".bento-item", 
+                { y: 50, opacity: 0 },
+                {
+                    y: 0,
+                    opacity: 1,
+                    duration: 1,
+                    stagger: 0.15,
+                    ease: "power3.out",
+                    scrollTrigger: {
+                        trigger: gridRef.current,
+                        start: "top 85%", // Trigger slightly earlier
+                        toggleActions: "play none none reverse"
+                    }
                 }
-            });
+            );
         }, sectionRef);
 
         return () => ctx.revert();
