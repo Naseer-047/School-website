@@ -4,12 +4,11 @@ export default {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
-  darkMode: 'class',
   theme: {
     extend: {
       colors: {
-        background: "rgba(var(--background))",
-        foreground: "rgba(var(--foreground))",
+        background: "#0a0a0f",
+        foreground: "#f3f4f6",
         primary: {
           DEFAULT: "#6d28d9", // Vivid Purple
           light: "#8b5cf6",
@@ -24,8 +23,8 @@ export default {
           DEFAULT: "#f472b6", // Pink
         },
         surface: {
-            DEFAULT: "rgba(var(--surface))",
-            light: "rgba(var(--surface-light))",
+            DEFAULT: "#111827",
+            light: "#1f2937",
         }
       },
       fontFamily: {

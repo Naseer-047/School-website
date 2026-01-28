@@ -1,10 +1,8 @@
-import React, { useEffect, useRef } from 'react';
+import { useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
 import MagneticButton from '../ui/MagneticButton';
 import { Menu } from 'lucide-react';
 import { Link } from 'react-router-dom';
-
-import ThemeToggle from '../ui/ThemeToggle';
 
 const Navbar = () => {
     const navRef = useRef(null);
@@ -22,7 +20,7 @@ const Navbar = () => {
                 {/* Logo */}
                 <div className="flex items-center gap-2">
                     <div className="w-8 h-8 bg-gradient-to-tr from-primary to-accent rounded-lg"></div>
-                    <span className="text-xl font-bold tracking-tight text-foreground">EduPrime</span>
+                    <span className="text-xl font-bold tracking-tight text-white">EduPrime</span>
                 </div>
 
                 {/* Desktop Links */}
@@ -31,7 +29,7 @@ const Navbar = () => {
                         <a 
                             key={item} 
                             href={`#${item.toLowerCase().replace(/\s+/g, '-')}`}
-                            className="text-sm text-gray-400 hover:text-foreground transition-colors"
+                            className="text-sm text-gray-400 hover:text-white transition-colors"
                         >
                             {item}
                         </a>
@@ -40,7 +38,6 @@ const Navbar = () => {
 
                 {/* CTA Buttons */}
                 <div className="hidden md:flex items-center gap-4">
-                    <ThemeToggle />
                     <Link to="/login" className="text-sm font-medium hover:text-primary-light transition-colors">
                         Log in
                     </Link>
@@ -59,5 +56,6 @@ const Navbar = () => {
         </nav>
     );
 };
+
 
 export default Navbar;
