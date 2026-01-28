@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Navbar from '../components/landing/Navbar';
 import Footer from '../components/landing/Footer';
+import CreativeLoader from '../components/ui/CreativeLoader';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { 
@@ -252,14 +253,7 @@ const HowItWorksPage = () => {
     ];
 
     if (loading) {
-        return (
-            <div className="min-h-screen bg-background flex items-center justify-center">
-                <div className="text-center">
-                    <Loader2 className="w-12 h-12 text-primary animate-spin mx-auto mb-4" />
-                    <p className="text-gray-400">Loading guide...</p>
-                </div>
-            </div>
-        );
+        return <CreativeLoader text="Loading Guide" />;
     }
 
     return (
@@ -269,10 +263,10 @@ const HowItWorksPage = () => {
             {/* Hero Section */}
             <section className="pt-32 pb-20 px-6">
                 <div ref={heroRef} className="max-w-7xl mx-auto text-center">
-                    <h1 className="text-5xl md:text-6xl font-black text-white mb-6 leading-tight">
+                    <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 leading-tight">
                         How <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">EduPrime</span> Works
                     </h1>
-                    <p className="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
+                    <p className="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
                         Get your school up and running in 4 simple steps. No technical knowledge required. 
                         We'll guide you through everything.
                     </p>
