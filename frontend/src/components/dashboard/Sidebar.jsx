@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { LayoutDashboard, Users, GraduationCap, FileText, Settings, LogOut, BookOpen, CreditCard } from 'lucide-react';
+import { LayoutDashboard, Users, GraduationCap, FileText, Settings, LogOut, BookOpen, CreditCard, Sparkles } from 'lucide-react';
 
 const Sidebar = () => {
     const navigate = useNavigate();
@@ -17,6 +17,7 @@ const Sidebar = () => {
         { icon: <BookOpen size={18} />, label: "Academics", path: "/admin/academics" },
         { icon: <CreditCard size={18} />, label: "Fees", path: "/admin/fees" },
         { icon: <FileText size={18} />, label: "Reports", path: "/admin/reports" },
+        { icon: <Sparkles size={18} />, label: "Features", path: "/admin/features" },
         { icon: <Settings size={18} />, label: "Settings", path: "/admin/settings" },
     ];
 

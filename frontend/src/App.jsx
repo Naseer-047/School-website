@@ -10,6 +10,7 @@ import Academics from './pages/admin/Academics';
 import AdminFees from './pages/admin/Fees';
 import Reports from './pages/admin/Reports';
 import Settings from './pages/admin/Settings';
+import Features from './pages/admin/Features';
 import Login from './pages/Login';
 import StudentLayout from './components/student/StudentLayout';
 import StudentDashboard from './pages/student/StudentDashboard';
@@ -37,6 +38,7 @@ function App() {
               <Route path="academics" element={<Academics />} />
               <Route path="fees" element={<AdminFees />} />
               <Route path="reports" element={<Reports />} />
+              <Route path="features" element={<Features />} />
               <Route path="settings" element={<Settings />} />
           </Route>
 
