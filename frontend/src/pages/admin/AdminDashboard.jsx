@@ -1,5 +1,5 @@
 import React from 'react';
-import { Users, UserCheck, DollarSign, GraduationCap, TrendingUp, TrendingDown, MoreVertical } from 'lucide-react';
+import { Users, UserCheck, DollarSign, GraduationCap, TrendingUp, TrendingDown, MoreVertical, CheckCircle2 } from 'lucide-react';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar, Legend } from 'recharts';
 
 const data = [
@@ -39,13 +39,64 @@ const StatCard = ({ title, value, icon, trend, trendValue, color }) => (
 );
 
 const AdminDashboard = () => {
+    const status = localStorage.getItem('verificationStatus');
+    const email = localStorage.getItem('userEmail');
+
+    if (status === 'pending') {
+        return (
+            <div className="min-h-[80vh] flex items-center justify-center p-6 text-center">
+                <div className="max-w-md space-y-8">
+                    <div className="relative">
+                        <div className="absolute inset-0 bg-primary/20 blur-[100px] rounded-full"></div>
+                        <div className="relative w-32 h-32 bg-surface border border-white/10 rounded-full flex items-center justify-center mx-auto mb-8 animate-pulse">
+                            <GraduationCap size={64} className="text-primary" />
+                        </div>
+                    </div>
+                    
+                    <div className="space-y-4">
+                        <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary/10 border border-primary/20 rounded-full">
+                            <div className="w-2 h-2 bg-primary rounded-full animate-ping"></div>
+                            <span className="text-[10px] font-black text-primary uppercase tracking-widest">Verification in Progress</span>
+                        </div>
+                        <h1 className="text-4xl font-black text-white italic">Almost There!</h1>
+                        <p className="text-gray-400 text-sm leading-relaxed">
+                            Your application for <span className="text-white font-bold">{email}</span> is currently being reviewed by our elite verification team. 
+                        </p>
+                    </div>
+
+                    <div className="grid grid-cols-1 gap-4 text-left">
+                        <StatusStep 
+                            title="Application Received" 
+                            desc="Digital document vault secured" 
+                            done 
+                        />
+                        <StatusStep 
+                            title="Document Review" 
+                            desc="Verifying institute credentials" 
+                            active 
+                        />
+                        <StatusStep 
+                            title="Campus Activation" 
+                            desc="Get ready to launch your dashboard" 
+                        />
+                    </div>
+
+                    <p className="text-[10px] text-gray-500 uppercase tracking-widest font-bold">
+                        Check back soon. Once approved, you'll be prompted to set your Master Password.
+                    </p>
+                </div>
+            </div>
+        );
+    }
+
     return (
         <div className="space-y-6">
-            {/* Header */}
+            {/* ... Existing Dashboard Content ... */}
             <div>
                 <h1 className="text-2xl font-bold text-white mb-1">Dashboard Overview</h1>
                 <p className="text-sm text-gray-400">Welcome back, here's what's happening at your school today.</p>
             </div>
+            {/* ... Rest of the original content ... */}
 
             {/* Stats Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -137,5 +188,19 @@ const AdminDashboard = () => {
         </div>
     );
 };
+
+const StatusStep = ({ title, desc, done, active }) => (
+    <div className={`p-4 rounded-2xl border transition-all ${done ? 'bg-green-500/5 border-green-500/20' : active ? 'bg-primary/5 border-primary/30' : 'bg-white/5 border-white/10 opacity-50'}`}>
+        <div className="flex items-center gap-4">
+            <div className={`w-10 h-10 rounded-full flex items-center justify-center ${done ? 'bg-green-500 text-white' : active ? 'bg-primary text-white animate-pulse' : 'bg-white/10 text-gray-500'}`}>
+                {done ? <CheckCircle2 size={20} /> : <div className="text-sm font-black">?</div>}
+            </div>
+            <div>
+                <h4 className={`text-sm font-bold ${done ? 'text-green-500' : active ? 'text-primary' : 'text-gray-400'}`}>{title}</h4>
+                <p className="text-[10px] text-gray-500 uppercase tracking-widest font-medium">{desc}</p>
+            </div>
+        </div>
+    </div>
+);
 
 export default AdminDashboard;
