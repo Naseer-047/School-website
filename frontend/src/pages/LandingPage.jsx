@@ -2,7 +2,7 @@ import React from 'react';
 import Navbar from '../components/landing/Navbar';
 import Hero from '../components/landing/Hero';
 import Features from '../components/landing/Features';
-import ProductShowcase from '../components/landing/ProductShowcase';
+import Ecosystem from '../components/landing/Ecosystem';
 import BentoGrid from '../components/landing/BentoGrid';
 import Pricing from '../components/landing/Pricing';
 import Testimonials from '../components/landing/Testimonials';
@@ -14,7 +14,7 @@ const LandingPage = () => {
             <Navbar />
             <Hero />
             <Features />
-            <ProductShowcase />
+            <Ecosystem />
             <BentoGrid />
             <Pricing />
             <Testimonials />
