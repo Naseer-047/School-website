@@ -4,8 +4,6 @@ import SmoothScroll from './components/ui/SmoothScroll';
 import LandingPage from './pages/LandingPage';
 import FeaturesPage from './pages/FeaturesPage';
 import HowItWorksPage from './pages/HowItWorksPage';
-import PricingPage from './pages/PricingPage';
-import TestimonialsPage from './pages/TestimonialsPage';
 import DashboardLayout from './components/dashboard/DashboardLayout';
 import AdminDashboard from './pages/admin/AdminDashboard';
 import Students from './pages/admin/Students';
@@ -33,8 +31,6 @@ function App() {
           <Route path="/" element={<LandingPage />} />
           <Route path="/features" element={<FeaturesPage />} />
           <Route path="/how-it-works" element={<HowItWorksPage />} />
-          <Route path="/pricing" element={<PricingPage />} />
-          <Route path="/testimonials" element={<TestimonialsPage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           
