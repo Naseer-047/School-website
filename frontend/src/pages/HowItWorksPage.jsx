@@ -40,19 +40,7 @@ const HowItWorksPage = () => {
     useEffect(() => {
         if (loading) return;
 
-        // Hero animation
-        gsap.fromTo(heroRef.current.children,
-            { y: 50, opacity: 0 },
-            { 
-                y: 0, 
-                opacity: 1, 
-                duration: 1,
-                stagger: 0.2,
-                ease: 'power3.out'
-            }
-        );
-
-        // Steps animation
+        // Animate steps, features and CTA with GSAP (those are working well)
         const steps = stepsRef.current.querySelectorAll('.step-item');
         steps.forEach((step, index) => {
             gsap.fromTo(step,
@@ -262,7 +250,7 @@ const HowItWorksPage = () => {
             
             {/* Hero Section */}
             <section className="pt-32 pb-20 px-6">
-                <div ref={heroRef} className="max-w-7xl mx-auto text-center">
+                <div ref={heroRef} className="max-w-7xl mx-auto text-center animate-fade-in">
                     <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 leading-tight">
                         How <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">EduPrime</span> Works
                     </h1>
