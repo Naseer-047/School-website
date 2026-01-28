@@ -15,7 +15,7 @@ const Navbar = () => {
     }, []);
 
     return (
-        <nav ref={navRef} className="fixed top-0 left-0 w-full z-50 px-6 py-4">
+        <nav ref={navRef} id="landing-navbar" className="fixed top-0 left-0 w-full z-50 px-6 py-4 transition-transform duration-500">
             <div className="max-w-7xl mx-auto flex justify-between items-center glass rounded-2xl px-6 py-3">
                 {/* Logo */}
                 <div className="flex items-center gap-2">
