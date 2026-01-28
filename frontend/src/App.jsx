@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import SmoothScroll from './components/ui/SmoothScroll';
 import LandingPage from './pages/LandingPage';
 import DashboardLayout from './components/dashboard/DashboardLayout';
 import AdminDashboard from './pages/admin/AdminDashboard';
@@ -22,33 +23,35 @@ import Register from './pages/Register';
 function App() {
   return (
     <Router>
-      <Routes>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        
-        {/* Admin Routes */}
-        <Route path="/admin" element={<DashboardLayout />}>
-            <Route index element={<AdminDashboard />} />
-            <Route path="students" element={<Students />} />
-            <Route path="teachers" element={<Teachers />} />
-            <Route path="academics" element={<Academics />} />
-            <Route path="fees" element={<AdminFees />} />
-            <Route path="reports" element={<Reports />} />
-            <Route path="settings" element={<Settings />} />
-        </Route>
+      <SmoothScroll>
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          
+          {/* Admin Routes */}
+          <Route path="/admin" element={<DashboardLayout />}>
+              <Route index element={<AdminDashboard />} />
+              <Route path="students" element={<Students />} />
+              <Route path="teachers" element={<Teachers />} />
+              <Route path="academics" element={<Academics />} />
+              <Route path="fees" element={<AdminFees />} />
+              <Route path="reports" element={<Reports />} />
+              <Route path="settings" element={<Settings />} />
+          </Route>
 
-        {/* Student Routes */}
-        <Route path="/student" element={<StudentLayout />}>
-            <Route index element={<StudentDashboard />} />
-            <Route path="profile" element={<StudentProfile />} />
-            <Route path="courses" element={<Courses />} />
-            <Route path="grades" element={<Grades />} />
-            <Route path="attendance" element={<Attendance />} />
-            <Route path="fees" element={<Fees />} />
-        </Route>
+          {/* Student Routes */}
+          <Route path="/student" element={<StudentLayout />}>
+              <Route index element={<StudentDashboard />} />
+              <Route path="profile" element={<StudentProfile />} />
+              <Route path="courses" element={<Courses />} />
+              <Route path="grades" element={<Grades />} />
+              <Route path="attendance" element={<Attendance />} />
+              <Route path="fees" element={<Fees />} />
+          </Route>
 
-      </Routes>
+        </Routes>
+      </SmoothScroll>
     </Router>
   );
 }
