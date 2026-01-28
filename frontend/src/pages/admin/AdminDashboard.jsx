@@ -13,24 +13,24 @@ const data = [
 ];
 
 const StatCard = ({ title, value, icon, trend, trendValue, color }) => (
-    <div className="bg-surface border border-white/5 p-6 rounded-2xl hover:border-white/10 transition-colors">
-        <div className="flex justify-between items-start mb-4">
+    <div className="bg-surface border border-white/5 p-4 rounded-xl hover:border-white/10 transition-colors">
+        <div className="flex justify-between items-start mb-3">
             <div>
-                <p className="text-gray-400 text-sm mb-1">{title}</p>
-                <h3 className="text-3xl font-bold text-white">{value}</h3>
+                <p className="text-gray-400 text-xs mb-1">{title}</p>
+                <h3 className="text-xl font-bold text-white">{value}</h3>
             </div>
-            <div className={`p-3 rounded-xl bg-${color}-500/10 text-${color}-500`}>
+            <div className={`p-2 rounded-lg bg-${color}-500/10 text-${color}-500`}>
                 {icon}
             </div>
         </div>
-        <div className="flex items-center gap-2 text-sm">
+        <div className="flex items-center gap-2 text-xs">
             {trend === 'up' ? (
-                <div className="flex items-center text-green-500 bg-green-500/10 px-2 py-0.5 rounded">
-                    <TrendingUp size={14} className="mr-1" /> {trendValue}
+                <div className="flex items-center text-green-500 bg-green-500/10 px-1.5 py-0.5 rounded">
+                    <TrendingUp size={12} className="mr-1" /> {trendValue}
                 </div>
             ) : (
-                <div className="flex items-center text-red-500 bg-red-500/10 px-2 py-0.5 rounded">
-                    <TrendingDown size={14} className="mr-1" /> {trendValue}
+                <div className="flex items-center text-red-500 bg-red-500/10 px-1.5 py-0.5 rounded">
+                    <TrendingDown size={12} className="mr-1" /> {trendValue}
                 </div>
             )}
             <span className="text-gray-500">vs last month</span>
@@ -40,19 +40,19 @@ const StatCard = ({ title, value, icon, trend, trendValue, color }) => (
 
 const AdminDashboard = () => {
     return (
-        <div className="space-y-8">
+        <div className="space-y-6">
             {/* Header */}
             <div>
-                <h1 className="text-3xl font-bold text-white mb-2">Dashboard Overview</h1>
-                <p className="text-gray-400">Welcome back, here's what's happening at your school today.</p>
+                <h1 className="text-2xl font-bold text-white mb-1">Dashboard Overview</h1>
+                <p className="text-sm text-gray-400">Welcome back, here's what's happening at your school today.</p>
             </div>
 
             {/* Stats Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 <StatCard 
                     title="Total Students" 
                     value="2,543" 
-                    icon={<Users size={24} />} 
+                    icon={<Users size={20} />} 
                     trend="up" 
                     trendValue="+12%" 
                     color="blue"
@@ -60,7 +60,7 @@ const AdminDashboard = () => {
                 <StatCard 
                     title="Total Teachers" 
                     value="128" 
-                    icon={<GraduationCap size={24} />} 
+                    icon={<GraduationCap size={20} />} 
                     trend="up" 
                     trendValue="+4%" 
                     color="purple"
@@ -68,7 +68,7 @@ const AdminDashboard = () => {
                 <StatCard 
                     title="Revenue" 
                     value="₹14,25,000" 
-                    icon={<DollarSign size={24} />} 
+                    icon={<DollarSign size={20} />} 
                     trend="up" 
                     trendValue="+8%" 
                     color="green" 
@@ -76,7 +76,7 @@ const AdminDashboard = () => {
                  <StatCard 
                     title="Attendance" 
                     value="94.2%" 
-                    icon={<UserCheck size={24} />} 
+                    icon={<UserCheck size={20} />} 
                     trend="down" 
                     trendValue="-1.2%" 
                     color="orange"
@@ -84,51 +84,51 @@ const AdminDashboard = () => {
             </div>
 
             {/* Charts Section */}
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
                 
                 {/* Main Activity Chart */}
-                <div className="bg-surface border border-white/5 p-6 rounded-2xl lg:col-span-2">
-                    <div className="flex justify-between items-center mb-6">
-                        <h3 className="font-bold text-lg">Financial Overview</h3>
-                        <button className="p-2 hover:bg-white/5 rounded-lg text-gray-400">
-                            <MoreVertical size={20} />
+                <div className="bg-surface border border-white/5 p-4 rounded-xl lg:col-span-2">
+                    <div className="flex justify-between items-center mb-4">
+                        <h3 className="font-bold text-base">Financial Overview</h3>
+                        <button className="p-1.5 hover:bg-white/5 rounded-lg text-gray-400">
+                            <MoreVertical size={18} />
                         </button>
                     </div>
-                    <div className="h-80">
+                    <div className="h-64">
                          <ResponsiveContainer width="100%" height="100%">
                             <BarChart data={data}>
                                 <CartesianGrid strokeDasharray="3 3" stroke="#374151" vertical={false} />
-                                <XAxis dataKey="name" stroke="#9ca3af" axisLine={false} tickLine={false} />
-                                <YAxis stroke="#9ca3af" axisLine={false} tickLine={false} />
+                                <XAxis dataKey="name" stroke="#9ca3af" axisLine={false} tickLine={false} style={{ fontSize: '12px' }} />
+                                <YAxis stroke="#9ca3af" axisLine={false} tickLine={false} style={{ fontSize: '12px' }} />
                                 <Tooltip 
-                                    contentStyle={{backgroundColor: '#1f2937', border: 'none', borderRadius: '8px'}} 
+                                    contentStyle={{backgroundColor: '#1f2937', border: 'none', borderRadius: '8px', fontSize: '12px'}} 
                                     labelStyle={{color: '#9ca3af'}}
                                     cursor={{fill: 'rgba(255,255,255,0.05)'}}
                                 />
                                 <Bar dataKey="income" fill="#8b5cf6" radius={[4, 4, 0, 0]} />
                                 <Bar dataKey="expense" fill="#374151" radius={[4, 4, 0, 0]} />
-                                <Legend />
+                                <Legend wrapperStyle={{ fontSize: '12px' }} />
                             </BarChart>
                         </ResponsiveContainer>
                     </div>
                 </div>
 
                 {/* Recent Activity / Side Panel */}
-                <div className="bg-surface border border-white/5 p-6 rounded-2xl">
-                    <h3 className="font-bold text-lg mb-6">Recent Notices</h3>
-                    <div className="space-y-4">
+                <div className="bg-surface border border-white/5 p-4 rounded-xl">
+                    <h3 className="font-bold text-base mb-4">Recent Notices</h3>
+                    <div className="space-y-3">
                         {[1, 2, 3, 4].map((_, i) => (
-                            <div key={i} className="p-4 rounded-xl bg-white/5 border border-white/5 hover:border-primary/30 transition-colors group cursor-pointer">
-                                <div className="flex justify-between items-start mb-2">
-                                    <span className="text-xs font-semibold px-2 py-1 rounded bg-primary/20 text-primary">Academic</span>
-                                    <span className="text-xs text-gray-500">2h ago</span>
+                            <div key={i} className="p-3 rounded-lg bg-white/5 border border-white/5 hover:border-primary/30 transition-colors group cursor-pointer">
+                                <div className="flex justify-between items-start mb-1.5">
+                                    <span className="text-[10px] font-semibold px-1.5 py-0.5 rounded bg-primary/20 text-primary">Academic</span>
+                                    <span className="text-[10px] text-gray-500">2h ago</span>
                                 </div>
-                                <h4 className="font-medium text-sm text-gray-200 group-hover:text-primary transition-colors">Mid-term exam schedule released</h4>
-                                <p className="text-xs text-gray-500 mt-1 line-clamp-2">The schedule for the upcoming mid-term examinations has been finalized and published...</p>
+                                <h4 className="font-medium text-xs text-gray-200 group-hover:text-primary transition-colors">Mid-term exam schedule released</h4>
+                                <p className="text-[10px] text-gray-500 mt-1 line-clamp-2">The schedule for the upcoming mid-term examinations has been finalized and published...</p>
                             </div>
                         ))}
                     </div>
-                    <button className="w-full mt-6 py-3 rounded-lg border border-white/10 text-sm font-medium hover:bg-white/5 transition-colors">
+                    <button className="w-full mt-4 py-2 rounded-lg border border-white/10 text-xs font-medium hover:bg-white/5 transition-colors">
                         View All Notices
                     </button>
                 </div>
