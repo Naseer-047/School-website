@@ -120,15 +120,17 @@ const SecurityPage = () => {
             {/* Compliance */}
             <section className="py-20 px-6 bg-gradient-to-b from-transparent to-surface/50">
                 <div className="max-w-5xl mx-auto">
-                    <h2 className="text-4xl font-black text-white mb-12 text-center">Compliance & Certifications</h2>
+                    <h2 className="text-3xl md:text-4xl font-black text-white mb-12 text-center hover:scale-105 transition-transform duration-300 inline-block w-full">
+                        Compliance & Certifications
+                    </h2>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         {compliance.map((item, index) => (
                             <div 
                                 key={index}
-                                className="bg-surface border border-white/10 rounded-xl p-6 flex items-center gap-4 hover:border-primary/20 transition-colors"
+                                className="bg-surface border border-white/10 rounded-xl p-6 flex items-center gap-4 hover:border-primary/40 hover:shadow-md hover:shadow-primary/10 hover:-translate-y-1 transition-all duration-300 group cursor-pointer"
                             >
-                                <CheckCircle2 className="w-6 h-6 text-primary flex-shrink-0" />
-                                <span className="text-white font-bold">{item}</span>
+                                <CheckCircle2 className="w-6 h-6 text-primary flex-shrink-0 group-hover:scale-125 transition-transform duration-300" />
+                                <span className="text-white font-bold group-hover:text-primary transition-colors">{item}</span>
                             </div>
                         ))}
                     </div>
@@ -138,34 +140,42 @@ const SecurityPage = () => {
             {/* Additional Info */}
             <section className="py-20 px-6">
                 <div className="max-w-4xl mx-auto">
-                    <div className="bg-surface border border-white/10 rounded-2xl p-8 md:p-12 space-y-8">
+                    <div className="bg-surface border border-white/10 rounded-2xl p-8 md:p-12 space-y-8 hover:border-white/20 transition-colors">
                         
-                        <div>
-                            <h2 className="text-2xl font-bold text-white mb-4">Data Backup & Recovery</h2>
-                            <p className="text-gray-300 leading-relaxed">
+                        <div className="group hover:translate-x-2 transition-transform duration-300">
+                            <h2 className="text-2xl font-bold text-white mb-4 group-hover:text-primary transition-colors">
+                                Data Backup & Recovery
+                            </h2>
+                            <p className="text-gray-300 leading-relaxed group-hover:text-gray-200 transition-colors">
                                 We perform automated backups every 24 hours with 30-day retention. In case of any data loss, we can restore your data quickly and efficiently.
                             </p>
                         </div>
 
-                        <div>
-                            <h2 className="text-2xl font-bold text-white mb-4">Incident Response</h2>
-                            <p className="text-gray-300 leading-relaxed">
+                        <div className="group hover:translate-x-2 transition-transform duration-300">
+                            <h2 className="text-2xl font-bold text-white mb-4 group-hover:text-primary transition-colors">
+                                Incident Response
+                            </h2>
+                            <p className="text-gray-300 leading-relaxed group-hover:text-gray-200 transition-colors">
                                 Our security team monitors systems 24/7 for any suspicious activity. We have a comprehensive incident response plan to address any security concerns immediately.
                             </p>
                         </div>
 
-                        <div>
-                            <h2 className="text-2xl font-bold text-white mb-4">Employee Training</h2>
-                            <p className="text-gray-300 leading-relaxed">
+                        <div className="group hover:translate-x-2 transition-transform duration-300">
+                            <h2 className="text-2xl font-bold text-white mb-4 group-hover:text-primary transition-colors">
+                                Employee Training
+                            </h2>
+                            <p className="text-gray-300 leading-relaxed group-hover:text-gray-200 transition-colors">
                                 All EduPrime employees undergo regular security training and background checks. Access to customer data is strictly limited and monitored.
                             </p>
                         </div>
 
-                        <div>
-                            <h2 className="text-2xl font-bold text-white mb-4">Report a Security Issue</h2>
-                            <p className="text-gray-300 leading-relaxed">
+                        <div className="group hover:translate-x-2 transition-transform duration-300">
+                            <h2 className="text-2xl font-bold text-white mb-4 group-hover:text-primary transition-colors">
+                                Report a Security Issue
+                            </h2>
+                            <p className="text-gray-300 leading-relaxed group-hover:text-gray-200 transition-colors">
                                 If you discover a security vulnerability, please report it to{' '}
-                                <a href="mailto:security@eduprime.com" className="text-primary hover:underline">
+                                <a href="mailto:security@eduprime.com" className="text-primary hover:underline hover:text-accent transition-colors">
                                     security@eduprime.com
                                 </a>
                                 {' '}immediately. We take all reports seriously and will respond within 24 hours.
