@@ -22,7 +22,6 @@ const AboutPage = () => {
     const heroRef = useRef(null);
     const storyRef = useRef(null);
     const valuesRef = useRef(null);
-    const teamRef = useRef(null);
 
     useEffect(() => {
         const timer = setTimeout(() => setLoading(false), 800);
@@ -50,14 +49,6 @@ const AboutPage = () => {
             {
                 y: 0, opacity: 1, scale: 1, duration: 0.8, stagger: 0.15, ease: 'back.out(1.2)',
                 scrollTrigger: { trigger: valuesRef.current, start: 'top 80%' }
-            }
-        );
-
-        gsap.fromTo(teamRef.current.children,
-            { y: 50, opacity: 0 },
-            {
-                y: 0, opacity: 1, duration: 0.8, stagger: 0.1, ease: 'power3.out',
-                scrollTrigger: { trigger: teamRef.current, start: 'top 80%' }
             }
         );
     }, [loading]);
