@@ -83,11 +83,11 @@ const StackedCards = () => {
                     <h2 className="text-2xl font-bold text-white mt-2">A Seamless Experience</h2>
                 </div>
 
-                <div className="relative w-full max-w-5xl h-[80vh] px-6">
+                <div className="relative w-full max-w-7xl h-[600px] px-6">
                     {cards.map((card, index) => (
                         <div 
                             key={index} 
-                            className={`stacked-card absolute top-0 left-0 w-full h-full rounded-[40px] p-8 md:p-16 flex flex-col justify-between overflow-hidden shadow-2xl border border-white/10 bg-gradient-to-br ${card.color}`}
+                            className={`stacked-card absolute top-0 left-0 w-full h-full rounded-[32px] p-8 md:p-12 flex flex-col justify-between overflow-hidden shadow-2xl border border-white/10 bg-gradient-to-br ${card.color}`}
                             style={{ zIndex: index + 1 }} // Ensure proper stacking order
                         >
                             {/* Decorative Background */}
