@@ -29,7 +29,7 @@ class UserCreate(UserBase):
     password: str
 
 class UserInDB(UserBase):
-    hashed_password: str
+    hashed_password: Optional[str] = None
     reg_no: Optional[str] = None
     verification_status: str = "active" # active, pending, rejected
     document_url: Optional[str] = None

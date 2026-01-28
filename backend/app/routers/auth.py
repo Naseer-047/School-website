@@ -47,7 +47,12 @@ async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends(
     
     access_token_expires = timedelta(minutes=settings.ACCESS_TOKEN_EXPIRE_MINUTES)
     access_token = create_access_token(
-        data={"sub": user["email"], "role": user["role"]}, expires_delta=access_token_expires
+        data={
+            "sub": user["email"], 
+            "role": user["role"],
+            "verification_status": user.get("verification_status", "active")
+        }, 
+        expires_delta=access_token_expires
     )
     return {"access_token": access_token, "token_type": "bearer"}
 
@@ -84,17 +89,18 @@ async def register_institute(
         with open(file_path, "wb") as buffer:
             shutil.copyfileobj(document.file, buffer)
             
-        # Generate Credentials
-        generated_password = generate_random_password()
+        # Generate identity IDs
         admin_id = generate_admin_id()
+        
+        # NEW: Generate 6-digit tracking PIN
+        tracking_pin = ''.join(random.choices(string.digits, k=6))
+        hashed_pin = get_password_hash(tracking_pin)
         
         # Unique School Code
         school_code = generate_school_code()
         while users_collection.find_one({"school_code": school_code}):
             school_code = generate_school_code()
                 
-        hashed_password = get_password_hash(generated_password)
-        
         user_dict = {
             "email": email,
             "full_name": full_name,
@@ -103,7 +109,7 @@ async def register_institute(
             "phone": phone,
             "school_code": school_code,
             "admin_id": admin_id,
-            "hashed_password": hashed_password,
+            "hashed_password": hashed_pin, # Tracking PIN acts as initial password
             "verification_status": "pending",
             "document_url": file_name, 
             "is_active": True,
@@ -113,11 +119,11 @@ async def register_institute(
         users_collection.insert_one(user_dict)
         
         return {
-            "message": "Institute registered successfully. Please save your credentials.",
+            "message": "Institute registered successfully. Use your tracking PIN to check status.",
             "credentials": {
                 "school_code": school_code,
                 "admin_id": admin_id,
-                "password": generated_password
+                "tracking_pin": tracking_pin # Return PIN for user to save
             }
         }
     except HTTPException as e:

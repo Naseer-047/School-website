@@ -67,12 +67,12 @@ const Register = () => {
                     </div>
                     <h1 className="text-3xl font-black text-white">Application Submitted!</h1>
                     <div className="bg-white/5 border border-white/10 rounded-2xl p-6 space-y-4 text-left">
-                        <p className="text-gray-400 text-sm mb-4">Your campus is being digitalized. Please **save these credentials** to access your dashboard once verified:</p>
+                        <p className="text-gray-400 text-sm mb-4">Your campus is being digitalized. Please **save these tracking keys**. Use the PIN to check your application status and set your master password after approval.</p>
                         
                         <div className="space-y-3">
                             <CredentialItem label="School Code" value={credentials?.school_code} />
                             <CredentialItem label="Admin ID" value={credentials?.admin_id} />
-                            <CredentialItem label="Generated Password" value={credentials?.password} />
+                            <CredentialItem label="6-Digit Tracking PIN" value={credentials?.tracking_pin} />
                         </div>
 
                         <div className="mt-6 p-3 bg-primary/10 border border-primary/20 rounded-xl">
