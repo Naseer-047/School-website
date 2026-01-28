@@ -219,4 +219,13 @@ const FormGroup = ({ label, icon, type, placeholder, value, onChange }) => (
     </div>
 );
 
+const CredentialItem = ({ label, value }) => (
+    <div className="p-4 bg-white/5 border border-white/10 rounded-xl space-y-1">
+        <p className="text-[10px] text-gray-500 uppercase tracking-widest font-bold">{label}</p>
+        <div className="flex items-center justify-between">
+            <p className="text-xl font-black text-white tracking-widest">{value}</p>
+        </div>
+    </div>
+);
+
 export default Register;

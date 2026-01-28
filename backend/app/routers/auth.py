@@ -1,13 +1,15 @@
+from datetime import timedelta, datetime
 from fastapi import APIRouter, Depends, HTTPException, status, File, UploadFile, Form
+from fastapi.security import OAuth2PasswordRequestForm
 from app.core.security import create_access_token, verify_password, get_password_hash
 from app.core.config import settings
 from app.models.user import Token, UserCreate, UserInDB
 from app.db.mongodb import db
+from pydantic import EmailStr
 import os
 import shutil
 import random
 import string
-from datetime import timedelta, datetime
 
 router = APIRouter()
 

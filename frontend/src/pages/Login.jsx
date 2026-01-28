@@ -74,16 +74,16 @@ const Login = () => {
                 {/* Login Form */}
                 <div className="bg-surface border border-white/10 rounded-2xl p-8 shadow-2xl">
                     <form onSubmit={handleLogin} className="space-y-6">
-                        {/* Email or USN */}
+                        {/* Email or USN or Admin ID */}
                         <div>
-                            <label className="block text-sm font-medium text-gray-300 mb-2">Email or USN</label>
+                            <label className="block text-sm font-medium text-gray-300 mb-2">Email, USN or Admin ID</label>
                             <div className="relative">
                                 <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500" />
                                 <input
                                     type="text"
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
-                                    placeholder="Email or USN (e.g. EP-2026-0001)"
+                                    placeholder="e.g. ADM-1234 or EP-2026-0001"
                                     className="w-full bg-white/5 border border-white/10 rounded-lg pl-11 pr-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-primary/50 transition-colors"
                                     required
                                 />
