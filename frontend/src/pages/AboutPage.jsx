@@ -91,7 +91,7 @@ const AboutPage = () => {
             <section className="pt-32 pb-20 px-6">
                 <div ref={heroRef} className="max-w-7xl mx-auto text-center animate-fade-in">
                     <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 leading-tight">
-                        About <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">EduPrime</span>
+                        About <span className="text-gradient">EduPrime</span>
                     </h1>
                     <p className="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
                         We're on a mission to revolutionize education management and empower schools to focus on what matters most - teaching and learning.

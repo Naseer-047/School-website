@@ -80,14 +80,7 @@ const BlogPage = () => {
     ];
 
     if (loading) {
-        return (
-            <div className="min-h-screen bg-background flex items-center justify-center">
-                <div className="text-center">
-                    <Loader2 className="w-12 h-12 text-primary animate-spin mx-auto mb-4" />
-                    <p className="text-gray-400">Loading blog...</p>
-                </div>
-            </div>
-        );
+        return <CreativeLoader text="Loading Blog" />;
     }
 
     return (
@@ -98,7 +91,7 @@ const BlogPage = () => {
             <section className="pt-32 pb-20 px-6">
                 <div ref={heroRef} className="max-w-7xl mx-auto text-center animate-fade-in">
                     <h1 className="text-5xl md:text-6xl font-black text-white mb-6 leading-tight">
-                        EduPrime <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Blog</span>
+                        EduPrime <span className="text-gradient">Blog</span>
                     </h1>
                     <p className="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
                         Insights, tips, and best practices for modern education management

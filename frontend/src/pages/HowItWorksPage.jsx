@@ -252,7 +252,7 @@ const HowItWorksPage = () => {
             <section className="pt-32 pb-20 px-6">
                 <div ref={heroRef} className="max-w-7xl mx-auto text-center animate-fade-in">
                     <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 leading-tight">
-                        How <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">EduPrime</span> Works
+                        How <span className="text-gradient">EduPrime</span> Works
                     </h1>
                     <p className="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
                         Get your school up and running in 4 simple steps. No technical knowledge required. 

@@ -75,10 +75,7 @@ const SecurityPage = () => {
                         <Shield className="w-8 h-8" />
                     </div>
                     <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 leading-tight">
-                        Security &{' '}
-                        <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                            Compliance
-                        </span>
+                        Security & <span className="text-gradient">Compliance</span>
                     </h1>
                     <p className="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
                         Your data security is our top priority. We implement industry-leading security measures to protect your school's information.

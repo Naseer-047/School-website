@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from '../components/landing/Navbar';
 import Footer from '../components/landing/Footer';
+import CreativeLoader from '../components/ui/CreativeLoader';
 import { Star, Quote } from 'lucide-react';
 
 const TestimonialsPage = () => {
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const timer = setTimeout(() => setLoading(false), 800);
+        return () => clearTimeout(timer);
+    }, []);
     const testimonials = [
         {
             name: "Dr. Rajesh Kumar",
@@ -68,6 +75,10 @@ const TestimonialsPage = () => {
         { number: "4.9/5", label: "Average Rating" }
     ];
 
+    if (loading) {
+        return <CreativeLoader text="Loading Success Stories" />;
+    }
+
     return (
         <div className="min-h-screen bg-background">
             <Navbar />
@@ -77,9 +88,7 @@ const TestimonialsPage = () => {
                 <div className="max-w-7xl mx-auto text-center">
                     <h1 className="text-5xl md:text-6xl font-black text-white mb-6 leading-tight">
                         Loved by Schools <br />
-                        <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                            Across India
-                        </span>
+                        <span className="text-gradient">Across India</span>
                     </h1>
                     <p className="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
                         Don't just take our word for it. Here's what school administrators, 
@@ -97,7 +106,7 @@ const TestimonialsPage = () => {
                                 key={index}
                                 className="text-center"
                             >
-                                <div className="text-4xl md:text-5xl font-black bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent mb-2">
+                                <div className="text-4xl md:text-5xl font-black text-gradient mb-2">
                                     {stat.number}
                                 </div>
                                 <div className="text-sm text-gray-400">{stat.label}</div>

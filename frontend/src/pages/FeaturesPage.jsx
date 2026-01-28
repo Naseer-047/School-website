@@ -189,9 +189,7 @@ const FeaturesPage = () => {
                 <div ref={heroRef} className="max-w-7xl mx-auto text-center animate-fade-in">
                     <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 leading-tight">
                         Powerful Features for <br />
-                        <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                            Modern Education
-                        </span>
+                        <span className="text-gradient">Modern Education</span>
                     </h1>
                     <p className="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
                         Everything you need to manage your school efficiently. From student admissions to fee collection, 

@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from '../components/landing/Navbar';
 import Footer from '../components/landing/Footer';
+import CreativeLoader from '../components/ui/CreativeLoader';
 import { Check, X, Zap } from 'lucide-react';
 
 const PricingPage = () => {
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const timer = setTimeout(() => setLoading(false), 800);
+        return () => clearTimeout(timer);
+    }, []);
     const plans = [
         {
             name: "Starter",
@@ -107,6 +114,10 @@ const PricingPage = () => {
         }
     ];
 
+    if (loading) {
+        return <CreativeLoader text="Loading Pricing" />;
+    }
+
     return (
         <div className="min-h-screen bg-background">
             <Navbar />
@@ -116,9 +127,7 @@ const PricingPage = () => {
                 <div className="max-w-7xl mx-auto text-center">
                     <h1 className="text-5xl md:text-6xl font-black text-white mb-6 leading-tight">
                         Simple, Transparent <br />
-                        <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                            Pricing
-                        </span>
+                        <span className="text-gradient">Pricing</span>
                     </h1>
                     <p className="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
                         Choose the perfect plan for your school. All plans include core features. 

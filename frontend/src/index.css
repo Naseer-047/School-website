@@ -25,10 +25,24 @@ body {
 }
 
 .text-gradient {
+    display: inline-block;
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
     background-image: linear-gradient(to right, #8b5cf6, #f472b6);
+    line-height: normal; /* Fix for overflow issues */
+}
+
+.text-gradient-robust {
+    display: inline-block;
+    isolation: isolate;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    background-image: linear-gradient(to right, #8b5cf6, #f472b6);
+    background-size: 100%;
+    background-repeat: repeat;
+    line-height: normal;
 }
 
 .perspective-1000 {
