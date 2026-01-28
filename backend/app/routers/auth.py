@@ -13,6 +13,10 @@ import string
 
 router = APIRouter()
 
+UPLOAD_DIR = "uploads"
+if not os.path.exists(UPLOAD_DIR):
+    os.makedirs(UPLOAD_DIR)
+
 def generate_school_code(length=6):
     return ''.join(random.choices(string.ascii_uppercase + string.digits, k=length))
 
