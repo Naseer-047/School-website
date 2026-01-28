@@ -65,6 +65,17 @@ const HorizontalScroll = () => {
                     anticipatePin: 1
                 }
             });
+
+             // Navbar Toggle Logic
+             ScrollTrigger.create({
+                trigger: trigger,
+                start: "top top",
+                end: () => "+=" + section.scrollWidth,
+                onEnter: () => gsap.to("#landing-navbar", { y: -100, opacity: 0, duration: 0.5 }),
+                onLeave: () => gsap.to("#landing-navbar", { y: 0, opacity: 1, duration: 0.5 }),
+                onEnterBack: () => gsap.to("#landing-navbar", { y: -100, opacity: 0, duration: 0.5 }),
+                onLeaveBack: () => gsap.to("#landing-navbar", { y: 0, opacity: 1, duration: 0.5 })
+            });
         }, triggerRef);
 
         return () => ctx.revert();

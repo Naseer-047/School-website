@@ -65,6 +65,17 @@ const StackedCards = () => {
                     });
                 }
             });
+
+             // Navbar Toggle Logic
+             ScrollTrigger.create({
+                trigger: containerRef.current,
+                start: "top top",
+                end: `+=${cards.length * 100}%`,
+                onEnter: () => gsap.to("#landing-navbar", { y: -100, opacity: 0, duration: 0.5 }),
+                onLeave: () => gsap.to("#landing-navbar", { y: 0, opacity: 1, duration: 0.5 }),
+                onEnterBack: () => gsap.to("#landing-navbar", { y: -100, opacity: 0, duration: 0.5 }),
+                onLeaveBack: () => gsap.to("#landing-navbar", { y: 0, opacity: 1, duration: 0.5 })
+            });
         });
 
         return () => mm.revert();
