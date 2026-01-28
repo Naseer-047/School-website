@@ -17,22 +17,40 @@ const Login = () => {
         setError('');
 
         try {
-            // Mock authentication
-            if (email.includes('admin')) {
-                localStorage.setItem('userRole', 'admin');
-                navigate('/admin');
-            } else if (email.includes('student')) {
-                localStorage.setItem('userRole', 'student');
-                localStorage.setItem('userName', 'Aryan Sharma');
-                navigate('/student');
-            } else if (email.includes('teacher')) {
-                localStorage.setItem('userRole', 'teacher');
-                navigate('/teacher');
-            } else {
-                setError('Invalid credentials. Try: admin@school.in, student@school.in, or teacher@school.in');
+            const formData = new URLSearchParams();
+            formData.append('username', email);
+            formData.append('password', password);
+
+            const response = await fetch('/api/auth/token', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: formData
+            });
+
+            if (!response.ok) {
+                const data = await response.json();
+                throw new Error(data.detail || 'Login failed');
             }
+
+            const data = await response.json();
+            localStorage.setItem('token', data.access_token);
+            
+            // Deciding role from token/session or separate call
+            // For now, we'll decode the JWT or use a dummy check if not available
+            // In a real app, you'd fetch user profile here
+            const base64Url = data.access_token.split('.')[1];
+            const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+            const payload = JSON.parse(window.atob(base64));
+            
+            localStorage.setItem('userRole', payload.role);
+            localStorage.setItem('userEmail', payload.sub);
+            
+            if (payload.role === 'admin') navigate('/admin');
+            else if (payload.role === 'student') navigate('/student');
+            else if (payload.role === 'teacher') navigate('/teacher');
+            
         } catch (err) {
-            setError('Login failed. Please check your credentials.');
+            setError(err.message || 'Login failed. Please check your credentials.');
         } finally {
             setLoading(false);
         }
@@ -102,14 +120,6 @@ const Login = () => {
                             </div>
                         )}
 
-                        {/* Demo Credentials */}
-                        <div className="bg-blue-500/10 border border-blue-500/20 rounded-lg p-3 text-blue-400 text-xs text-left">
-                            <p className="font-semibold mb-1 uppercase tracking-widest text-[10px]">Demo Credentials:</p>
-                            <p>Admin: admin@school.in</p>
-                            <p>Student: EP-2026-0001 (or student@school.in)</p>
-                            <p>Teacher: teacher@school.in</p>
-                            <p className="mt-1 text-gray-500 italic">Password: any</p>
-                        </div>
 
                         {/* Submit Button */}
                         <MagneticButton
