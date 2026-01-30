@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from app.core.config import settings
 from app.db.mongodb import db
-from app.routers import auth, students, teachers, super_admin
+from app.routers import auth, students, teachers, super_admin, dashboard
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 import os
@@ -26,6 +26,7 @@ app.include_router(auth.router, prefix="/api/auth", tags=["auth"])
 app.include_router(students.router, prefix="/api/students", tags=["students"])
 app.include_router(teachers.router, prefix="/api/teachers", tags=["teachers"])
 app.include_router(super_admin.router, prefix="/api/super-admin", tags=["super_admin"])
+app.include_router(dashboard.router, prefix="/api/dashboard", tags=["dashboard"])
 
 @app.get("/")
 def read_root():

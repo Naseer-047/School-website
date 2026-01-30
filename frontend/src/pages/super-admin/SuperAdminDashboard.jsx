@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { CheckCircle2, XCircle, FileText, Eye, ShieldAlert, BadgeCheck } from 'lucide-react';
 import MagneticButton from '../../components/ui/MagneticButton';
+import API_BASE_URL from '../../config';
 
 const SuperAdminDashboard = () => {
     const [pendingInstitutes, setPendingInstitutes] = useState([]);
@@ -14,7 +15,7 @@ const SuperAdminDashboard = () => {
     const fetchPending = async () => {
         try {
             const token = localStorage.getItem('token');
-            const response = await fetch('/api/super-admin/pending-institutes', {
+            const response = await fetch(`${API_BASE_URL}/super-admin/pending-institutes`, {
                 headers: { 'Authorization': `Bearer ${token}` }
             });
             const data = await response.json();
@@ -30,8 +31,8 @@ const SuperAdminDashboard = () => {
         try {
             const token = localStorage.getItem('token');
             const endpoint = action === 'approve' 
-                ? `/api/super-admin/approve-institute/${adminId}`
-                : `/api/super-admin/reject-institute/${adminId}`;
+                ? `${API_BASE_URL}/super-admin/approve-institute/${adminId}`
+                : `${API_BASE_URL}/super-admin/reject-institute/${adminId}`;
                 
             const response = await fetch(endpoint, {
                 method: 'POST',
@@ -130,12 +131,12 @@ const SuperAdminDashboard = () => {
                              */}
                              {selectedDoc.document_url.endsWith('.pdf') ? (
                                 <iframe 
-                                    src={`http://localhost:8000/uploads/${selectedDoc.document_url}`} 
+                                    src={`${API_BASE_URL.replace('/api', '')}/uploads/${selectedDoc.document_url}`} 
                                     className="w-full h-full min-h-[500px]"
                                 />
                              ) : (
                                 <img 
-                                    src={`http://localhost:8000/uploads/${selectedDoc.document_url}`} 
+                                    src={`${API_BASE_URL.replace('/api', '')}/uploads/${selectedDoc.document_url}`} 
                                     alt="Proof" 
                                     className="max-w-full max-h-full rounded-lg"
                                 />

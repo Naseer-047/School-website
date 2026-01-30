@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { GraduationCap, Mail, Lock, User, Building2, Phone, ChevronRight, CheckCircle2 } from 'lucide-react';
 import MagneticButton from '../components/ui/MagneticButton';
+import API_BASE_URL from '../config';
 
 const Register = () => {
     const [formData, setFormData] = useState({
@@ -35,7 +36,7 @@ const Register = () => {
             data.append('phone', formData.phone);
             data.append('document', document);
 
-            const response = await fetch('/api/auth/register-institute', {
+            const response = await fetch(`${API_BASE_URL}/auth/register-institute`, {
                 method: 'POST',
                 body: data
             });
