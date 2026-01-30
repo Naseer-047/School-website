@@ -18,7 +18,6 @@ services:
   - type: web
     name: school-frontend
     runtime: static
-    region: singapore
     plan: free
     buildCommand: npm install && npm run build
     staticPublishPath: ./dist
