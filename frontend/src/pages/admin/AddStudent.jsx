@@ -56,7 +56,13 @@ const AddStudent = () => {
             await api.post('/students/', payload);
             navigate('/admin/students');
         } catch (err) {
-            setError(err.response?.data?.detail || 'Failed to create student profile');
+            console.error("Submission Error:", err);
+            const detail = err.response?.data?.detail;
+            const errorMessage = Array.isArray(detail) 
+                ? detail.map(d => `${d.loc.slice(-1)}: ${d.msg}`).join(', ')
+                : (detail || 'Failed to create student profile');
+            
+            setError(typeof errorMessage === 'string' ? errorMessage : JSON.stringify(errorMessage));
             window.scrollTo(0, 0);
         } finally {
             setLoading(false);
