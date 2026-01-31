@@ -25,7 +25,21 @@ const StudentProfile = () => {
     }, []);
 
     if (loading) return <div className="text-white p-8">Loading profile...</div>;
-    if (!profile) return <div className="text-white p-8">Profile not found.</div>;
+    if (!profile) return (
+        <div className="p-8 text-center">
+            <h3 className="text-xl font-bold text-white mb-2">Profile Not Found</h3>
+            <p className="text-gray-400 mb-4">We couldn't load your profile details. This usually happens if your session is outdated.</p>
+            <button 
+                onClick={() => {
+                    localStorage.clear();
+                    window.location.href = '/login';
+                }}
+                className="px-6 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors"
+            >
+                Logout & Refresh Session
+            </button>
+        </div>
+    );
 
     // Helper to format date safely
     const formatDate = (dateString) => {

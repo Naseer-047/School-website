@@ -4,7 +4,7 @@ import { Home, BookOpen, DollarSign, Calendar, Award, Bell, LogOut, User } from 
 
 const StudentLayout = () => {
     const navigate = useNavigate();
-    const userName = localStorage.getItem('userName') || 'Student';
+    const userName = localStorage.getItem('userFullName') || 'Student';
 
     const handleLogout = () => {
         localStorage.clear();
@@ -34,7 +34,7 @@ const StudentLayout = () => {
                     <div className="flex items-center gap-3">
                         <div className="text-right hidden md:block">
                             <p className="text-sm font-medium text-white">{userName}</p>
-                            <p className="text-xs text-gray-500">Student</p>
+                            <p className="text-xs text-gray-500">{localStorage.getItem('userRegNo') || localStorage.getItem('userEmail') || 'Student'}</p>
                         </div>
                         <div className="w-10 h-10 rounded-full bg-gradient-to-r from-blue-500 to-cyan-500 flex items-center justify-center text-white font-bold border border-white/10">
                             {userName.charAt(0)}
