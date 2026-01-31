@@ -43,7 +43,7 @@ const AddStudentModal = ({ isOpen, onClose, onSuccess }) => {
 
     return (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
-            <div className="bg-surface border border-white/10 rounded-2xl w-full max-w-md overflow-hidden shadow-2xl animate-in fade-in zoom-in duration-200">
+            <div className="bg-surface border border-white/10 rounded-2xl w-full max-w-md flex flex-col max-h-[90vh] shadow-2xl animate-in fade-in zoom-in duration-200">
                 <div className="p-4 border-b border-white/5 flex justify-between items-center bg-white/5">
                     <h3 className="font-bold text-white flex items-center gap-2">
                         <GraduationCap className="text-primary" size={20} />
@@ -54,7 +54,7 @@ const AddStudentModal = ({ isOpen, onClose, onSuccess }) => {
                     </button>
                 </div>
                 
-                <form onSubmit={handleSubmit} className="p-6 space-y-4">
+                <form onSubmit={handleSubmit} className="p-6 space-y-4 overflow-y-auto">
                     {error && (
                         <div className="bg-red-500/10 border border-red-500/20 text-red-400 text-xs p-3 rounded-lg">
                             {error}
