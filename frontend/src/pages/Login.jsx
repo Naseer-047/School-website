@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { GraduationCap, Mail, Lock, Eye, EyeOff } from 'lucide-react';
 import MagneticButton from '../components/ui/MagneticButton';
+import API_BASE_URL from '../config';
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -21,7 +22,7 @@ const Login = () => {
             formData.append('username', email);
             formData.append('password', password);
 
-            const response = await fetch('/api/auth/token', {
+            const response = await fetch(`${API_BASE_URL}/auth/token`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                 body: formData
