@@ -1,6 +1,7 @@
 import React from 'react';
 import { BookOpen, Calendar, DollarSign, Award, TrendingUp, Clock, CheckCircle, AlertCircle } from 'lucide-react';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, RadialBarChart, RadialBar, Legend } from 'recharts';
+import api from '../../api/axios';
 
 const performanceData = [
     { month: 'Jan', score: 75 },
@@ -29,11 +30,31 @@ const StudentDashboard = () => {
     });
 
     React.useEffect(() => {
-        // In the future, fetch full profile here
-        const regNo = localStorage.getItem('userRegNo');
-        if (regNo) {
-             setStudentData(prev => ({ ...prev, rollNumber: regNo }));
-        }
+        const fetchProfile = async () => {
+            try {
+                const userId = localStorage.getItem('userId');
+                if (!userId) return;
+
+                const response = await api.get(`/students/${userId}`);
+                const data = response.data;
+                
+                setStudentData(prev => ({
+                    ...prev,
+                    name: data.full_name || prev.name,
+                    grade: data.grade || prev.grade,
+                    section: data.section || prev.section,
+                    rollNumber: data.reg_no || prev.rollNumber,
+                    // Keep mock data for stats not yet in DB
+                    currentGPA: prev.currentGPA,
+                    attendance: prev.attendance, 
+                    pendingFees: prev.pendingFees,
+                    upcomingExams: prev.upcomingExams
+                }));
+            } catch (error) {
+                console.error("Failed to load profile:", error);
+            }
+        };
+        fetchProfile();
     }, []);
 
     const recentGrades = [
