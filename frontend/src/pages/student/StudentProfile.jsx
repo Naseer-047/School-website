@@ -1,48 +1,36 @@
 import React, { useState } from 'react';
 import { User, Mail, Phone, MapPin, Calendar, Award, BookOpen, Users, Edit2, Camera, Save } from 'lucide-react';
 
+import api from '../../api/axios';
+
 const StudentProfile = () => {
     const [isEditing, setIsEditing] = useState(false);
+    const [loading, setLoading] = useState(true);
+    const [profile, setProfile] = useState(null);
 
-    const studentProfile = {
-        // Personal Information
-        photo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=400",
-        fullName: "Aryan Sharma",
-        dateOfBirth: "April 15, 2008",
-        age: "16 years",
-        gender: "Male",
-        bloodGroup: "B+",
-        nationality: "Indian",
-        religion: "Hinduism",
-        
-        // Contact Information
-        email: "aryan.sharma@eduprime.in",
-        phone: "+91 98765 43210",
-        address: "E-102, Shanti Kunj, Near Metro Station",
-        city: "New Delhi",
-        state: "Delhi",
-        zipCode: "110011",
-        
-        // Academic Information
-        studentId: "DEL-2024-045",
-        grade: "Class 10",
-        section: "B",
-        rollNumber: "45",
-        admissionDate: "July 5, 2021",
-        currentGPA: "8.8",
-        
-        // Parent/Guardian Information
-        fatherName: "Mr. Rajesh Sharma",
-        fatherOccupation: "Executive Director",
-        fatherPhone: "+91 99887 76655",
-        motherName: "Mrs. Meena Sharma",
-        motherOccupation: "Interior Designer",
-        motherPhone: "+91 99887 76644",
-        guardianEmail: "rajesh.sharma@email.com",
-        
-        // Emergency Contact
-        emergencyContact: "Mr. Vikram Sharma (Elder Brother)",
-        emergencyPhone: "+91 98888 77777",
+    React.useEffect(() => {
+        const fetchProfile = async () => {
+            try {
+                const userId = localStorage.getItem('userId');
+                if (!userId) return;
+                const response = await api.get(`/students/${userId}`);
+                setProfile(response.data);
+            } catch (error) {
+                console.error("Failed to load profile:", error);
+            } finally {
+                setLoading(false);
+            }
+        };
+        fetchProfile();
+    }, []);
+
+    if (loading) return <div className="text-white p-8">Loading profile...</div>;
+    if (!profile) return <div className="text-white p-8">Profile not found.</div>;
+
+    // Helper to format date safely
+    const formatDate = (dateString) => {
+        if (!dateString) return 'N/A';
+        return new Date(dateString).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
     };
 
     return (
@@ -53,22 +41,7 @@ const StudentProfile = () => {
                     <h1 className="text-3xl font-bold text-white mb-2">My Profile</h1>
                     <p className="text-gray-400">View and manage your personal information</p>
                 </div>
-                <button 
-                    onClick={() => setIsEditing(!isEditing)}
-                    className="flex items-center gap-2 px-4 py-2 bg-primary hover:bg-primary-dark text-white rounded-lg transition-colors"
-                >
-                    {isEditing ? (
-                        <>
-                            <Save size={18} />
-                            <span>Save Changes</span>
-                        </>
-                    ) : (
-                        <>
-                            <Edit2 size={18} />
-                            <span>Edit Profile</span>
-                        </>
-                    )}
-                </button>
+                {/* Editing disabled for now as logic differs for students */}
             </div>
 
             {/* Profile Card */}
@@ -81,34 +54,23 @@ const StudentProfile = () => {
                     <div className="flex flex-col md:flex-row gap-6 -mt-16 relative">
                         {/* Profile Photo */}
                         <div className="relative">
-                            <img 
-                                src={studentProfile.photo} 
-                                alt={studentProfile.fullName}
-                                className="w-32 h-32 rounded-2xl border-4 border-surface object-cover shadow-xl"
-                            />
-                            {isEditing && (
-                                <button className="absolute bottom-0 right-0 p-2 bg-primary rounded-lg text-white hover:bg-primary-dark transition-colors">
-                                    <Camera size={16} />
-                                </button>
-                            )}
+                            <div className="w-32 h-32 rounded-2xl border-4 border-surface bg-gray-800 flex items-center justify-center text-4xl font-bold text-white shadow-xl">
+                                {profile.full_name?.charAt(0)}
+                            </div>
                         </div>
 
                         {/* Basic Info */}
                         <div className="flex-1 mt-4">
-                            <h2 className="text-2xl font-bold text-white mb-1">{studentProfile.fullName}</h2>
-                            <p className="text-gray-400 mb-3">{studentProfile.grade} - Section {studentProfile.section}</p>
+                            <h2 className="text-2xl font-bold text-white mb-1">{profile.full_name}</h2>
+                            <p className="text-gray-400 mb-3">{profile.grade || 'Grade N/A'} - Section {profile.section || 'N/A'}</p>
                             <div className="flex flex-wrap gap-4 text-sm">
                                 <div className="flex items-center gap-2 text-gray-400">
                                     <Award className="w-4 h-4 text-primary" />
-                                    <span>Student ID: {studentProfile.studentId}</span>
-                                </div>
-                                <div className="flex items-center gap-2 text-gray-400">
-                                    <BookOpen className="w-4 h-4 text-primary" />
-                                    <span>GPA: {studentProfile.currentGPA}</span>
+                                    <span>Student ID: {profile.reg_no || 'N/A'}</span>
                                 </div>
                                 <div className="flex items-center gap-2 text-gray-400">
                                     <Calendar className="w-4 h-4 text-primary" />
-                                    <span>Joined: {studentProfile.admissionDate}</span>
+                                    <span>Joined: {formatDate(profile.admission_date)}</span>
                                 </div>
                             </div>
                         </div>
@@ -128,13 +90,11 @@ const StudentProfile = () => {
                         <h3 className="font-bold text-lg text-white">Personal Information</h3>
                     </div>
                     <div className="space-y-4">
-                        <InfoRow label="Full Name" value={studentProfile.fullName} />
-                        <InfoRow label="Date of Birth" value={studentProfile.dateOfBirth} />
-                        <InfoRow label="Age" value={studentProfile.age} />
-                        <InfoRow label="Gender" value={studentProfile.gender} />
-                        <InfoRow label="Blood Group" value={studentProfile.bloodGroup} />
-                        <InfoRow label="Nationality" value={studentProfile.nationality} />
-                        <InfoRow label="Religion" value={studentProfile.religion} />
+                        <InfoRow label="Full Name" value={profile.full_name} />
+                        <InfoRow label="Date of Birth" value={formatDate(profile.dob)} />
+                        <InfoRow label="Gender" value={profile.gender || 'N/A'} />
+                        <InfoRow label="Blood Group" value={profile.blood_group || 'N/A'} />
+                        {/* Nationality/Religion not yet in DB schema */}
                     </div>
                 </div>
 
@@ -147,12 +107,11 @@ const StudentProfile = () => {
                         <h3 className="font-bold text-lg text-white">Contact Information</h3>
                     </div>
                     <div className="space-y-4">
-                        <InfoRow label="Email" value={studentProfile.email} icon={<Mail className="w-4 h-4" />} />
-                        <InfoRow label="Phone" value={studentProfile.phone} icon={<Phone className="w-4 h-4" />} />
-                        <InfoRow label="Address" value={studentProfile.address} icon={<MapPin className="w-4 h-4" />} />
-                        <InfoRow label="City" value={studentProfile.city} />
-                        <InfoRow label="State" value={studentProfile.state} />
-                        <InfoRow label="ZIP Code" value={studentProfile.zipCode} />
+                        <InfoRow label="Email" value={profile.email} icon={<Mail className="w-4 h-4" />} />
+                        <InfoRow label="Address" value={profile.address || 'N/A'} icon={<MapPin className="w-4 h-4" />} />
+                        <InfoRow label="City" value={profile.city || 'N/A'} />
+                        <InfoRow label="State" value={profile.state || 'N/A'} />
+                        <InfoRow label="ZIP Code" value={profile.zip_code || 'N/A'} />
                     </div>
                 </div>
 
@@ -165,12 +124,11 @@ const StudentProfile = () => {
                         <h3 className="font-bold text-lg text-white">Academic Information</h3>
                     </div>
                     <div className="space-y-4">
-                        <InfoRow label="Student ID" value={studentProfile.studentId} />
-                        <InfoRow label="Grade" value={studentProfile.grade} />
-                        <InfoRow label="Section" value={studentProfile.section} />
-                        <InfoRow label="Roll Number" value={studentProfile.rollNumber} />
-                        <InfoRow label="Admission Date" value={studentProfile.admissionDate} />
-                        <InfoRow label="Current GPA" value={studentProfile.currentGPA} />
+                        <InfoRow label="Student ID (USN)" value={profile.reg_no || 'N/A'} />
+                        <InfoRow label="Grade" value={profile.grade} />
+                        <InfoRow label="Section" value={profile.section || 'N/A'} />
+                        <InfoRow label="Admission Date" value={formatDate(profile.admission_date)} />
+                        <InfoRow label="School Code" value={profile.school_code} />
                     </div>
                 </div>
 
@@ -183,33 +141,9 @@ const StudentProfile = () => {
                         <h3 className="font-bold text-lg text-white">Parent/Guardian Information</h3>
                     </div>
                     <div className="space-y-4">
-                        <div className="pb-4 border-b border-white/5">
-                            <p className="text-xs text-gray-500 mb-2">Father's Details</p>
-                            <InfoRow label="Name" value={studentProfile.fatherName} />
-                            <InfoRow label="Occupation" value={studentProfile.fatherOccupation} />
-                            <InfoRow label="Phone" value={studentProfile.fatherPhone} />
-                        </div>
-                        <div className="pb-4 border-b border-white/5">
-                            <p className="text-xs text-gray-500 mb-2">Mother's Details</p>
-                            <InfoRow label="Name" value={studentProfile.motherName} />
-                            <InfoRow label="Occupation" value={studentProfile.motherOccupation} />
-                            <InfoRow label="Phone" value={studentProfile.motherPhone} />
-                        </div>
-                        <InfoRow label="Guardian Email" value={studentProfile.guardianEmail} />
-                    </div>
-                </div>
-
-                {/* Emergency Contact */}
-                <div className="bg-surface border border-white/5 rounded-xl p-6 lg:col-span-2">
-                    <div className="flex items-center gap-3 mb-6">
-                        <div className="p-2 bg-red-500/10 rounded-lg">
-                            <Phone className="w-5 h-5 text-red-500" />
-                        </div>
-                        <h3 className="font-bold text-lg text-white">Emergency Contact</h3>
-                    </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <InfoRow label="Contact Person" value={studentProfile.emergencyContact} />
-                        <InfoRow label="Emergency Phone" value={studentProfile.emergencyPhone} />
+                        <InfoRow label="Guardian Name" value={profile.parent_name || 'N/A'} />
+                        <InfoRow label="Guardian Email" value={profile.parent_email || 'N/A'} />
+                        <InfoRow label="Guardian Phone" value={profile.parent_phone || 'N/A'} />
                     </div>
                 </div>
 
