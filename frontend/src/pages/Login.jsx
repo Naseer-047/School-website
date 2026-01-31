@@ -46,6 +46,8 @@ const Login = () => {
             localStorage.setItem('userRole', payload.role);
             localStorage.setItem('userEmail', payload.sub);
             localStorage.setItem('userFullName', payload.full_name);
+            localStorage.setItem('userRegNo', payload.reg_no || '');
+            localStorage.setItem('userId', payload.id || '');
             localStorage.setItem('verificationStatus', payload.verification_status);
             
             if (payload.role === 'admin') navigate('/admin');

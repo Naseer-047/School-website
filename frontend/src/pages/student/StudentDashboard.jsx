@@ -17,16 +17,24 @@ const attendanceData = [
 ];
 
 const StudentDashboard = () => {
-    const studentData = {
-        name: "Aryan Sharma",
-        grade: "Class 10",
-        section: "B",
-        rollNumber: "DEL-2024-045",
+    const [studentData, setStudentData] = React.useState({
+        name: localStorage.getItem('userFullName') || "Student",
+        grade: "Class 10", // Placeholder
+        section: "A",
+        rollNumber: localStorage.getItem('userRegNo') || "Loading...",
         currentGPA: "8.8",
         attendance: "94%",
         pendingFees: "₹12,450",
         upcomingExams: 2,
-    };
+    });
+
+    React.useEffect(() => {
+        // In the future, fetch full profile here
+        const regNo = localStorage.getItem('userRegNo');
+        if (regNo) {
+             setStudentData(prev => ({ ...prev, rollNumber: regNo }));
+        }
+    }, []);
 
     const recentGrades = [
         { subject: "Mathematics", grade: "A", score: "92/100", color: "text-green-500" },
