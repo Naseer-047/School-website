@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Plus, Search, Filter, MoreHorizontal, Mail, Phone } from 'lucide-react';
+import { Plus, Search, Filter, MoreHorizontal, Mail, Phone, Edit2, Trash2 } from 'lucide-react';
 import api from '../../api/axios';
 
 const Students = () => {
@@ -17,6 +17,19 @@ const Students = () => {
             console.error("Failed to fetch students:", error);
         } finally {
             setLoading(false);
+        }
+    };
+
+    const handleDelete = async (id) => {
+        if (window.confirm('Are you sure you want to delete this student profile? This action cannot be undone.')) {
+            try {
+                await api.delete(`/students/${id}`);
+                // Optimistic update or refetch
+                setStudents(students.filter(student => student.id !== id));
+            } catch (error) {
+                console.error("Failed to delete student:", error);
+                alert("Failed to delete student. Please try again.");
+            }
         }
     };
 
@@ -96,6 +109,7 @@ const Students = () => {
                                                 <div>
                                                     <p className="font-medium text-white">{student.full_name}</p>
                                                     <p className="text-xs text-gray-500">{student.email}</p>
+                                                    {student.reg_no && <p className="text-[10px] text-primary">{student.reg_no}</p>}
                                                 </div>
                                             </div>
                                         </td>
@@ -120,9 +134,22 @@ const Students = () => {
                                             {student.parent_email || 'N/A'}
                                         </td>
                                         <td className="p-4 text-right">
-                                            <button className="p-2 hover:bg-white/10 rounded-lg text-gray-400 hover:text-white transition-colors">
-                                                <MoreHorizontal size={18} />
-                                            </button>
+                                            <div className="flex items-center justify-end gap-2">
+                                                <button 
+                                                    onClick={() => navigate(`/admin/edit-student/${student.id}`)}
+                                                    className="p-2 hover:bg-white/10 rounded-lg text-gray-400 hover:text-white transition-colors"
+                                                    title="Edit Student"
+                                                >
+                                                    <Edit2 size={18} />
+                                                </button>
+                                                <button 
+                                                    onClick={() => handleDelete(student.id)}
+                                                    className="p-2 hover:bg-red-500/10 rounded-lg text-gray-400 hover:text-red-400 transition-colors"
+                                                    title="Delete Student"
+                                                >
+                                                    <Trash2 size={18} />
+                                                </button>
+                                            </div>
                                         </td>
                                     </tr>
                                 ))

@@ -15,6 +15,7 @@ import DashboardLayout from './components/dashboard/DashboardLayout';
 import AdminDashboard from './pages/admin/AdminDashboard';
 import Students from './pages/admin/Students';
 import AddStudent from './pages/admin/AddStudent';
+import EditStudent from './pages/admin/EditStudent';
 import Teachers from './pages/admin/Teachers';
 import Academics from './pages/admin/Academics';
 import AdminFees from './pages/admin/Fees';
@@ -55,6 +56,7 @@ function App() {
               <Route index element={<AdminDashboard />} />
               <Route path="students" element={<Students />} />
               <Route path="add-student" element={<AddStudent />} />
+              <Route path="edit-student/:id" element={<EditStudent />} />
               <Route path="teachers" element={<Teachers />} />
               <Route path="academics" element={<Academics />} />
               <Route path="fees" element={<AdminFees />} />
