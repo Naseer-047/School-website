@@ -256,7 +256,7 @@ const AddStudent = () => {
                     <MagneticButton 
                         type="submit"
                         disabled={loading}
-                        className="px-8 py-3 bg-primary text-black font-bold rounded-xl hover:bg-primary/90 transition-colors shadow-lg shadow-primary/20"
+                        className="px-8 py-3 bg-primary text-white font-bold rounded-xl hover:bg-primary/90 transition-colors shadow-lg shadow-primary/20"
                     >
                         {loading ? 'Registering Student...' : 'Complete Admission'}
                     </MagneticButton>

@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
 
-const MagneticButton = ({ children, className = "", onClick }) => {
+const MagneticButton = ({ children, className = "", ...props }) => {
     const buttonRef = useRef(null);
     const textRef = useRef(null);
 
@@ -50,8 +50,8 @@ const MagneticButton = ({ children, className = "", onClick }) => {
     return (
         <button 
             ref={buttonRef} 
-            className={`relative group overflow-hidden transition-all duration-300 ${className}`}
-            onClick={onClick}
+            className={`relative group overflow-hidden transition-all duration-300 ${className} disabled:opacity-50 disabled:cursor-not-allowed`}
+            {...props}
         >
             <div ref={textRef} className="relative z-10 w-full h-full flex items-center justify-center gap-2">
                 {children}
