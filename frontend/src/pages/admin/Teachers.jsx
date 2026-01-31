@@ -1,23 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import { Plus, Search, Filter, MoreHorizontal, Mail, BookOpen } from 'lucide-react';
 import api from '../../api/axios';
+import AddTeacherModal from '../../components/modals/AddTeacherModal';
 
 const Teachers = () => {
     const [teachers, setTeachers] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+
+    const fetchTeachers = async () => {
+        try {
+            setLoading(true);
+            const response = await api.get('/teachers/');
+            setTeachers(response.data);
+        } catch (error) {
+            console.error("Failed to fetch teachers:", error);
+        } finally {
+            setLoading(false);
+        }
+    };
 
     useEffect(() => {
-        // Mock data for demonstration
-        setTimeout(() => {
-            setTeachers([
-                { id: 1, name: "Mr. Rajesh Khanna", subjects: ["Mathematics", "Physics"], email: "rajesh.khanna@school.in", phone: "+91 98765 43210", experience: "18 years" },
-                { id: 2, name: "Ms. Anjali Verma", subjects: ["Physics", "Chemistry"], email: "anjali.v@school.in", phone: "+91 91234 56789", experience: "10 years" },
-                { id: 3, name: "Dr. Vikram Seth", subjects: ["Chemistry", "Biology"], email: "vikram.s@school.in", phone: "+91 99887 76655", experience: "15 years" },
-                { id: 4, name: "Mrs. Kavita Iyer", subjects: ["English", "History"], email: "kavita.i@school.in", phone: "+91 98888 77777", experience: "12 years" },
-                { id: 5, name: "Mr. Amit Shah", subjects: ["Computer Science"], email: "amit.s@school.in", phone: "+91 97777 66666", experience: "8 years" },
-            ]);
-            setLoading(false);
-        }, 1000);
+        fetchTeachers();
     }, []);
 
     return (
@@ -28,11 +32,20 @@ const Teachers = () => {
                     <h1 className="text-3xl font-bold text-white mb-2">Teachers</h1>
                     <p className="text-gray-400">Manage teacher profiles, assignments, and schedules.</p>
                 </div>
-                <button className="flex items-center gap-2 bg-primary hover:bg-primary-dark text-white px-4 py-2 rounded-lg transition-colors shadow-lg shadow-primary/20">
+                <button 
+                    onClick={() => setIsAddModalOpen(true)}
+                    className="flex items-center gap-2 bg-primary hover:bg-primary-dark text-white px-4 py-2 rounded-lg transition-colors shadow-lg shadow-primary/20"
+                >
                     <Plus size={20} />
                     <span className="font-medium">Add Teacher</span>
                 </button>
             </div>
+
+            <AddTeacherModal 
+                isOpen={isAddModalOpen} 
+                onClose={() => setIsAddModalOpen(false)} 
+                onSuccess={fetchTeachers}
+            />
 
             {/* Filters & Search */}
             <div className="bg-surface border border-white/5 p-4 rounded-xl mb-6 flex flex-col md:flex-row gap-4 items-center justify-between">
@@ -72,23 +85,27 @@ const Teachers = () => {
                                 <tr>
                                     <td colSpan="5" className="p-8 text-center text-gray-500">Loading teachers...</td>
                                 </tr>
+                            ) : teachers.length === 0 ? (
+                                <tr>
+                                    <td colSpan="5" className="p-8 text-center text-gray-500">No teachers found. Click "Add Teacher" to create one.</td>
+                                </tr>
                             ) : (
                                 teachers.map((teacher) => (
                                     <tr key={teacher.id} className="hover:bg-white/5 transition-colors group">
                                         <td className="p-4">
                                             <div className="flex items-center gap-3">
                                                 <div className="w-10 h-10 rounded-full bg-gradient-to-br from-purple-600 to-purple-800 flex items-center justify-center text-sm font-medium text-white border border-white/10">
-                                                    {teacher.name.charAt(0)}
+                                                    {teacher.full_name?.charAt(0) || '?'}
                                                 </div>
                                                 <div>
-                                                    <p className="font-medium text-white">{teacher.name}</p>
+                                                    <p className="font-medium text-white">{teacher.full_name}</p>
                                                     <p className="text-xs text-gray-500">{teacher.email}</p>
                                                 </div>
                                             </div>
                                         </td>
                                         <td className="p-4">
                                             <div className="flex flex-wrap gap-1">
-                                                {teacher.subjects.map((subject, idx) => (
+                                                {(teacher.subjects || []).map((subject, idx) => (
                                                     <span key={idx} className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-accent/10 text-accent border border-accent/20">
                                                         {subject}
                                                     </span>
@@ -103,7 +120,7 @@ const Teachers = () => {
                                             </div>
                                         </td>
                                         <td className="p-4 text-sm text-gray-300">
-                                            {teacher.experience}
+                                            {teacher.experience || 'N/A'}
                                         </td>
                                         <td className="p-4 text-right">
                                             <button className="p-2 hover:bg-white/10 rounded-lg text-gray-400 hover:text-white transition-colors">
@@ -118,7 +135,7 @@ const Teachers = () => {
                 </div>
                  {/* Pagination */}
                  <div className="p-4 border-t border-white/5 flex items-center justify-between text-sm text-gray-500">
-                    <span>Showing 1 to 5 of 5 entries</span>
+                    <span>Showing {teachers.length} entries</span>
                     <div className="flex gap-2">
                         <button className="px-3 py-1 rounded bg-white/5 border border-white/5 hover:bg-white/10 disabled:opacity-50" disabled>Previous</button>
                         <button className="px-3 py-1 rounded bg-white/5 border border-white/5 hover:bg-white/10">Next</button>
