@@ -49,9 +49,13 @@ const AddStudent = () => {
 
         try {
             // Filter out empty fields to ensure optional ones are handled correctly
-            const payload = Object.fromEntries(
-                Object.entries(formData).filter(([_, v]) => v !== '')
-            );
+            // Filter out empty fields to ensure optional ones are handled correctly
+            const payload = {
+                ...Object.fromEntries(
+                    Object.entries(formData).filter(([_, v]) => v !== '')
+                ),
+                role: 'student'
+            };
             
             await api.post('/students/', payload);
             navigate('/admin/students');
