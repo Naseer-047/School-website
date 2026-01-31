@@ -39,7 +39,19 @@ class UserInDB(UserBase):
 class StudentCreate(UserCreate):
     school_code: str
     grade: str
+    section: Optional[str] = None
+    dob: Optional[datetime] = None
+    gender: Optional[str] = None
+    blood_group: Optional[str] = None
+    address: Optional[str] = None
+    city: Optional[str] = None
+    state: Optional[str] = None
+    zip_code: Optional[str] = None
+    parent_name: Optional[str] = None
     parent_email: Optional[EmailStr] = None
+    parent_phone: Optional[str] = None
+    admission_date: Optional[datetime] = None
+    reg_no: Optional[str] = None  # Custom USN preference
 
 class TeacherCreate(UserCreate):
     subjects: List[str] = []

@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Plus, Search, Filter, MoreHorizontal, Mail, Phone } from 'lucide-react';
 import api from '../../api/axios';
-import AddStudentModal from '../../components/modals/AddStudentModal';
 
 const Students = () => {
+    const navigate = useNavigate();
     const [students, setStudents] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [isAddModalOpen, setIsAddModalOpen] = useState(false);
 
     const fetchStudents = async () => {
         try {
@@ -33,7 +33,7 @@ const Students = () => {
                     <p className="text-gray-400">Manage student profiles, enrollments, and academic records.</p>
                 </div>
                 <button 
-                    onClick={() => setIsAddModalOpen(true)}
+                    onClick={() => navigate('/admin/add-student')}
                     className="flex items-center gap-2 bg-primary hover:bg-primary-dark text-white px-4 py-2 rounded-lg transition-colors shadow-lg shadow-primary/20"
                 >
                     <Plus size={20} />
@@ -41,11 +41,7 @@ const Students = () => {
                 </button>
             </div>
 
-            <AddStudentModal 
-                isOpen={isAddModalOpen} 
-                onClose={() => setIsAddModalOpen(false)} 
-                onSuccess={fetchStudents}
-            />
+
 
             {/* Filters & Search */}
             <div className="bg-surface border border-white/5 p-4 rounded-xl mb-6 flex flex-col md:flex-row gap-4 items-center justify-between">

@@ -23,22 +23,29 @@ async def create_student(student: StudentCreate = Body(...)):
     if users_collection.find_one({"email": student.email}):
         raise HTTPException(status_code=400, detail="Email already registered")
 
-    # Generate USN (Registration Number)
-    # Format: [SCHOOL_CODE]-[YYYY]-[SERIAL]
-    school_code = student.school_code.upper().strip()
-    current_year = datetime.now().year
-    
-    # Count students for this school in the current year
-    # We use a regex to match the prefix
-    prefix = f"{school_code}-{current_year}-"
-    student_count = users_collection.count_documents({
-        "role": UserRole.STUDENT,
-        "school_code": school_code,
-        "reg_no": {"$regex": f"^{prefix}"}
-    })
-    
-    serial = str(student_count + 1).zfill(4)
-    reg_no = f"{prefix}{serial}"
+    # Custom USN Logic
+    if student.reg_no:
+        # Check if custom USN already exists
+        if users_collection.find_one({"reg_no": student.reg_no, "school_code": student.school_code}):
+            raise HTTPException(status_code=400, detail=f"Registration Number '{student.reg_no}' already exists for this school.")
+        reg_no = student.reg_no
+    else:
+        # Generate USN (Registration Number)
+        # Format: [SCHOOL_CODE]-[YYYY]-[SERIAL]
+        school_code = student.school_code.upper().strip()
+        current_year = datetime.now().year
+        
+        # Count students for this school in the current year
+        # We use a regex to match the prefix
+        prefix = f"{school_code}-{current_year}-"
+        student_count = users_collection.count_documents({
+            "role": UserRole.STUDENT,
+            "school_code": school_code,
+            "reg_no": {"$regex": f"^{prefix}"}
+        })
+        
+        serial = str(student_count + 1).zfill(4)
+        reg_no = f"{prefix}{serial}"
 
     # Hash password and prepare user dict
     hashed_password = get_password_hash(student.password)
